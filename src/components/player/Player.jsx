@@ -28,7 +28,13 @@ const Player = props => {
       console.groupEnd();
     };
 
-    navigator.geolocation.getCurrentPosition(success);
+    //error method passed into getCurrentPosition
+    const error = (err) => {
+      console.warn(`Error(${err.code}): ${err.message}`);
+      
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error);
   };
 
   return (

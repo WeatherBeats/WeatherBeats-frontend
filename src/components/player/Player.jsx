@@ -4,9 +4,17 @@ import PropTypes from 'prop-types';
 const Player = props => {
 
   const onTrackingClick = () => {
+    console.log('Tracking button clicked');
+
+    const success = (position) => {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+    };
+
+    navigator.geolocation.getCurrentPosition(success);
 
   };
-  
+
   return (
     <div>
       <p>

@@ -2,9 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Player = props => {
+
+  const onTrackingClick = () => {
+
+  };
+  
   return (
     <div>
-      Player
+      <p>
+        Player
+      </p>
+      <button onClick={onTrackingClick}>Enable Tracking</button>
     </div>
   );
 };

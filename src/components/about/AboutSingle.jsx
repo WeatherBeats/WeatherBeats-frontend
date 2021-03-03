@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const AboutSingle = props => {
   return (
     <div>
-      
+      Single About
     </div>
   );
 };

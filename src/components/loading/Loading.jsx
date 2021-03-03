@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Loading = props => {
   return (
     <div>
-      
+      Loading
     </div>
   );
 };

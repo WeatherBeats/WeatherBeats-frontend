@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Spotify = props => {
+const Player = props => {
   return (
     <div>
-      
+      Player
     </div>
   );
 };
 
-Spotify.propTypes = {
+Player.propTypes = {
 
 };
 
-export default Spotify;
+export default Player;

@@ -3,16 +3,32 @@ import PropTypes from 'prop-types';
 
 const Player = props => {
 
+  const coordinates = {
+    latitude: '',
+    longitude: ''
+  };
+
+  console.group(['Starting coordinates']);
+  console.log(coordinates);
+  console.groupEnd();
+
   const onTrackingClick = () => {
     console.log('Tracking button clicked');
 
+    //success method passed into getCurrentPosition
     const success = (position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
+
+      coordinates.latitude = lat;
+      coordinates.longitude = long;
+
+      console.group(['User coordinates']);
+      console.log(coordinates);
+      console.groupEnd();
     };
 
     navigator.geolocation.getCurrentPosition(success);
-
   };
 
   return (

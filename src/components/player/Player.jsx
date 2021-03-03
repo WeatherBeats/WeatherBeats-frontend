@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Loading from '../loading/Loading';
 
 const Player = props => {
+
+  const [loading, setLoading] = useState(false);
 
   const coordinates = {
     latitude: '',
     longitude: ''
   };
 
-  console.group(['Starting coordinates']);
-  console.log(coordinates);
-  console.groupEnd();
-
   const onTrackingClick = () => {
     console.log('Tracking button clicked');
+    setLoading(true);
 
     //success method passed into getCurrentPosition
     const success = (position) => {
@@ -23,19 +23,22 @@ const Player = props => {
       coordinates.latitude = lat;
       coordinates.longitude = long;
 
-      console.group(['User coordinates']);
+      // console.group(['User coordinates']);
       console.log(coordinates);
-      console.groupEnd();
+      // console.groupEnd();
+      setLoading(false);
     };
 
     //error method passed into getCurrentPosition
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);
-      
+      setLoading(false);
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
   };
+
+  if(loading) return <Loading />;
 
   return (
     <div>

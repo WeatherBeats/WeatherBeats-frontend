@@ -10,7 +10,9 @@ const Home = () => {
 
   return (
     <div className={styles.Home}>
-      Home
+      <p>
+        WeatherBeats generates a playlist based on the weather in your area.
+      </p>
       <button onClick={onSpotifyLoginClick}>Spotify</button>
     </div>
   );

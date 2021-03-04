@@ -5,7 +5,12 @@
     align-items: center;
     justify-content: space-evenly;
     height: 90vh;
-    
+
+    p {
+        
+        width: 80%;
+    }
+
     button {
         background-color: green;
         color: yellow;
@@ -14,4 +19,12 @@
         border-radius: 50%;
         outline: none;
     }
+
+    @media (min-width: 500px) {
+        p {
+            text-align: center;
+        }
+    }
+
+
 }

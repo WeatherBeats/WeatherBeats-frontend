@@ -1,4 +1,5 @@
-// const API_URL = 'http://localhost:8888';
+// This is in the .env file:
+// API_URL=http://localhost:8888
 
 export const postLocation = (coordinates) => {
   return fetch(`${process.env.API_URL}/api/v1/weather`, {
@@ -8,10 +9,5 @@ export const postLocation = (coordinates) => {
     },
     body: JSON.stringify(coordinates)
   })
-    .then(res => res.json());
-};
-
-export const getLogin = () => {
-  return fetch(`${process.env.API_URL}/login`)
     .then(res => res.json());
 };

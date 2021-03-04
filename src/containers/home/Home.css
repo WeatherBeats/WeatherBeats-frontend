@@ -1,0 +1,9 @@
+.Home {
+    button {
+        background-color: green;
+        color: yellow;
+        height: 10vh;
+        width: 20vw;
+        border-radius: 50%;
+    }
+}

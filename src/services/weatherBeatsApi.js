@@ -1,7 +1,7 @@
-// const API_URL = 'http://localhost:7890/api/v1/weather';
+// const API_URL = 'http://localhost:8888';
 
 export const postLocation = (coordinates) => {
-  return fetch(`${process.env.API_URL}`, {
+  return fetch(`${process.env.API_URL}/api/v1/weather`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -12,6 +12,6 @@ export const postLocation = (coordinates) => {
 };
 
 export const getLogin = () => {
-  return fetch('http://localhost:7890/login')
+  return fetch(`${process.env.API_URL}/login`)
     .then(res => res.json());
 };

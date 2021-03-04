@@ -1,10 +1,13 @@
 import React from 'react';
+import { getLogin } from '../../services/weatherBeatsApi';
 import styles from './Home.css';
 
 const Home = () => {
 
   const onSpotifyLoginClick = () => {
     console.log('Spotify login button clicked.');
+
+    getLogin();
 
   };
 

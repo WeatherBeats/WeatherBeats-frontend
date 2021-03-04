@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './NavDropDown.css';
 
 const NavDropDown = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -9,14 +10,14 @@ const NavDropDown = () => {
   };
 
   return (
-    <div>
+    <div className={styles.menuButton}>
       <button onClick={clickHandler}>
         Nav
       </button>
       {
         showMenu
           ? (
-            <div className="menu">
+            <div className={styles.dropdownMenu}>
               <Link to="/player">
                 <button>Player</button>
               </Link>

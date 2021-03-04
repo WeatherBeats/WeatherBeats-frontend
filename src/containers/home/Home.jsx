@@ -8,7 +8,7 @@ const Home = () => {
       <p>
         WeatherBeats generates a playlist based on the weather in your area.
       </p>
-      <a href="http://localhost:8888/login">
+      <a href="https://weatherbeats-staging.herokuapp.com/login">
         <button>Spotify</button>
       </a>
     </div>

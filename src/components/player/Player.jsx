@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
+import { postLocation } from '../../services/weatherBeatsApi';
 
 const Player = props => {
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,10 @@ const Player = props => {
       console.group(['User coordinates']);
       console.log(coordinates);
       console.groupEnd();
+
+      // makes fetch call to WeatherBeats server
+      // sends location data in request; receives weather data in response
+      postLocation(coordinates);
 
       setLoading(false);
     };

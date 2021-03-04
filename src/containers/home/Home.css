@@ -1,9 +1,17 @@
 .Home {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90vh;
+    
     button {
         background-color: green;
         color: yellow;
         height: 10vh;
         width: 20vw;
         border-radius: 50%;
+        outline: none;
     }
 }

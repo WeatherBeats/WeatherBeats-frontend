@@ -10,3 +10,8 @@ export const postLocation = (coordinates) => {
   })
     .then(res => res.json());
 };
+
+export const getLogin = () => {
+  return fetch('http://localhost:7890/login')
+    .then(res => res.json());
+};

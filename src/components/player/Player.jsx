@@ -46,6 +46,10 @@ const Player = ({ match }) => {
   };
 
 
+
+
+
+
   if(loading) return <Loading />;
 
   return (
@@ -53,6 +57,38 @@ const Player = ({ match }) => {
       <p>
         <button onClick={onTrackingClick}>Enable Tracking</button>
       </p>
+
+
+
+
+
+
+      
+      <form action=""
+      >
+        <label htmlFor="zip-code-input">
+          <input
+            placeholder="Zip Code"
+            type="text"
+            id="zip-code-input"
+          />
+        </label>
+        <label htmlFor="country-select">
+          <select name="country" id="country-select">
+            <option value="">Select Country</option>
+            <option value="">Canada</option>
+            <option value="">Mexico</option>
+            <option value="">UK</option>
+            <option value="">US</option>
+          </select>
+        </label>
+        <button>Get Location by Zip Code</button>
+      </form>
+
+
+
+
+
 
       <iframe
         src={`https://open.spotify.com/embed/playlist/${playlists[0]}`}

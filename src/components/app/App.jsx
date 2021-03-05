@@ -9,6 +9,7 @@ import About from '../about/About';
 import Header from '../header/Header';
 import HowTo from '../instructions/HowTo';
 import Player from '../player/Player';
+import './App.css';
 
 export default function App() {
   return (

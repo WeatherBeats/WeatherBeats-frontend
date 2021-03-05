@@ -15,7 +15,7 @@ const Player = ({ match }) => {
   };
 
   const onTrackingClick = () => {
-    
+
     setLoading(true);
 
     // success method passed into getCurrentPosition
@@ -27,25 +27,22 @@ const Player = ({ match }) => {
       coordinates.latitude = lat;
       coordinates.longitude = long;
 
-      // makes fetch call to WeatherBeats server
-      // sends location data in request; receives weather data in response
-      postLocation(coordinates);
+      postLocation(coordinates)
+        .then(genre => {
+          getPlaylist(genre, token)
+            .then(res => setPlaylists(res));
+          setLoading(false);
+        });
+
     };
 
-    // error method passed into getCurrentPosition
     const error = (err) => {
-      // error message displays in console if user denies access
       console.warn(`Error(${err.code}): ${err.message}`);
+      setLoading(false);
     };
 
     // getCurrentPosition gets user location
     navigator.geolocation.getCurrentPosition(success, error);
-    
-    getPlaylist('rain', token)
-      .then(res => setPlaylists(res));
-
-    setLoading(false);
-
   };
 
 

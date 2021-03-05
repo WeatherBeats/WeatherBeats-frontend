@@ -136,14 +136,19 @@ const Player = ({ match }) => {
             id="country-select"
             onChange={({ target }) => setCountry(target.value)}
           >
-            <option value="">Select Country</option>
+            <option value="">Select Country (optional)</option>
+            <option value="AU">Australia</option>
+            <option value="BR">Brazil</option>
             <option value="CA">Canada</option>
+            <option value="CN">China</option>
+            <option value="IN">India</option>
             <option value="MX">Mexico</option>
-            <option value="UK">UK</option>
-            <option value="US">US</option>
+            <option value="NG">Nigeria</option>
+            <option value="UK">United Kingdom</option>
+            <option value="US">United States</option>
           </select>
         </label>
-        <button>Get Location by Zip Code</button>
+        <button>Generate Playlist by Zip Code</button>
       </form>
 
       {/* // end new code */}

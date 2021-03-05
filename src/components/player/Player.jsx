@@ -10,9 +10,10 @@ const Player = ({ match }) => {
   const [playlists, setPlaylists] = useState([]);
 
 
+  // START new code
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
-
+  // END new code
 
 
 
@@ -57,6 +58,9 @@ const Player = ({ match }) => {
 
 
 
+
+
+  // START new code
   const onZipCodeSubmit = (e) => {
     e.preventDefault();
 
@@ -71,11 +75,16 @@ const Player = ({ match }) => {
           .then(res => setPlaylists(res));
         setLoading(false);
       });
-
+    console.log(zipAndCountry);
 
   };
 console.log(zipCode);
 console.log(country);
+  // START new code
+
+
+
+
 
   if(loading) return <Loading />;
 
@@ -90,7 +99,7 @@ console.log(country);
 
 
 
-      
+      {/* // START new code */}
       <form action=""
         onSubmit={onZipCodeSubmit}
       >
@@ -118,6 +127,7 @@ console.log(country);
         <button>Get Location by Zip Code</button>
       </form>
 
+      {/* // end new code */}
 
 
 

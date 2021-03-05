@@ -1,0 +1,109 @@
+.Player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        width: 400px;
+        /* max-width: 90%; */
+        text-align: center;
+        /* this is not centered */
+
+        button {
+            background-color: #1DB954;
+            color: #191414;
+            font-size: 14px;
+            line-height: 1;
+            border-radius: 500px;
+            padding: 18px 48px 16px;
+            transition-duration: .3s;
+            border-width: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: normal;
+            filter: drop-shadow(0 0 0.50rem #191414);
+        }
+
+        button:hover {
+            background-color: #26f16d;
+        }
+    }
+}
+
+.playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+
+    iframe {
+        border-radius: 0.50rem;
+        filter: drop-shadow(0 0 0.50rem #1db9548f);
+        margin: 10px;
+    }
+
+    button {
+        background-color: #1DB954;
+        color: #191414;
+        font-size: 14px;
+        line-height: 1;
+        border-radius: 500px;
+        padding: 18px 48px 16px;
+        transition-duration: .3s;
+        border-width: 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        white-space: normal;
+        margin-top: 15px;
+        filter: drop-shadow(0 0 0.50rem #191414);
+    }
+
+    button:hover {
+        background-color: #26f16d;
+    }
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    label {
+        margin: 5px;
+
+        input, select {
+            background-color: #191414;
+            color: gray;
+            font-size: 14px;
+            line-height: 1;
+            border-radius: 500px;
+            padding: 4px 8px 4px;
+            transition-duration: .3s;
+            border-width: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: normal;
+            margin-top: 2px;
+        }
+    }
+
+    button {
+        background-color: #1DB954;
+        color: #191414;
+        font-size: 14px;
+        line-height: 1;
+        border-radius: 500px;
+        padding: 5px 20px 5px;
+        transition-duration: .3s;
+        border-width: 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        white-space: normal;
+        margin-top: 10px;
+        /* filter: drop-shadow(0 0 0.50rem #191414); */
+    }
+
+    button:hover {
+        background-color: #26f16d;
+    }
+}

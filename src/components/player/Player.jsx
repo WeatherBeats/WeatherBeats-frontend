@@ -5,6 +5,7 @@ import Loading from '../loading/Loading';
 import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
+import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 
 const Player = ({ match }) => {
@@ -70,6 +71,7 @@ const Player = ({ match }) => {
 
   const onZipCodeSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const zipAndCountry = {
       zipCode,
@@ -91,13 +93,13 @@ const Player = ({ match }) => {
   if(loading) return <Loading />;
 
   return (
-    <div>
+    <div className={ styles.Player }>
       <p>
         <button onClick={onTrackingClick}>Generate Playlist</button>
       </p>
 
-
-      <form onSubmit={onZipCodeSubmit}>
+      <form onSubmit={onZipCodeSubmit} className={ styles.Form }>
+        {/* <div> */}
         <label htmlFor="zip-code-input">
           <input
             placeholder="Zip Code"
@@ -106,13 +108,14 @@ const Player = ({ match }) => {
             onChange={({ target }) => setZipCode(target.value)}
           />
         </label>
+        
         <label htmlFor="country-select">
           <select
             name="country"
             id="country-select"
             onChange={({ target }) => setCountry(target.value)}
           >
-            <option value="">Select Country (optional)</option>
+            <option value="">Country</option>
             <option value="AU">Australia</option>
             <option value="BR">Brazil</option>
             <option value="CA">Canada</option>
@@ -124,15 +127,17 @@ const Player = ({ match }) => {
             <option value="US">United States</option>
           </select>
         </label>
-        <button>Generate Playlist by Zip Code</button>
+        {/* </div> */}
+        <button>Submit</button>
       </form>
 
-
-
       { !userPlaylist 
-        ? <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p> 
+        ? <div>
+          <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p>
+          <p>You may also enter a Zip Code to generate a playlist based off of the weather in another location.</p> 
+        </div>
         :
-        <div>
+        <div className={ styles.playlist }>
           <iframe
             src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
             width="300"

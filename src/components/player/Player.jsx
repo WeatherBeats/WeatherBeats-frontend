@@ -6,8 +6,10 @@ import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 import styles from './Player.css';
+import { useHistory } from 'react-router-dom';
 
 const Player = ({ match }) => {
+
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(match.params.access_token);
   const [refreshToken, setRefreshToken] = useState(match.params.refresh_token);
@@ -16,6 +18,7 @@ const Player = ({ match }) => {
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
 
+  const history = useHistory();
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
@@ -51,13 +54,14 @@ const Player = ({ match }) => {
 
     getNewAccessToken(refreshToken)
       .then(token => setToken(token['access_token']));
-
+    
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);
       setLoading(false);
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
+    history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
   const onNextClick = () => {

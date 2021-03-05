@@ -1,13 +1,22 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
 import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
+import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 
 const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(match.params.access_token);
+  const [refreshToken, setRefreshToken] = useState(match.params.refresh_token);
   const [playlists, setPlaylists] = useState([]);
+  const [userPlaylist, setUserPlaylist] = useState('');
+
+  const newUserPlaylist = (playlistIds) => {
+    const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
+    return id;
+  };
 
 
   // START new code
@@ -25,11 +34,8 @@ const Player = ({ match }) => {
   };
 
   const onTrackingClick = () => {
-
     setLoading(true);
 
-    // success method passed into getCurrentPosition
-    // gets and sets coordinates
     const success = (position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
@@ -40,21 +46,30 @@ const Player = ({ match }) => {
       postLocation(coordinates)
         .then(genre => {
           getPlaylist(genre, token)
-            .then(res => setPlaylists(res));
+            .then(res => {
+              setPlaylists(res);
+              const id = newUserPlaylist(res);
+              setUserPlaylist(id);
+            });
           setLoading(false);
         });
-
     };
+
+    getNewAccessToken(refreshToken)
+      .then(token => setToken(token['access_token']));
 
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);
       setLoading(false);
     };
 
-    // getCurrentPosition gets user location
     navigator.geolocation.getCurrentPosition(success, error);
   };
 
+  const onNextClick = () => {
+    const id = newUserPlaylist(playlists);
+    setUserPlaylist(id);
+  };
 
 
 
@@ -91,7 +106,7 @@ console.log(country);
   return (
     <div>
       <p>
-        <button onClick={onTrackingClick}>Enable Tracking</button>
+        <button onClick={onTrackingClick}>Generate Playlist</button>
       </p>
 
 
@@ -133,13 +148,28 @@ console.log(country);
 
 
 
-      <iframe
+      {/* <iframe
         src={`https://open.spotify.com/embed/playlist/${playlists[0]}`}
         width="300"
         height="380"
         frameBorder="0"
         allowtransparency="true"
-        allow="encrypted-media"></iframe>
+        allow="encrypted-media"></iframe> */}
+      { !userPlaylist 
+        ? <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p> 
+        :
+        <div>
+          <iframe
+            src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
+            width="300"
+            height="380"
+            frameBorder="0"
+            allowtransparency="true"
+            allow="encrypted-media"></iframe>
+
+          <button onClick={onNextClick}>Next Playlist</button>
+        </div>
+      }
     </div>
   );
 };
@@ -148,6 +178,7 @@ Player.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       access_token: PropTypes.string.isRequired,
+      refresh_token: PropTypes.string.isRequired
     }).isRequired
   }).isRequired
 };

@@ -7,6 +7,7 @@ import { getPlaylist } from '../../services/spotifyApi';
 const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(match.params.access_token);
+  const [refreshToken, setRefreshToken] = useState(match.params.refresh_token);
   const [playlists, setPlaylists] = useState([]);
 
   const coordinates = {
@@ -69,6 +70,7 @@ Player.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       access_token: PropTypes.string.isRequired,
+      refresh_token: PropTypes.string.isRequired
     }).isRequired
   }).isRequired
 };

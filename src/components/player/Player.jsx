@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
-import { postLocation } from '../../services/weatherBeatsApi';
+import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 
 const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(match.params.access_token);
   const [playlists, setPlaylists] = useState([]);
+
+
+  const [zipCode, setZipCode] = useState('');
+  const [country, setCountry] = useState('');
+
+
+
+
+
 
   const coordinates = {
     latitude: '',
@@ -51,8 +60,22 @@ const Player = ({ match }) => {
   const onZipCodeSubmit = (e) => {
     e.preventDefault();
 
-  };
+    const zipAndCountry = {
+      zipCode,
+      country
+    };
 
+    postZipCode(zipAndCountry)
+      .then(genre => {
+        getPlaylist(genre, token)
+          .then(res => setPlaylists(res));
+        setLoading(false);
+      });
+
+
+  };
+console.log(zipCode);
+console.log(country);
 
   if(loading) return <Loading />;
 
@@ -76,15 +99,20 @@ const Player = ({ match }) => {
             placeholder="Zip Code"
             type="text"
             id="zip-code-input"
+            onChange={({ target }) => setZipCode(target.value)}
           />
         </label>
         <label htmlFor="country-select">
-          <select name="country" id="country-select">
+          <select
+            name="country"
+            id="country-select"
+            onChange={({ target }) => setCountry(target.value)}
+          >
             <option value="">Select Country</option>
             <option value="CA">Canada</option>
             <option value="MX">Mexico</option>
-            <option value="US">UK</option>
-            <option value="UK">US</option>
+            <option value="UK">UK</option>
+            <option value="US">US</option>
           </select>
         </label>
         <button>Get Location by Zip Code</button>

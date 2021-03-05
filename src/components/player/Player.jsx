@@ -5,6 +5,7 @@ import Loading from '../loading/Loading';
 import { postLocation } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
+import styles from './Player.css';
 
 const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,7 @@ const Player = ({ match }) => {
   if(loading) return <Loading />;
 
   return (
-    <div>
+    <div className={ styles.Player }>
       <p>
         <button onClick={onTrackingClick}>Generate Playlist</button>
       </p>
@@ -72,7 +73,7 @@ const Player = ({ match }) => {
       { !userPlaylist 
         ? <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p> 
         :
-        <div>
+        <div className={ styles.playlist }>
           <iframe
             src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
             width="300"

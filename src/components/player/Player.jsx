@@ -87,14 +87,18 @@ const Player = ({ match }) => {
     postZipCode(zipAndCountry)
       .then(genre => {
         getPlaylist(genre, token)
-          .then(res => setPlaylists(res));
+          .then(res => {
+            setPlaylists(res);
+            const id = newUserPlaylist(res);
+            setUserPlaylist(id);
+          });
         setLoading(false);
       });
     console.log(zipAndCountry);
 
   };
-console.log(zipCode);
-console.log(country);
+  console.log(zipCode);
+  console.log(country);
   // START new code
 
 

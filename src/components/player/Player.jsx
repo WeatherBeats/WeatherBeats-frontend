@@ -22,7 +22,6 @@ const Player = ({ match }) => {
     return id;
   };
 
-
   const coordinates = {
     latitude: '',
     longitude: ''
@@ -66,7 +65,6 @@ const Player = ({ match }) => {
     setUserPlaylist(id);
   };
 
-
   const onZipCodeSubmit = (e) => {
     e.preventDefault();
 
@@ -95,8 +93,8 @@ const Player = ({ match }) => {
         <button onClick={onTrackingClick}>Generate Playlist</button>
       </p>
 
-
-      <form onSubmit={onZipCodeSubmit}>
+      <form onSubmit={onZipCodeSubmit} className={ styles.Form }>
+        {/* <div> */}
         <label htmlFor="zip-code-input">
           <input
             placeholder="Zip Code"
@@ -105,13 +103,14 @@ const Player = ({ match }) => {
             onChange={({ target }) => setZipCode(target.value)}
           />
         </label>
+        
         <label htmlFor="country-select">
           <select
             name="country"
             id="country-select"
             onChange={({ target }) => setCountry(target.value)}
           >
-            <option value="">Select Country (optional)</option>
+            <option value="">Country</option>
             <option value="AU">Australia</option>
             <option value="BR">Brazil</option>
             <option value="CA">Canada</option>
@@ -123,13 +122,15 @@ const Player = ({ match }) => {
             <option value="US">United States</option>
           </select>
         </label>
-        <button>Generate Playlist by Zip Code</button>
+        {/* </div> */}
+        <button>Submit</button>
       </form>
 
-
-
       { !userPlaylist 
-        ? <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p> 
+        ? <div>
+          <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p>
+          <p>You may also enter a Zip Code to generate a playlist based off of the weather in another location.</p> 
+        </div>
         :
         <div className={ styles.playlist }>
           <iframe

@@ -12,20 +12,14 @@ const Player = ({ match }) => {
   const [refreshToken, setRefreshToken] = useState(match.params.refresh_token);
   const [playlists, setPlaylists] = useState([]);
   const [userPlaylist, setUserPlaylist] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [country, setCountry] = useState('');
+
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
     return id;
   };
-
-
-  // START new code
-  const [zipCode, setZipCode] = useState('');
-  const [country, setCountry] = useState('');
-  // END new code
-
-
-
 
 
   const coordinates = {
@@ -72,10 +66,6 @@ const Player = ({ match }) => {
   };
 
 
-
-
-
-  // START new code
   const onZipCodeSubmit = (e) => {
     e.preventDefault();
 
@@ -94,16 +84,7 @@ const Player = ({ match }) => {
           });
         setLoading(false);
       });
-    console.log(zipAndCountry);
-
   };
-  console.log(zipCode);
-  console.log(country);
-  // START new code
-
-
-
-
 
   if(loading) return <Loading />;
 
@@ -114,14 +95,7 @@ const Player = ({ match }) => {
       </p>
 
 
-
-
-
-
-      {/* // START new code */}
-      <form action=""
-        onSubmit={onZipCodeSubmit}
-      >
+      <form onSubmit={onZipCodeSubmit}>
         <label htmlFor="zip-code-input">
           <input
             placeholder="Zip Code"
@@ -150,10 +124,6 @@ const Player = ({ match }) => {
         </label>
         <button>Generate Playlist by Zip Code</button>
       </form>
-
-      {/* // end new code */}
-
-
 
 
 

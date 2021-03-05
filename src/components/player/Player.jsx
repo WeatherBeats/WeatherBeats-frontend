@@ -71,6 +71,7 @@ const Player = ({ match }) => {
 
   const onZipCodeSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const zipAndCountry = {
       zipCode,

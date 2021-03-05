@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
 import { postLocation } from '../../services/weatherBeatsApi';
+import { getPlaylist } from '../../services/spotifyApi';
 
-const Player = props => {
+const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState(match.params.access_token);
+  const [playlists, setPlaylists] = useState([]);
 
   const coordinates = {
     latitude: '',
@@ -12,13 +15,11 @@ const Player = props => {
   };
 
   const onTrackingClick = () => {
-    console.log('Tracking button clicked');
 
     setLoading(true);
 
     // success method passed into getCurrentPosition
-    // gets coordinates
-    // sets coordinates
+    // gets and sets coordinates
     const success = (position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
@@ -26,20 +27,16 @@ const Player = props => {
       coordinates.latitude = lat;
       coordinates.longitude = long;
 
-      console.group(['User coordinates']);
-      console.log(coordinates);
-      console.groupEnd();
+      postLocation(coordinates)
+        .then(genre => {
+          getPlaylist(genre, token)
+            .then(res => setPlaylists(res));
+          setLoading(false);
+        });
 
-      // makes fetch call to WeatherBeats server
-      // sends location data in request; receives weather data in response
-      postLocation(coordinates);
-
-      setLoading(false);
     };
 
-    // error method passed into getCurrentPosition
     const error = (err) => {
-      // error message displays in console if user denies access
       console.warn(`Error(${err.code}): ${err.message}`);
       setLoading(false);
     };
@@ -48,6 +45,7 @@ const Player = props => {
     navigator.geolocation.getCurrentPosition(success, error);
   };
 
+
   if(loading) return <Loading />;
 
   return (
@@ -55,15 +53,24 @@ const Player = props => {
       <p>
         <button onClick={onTrackingClick}>Enable Tracking</button>
       </p>
-      <p>
-        Player
-      </p>
+
+      <iframe
+        src={`https://open.spotify.com/embed/playlist/${playlists[0]}`}
+        width="300"
+        height="380"
+        frameBorder="0"
+        allowtransparency="true"
+        allow="encrypted-media"></iframe>
     </div>
   );
 };
 
 Player.propTypes = {
-
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      access_token: PropTypes.string.isRequired,
+    }).isRequired
+  }).isRequired
 };
 
 export default Player;

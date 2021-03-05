@@ -2,8 +2,20 @@
 
 exports[`App component renders App 1`] = `
 <DocumentFragment>
-  <h1>
-    Hello World
-  </h1>
+  HeaderDropdown Menu
+  <div
+    class="Home"
+  >
+    <p>
+      WeatherBeats generates a playlist based on the weather in your area.
+    </p>
+    <a
+      href="https://weatherbeats-staging.herokuapp.com/login"
+    >
+      <button>
+        Spotify
+      </button>
+    </a>
+  </div>
 </DocumentFragment>
 `;

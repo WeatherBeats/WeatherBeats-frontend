@@ -13,8 +13,6 @@ const Player = ({ match }) => {
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
-    console.log('id', id);
-    // setUserPlaylist(id);
     return id;
   };
 
@@ -41,7 +39,6 @@ const Player = ({ match }) => {
               const id = newUserPlaylist(res);
               setUserPlaylist(id);
             });
-
           setLoading(false);
         });
     };
@@ -55,7 +52,8 @@ const Player = ({ match }) => {
   };
 
   const onNextClick = () => {
-    newUserPlaylist(playlists);
+    const id = newUserPlaylist(playlists);
+    setUserPlaylist(id);
   };
 
   if(loading) return <Loading />;

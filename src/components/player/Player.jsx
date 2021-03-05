@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
@@ -8,6 +9,9 @@ const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(match.params.access_token);
   const [playlists, setPlaylists] = useState([]);
+  const [userPlaylist, setUserPlaylist] = useState('');
+
+  // const randomPlaylist = playlists[Math.floor(Math.random() * playlists.length)];
 
   const coordinates = {
     latitude: '',
@@ -31,6 +35,11 @@ const Player = ({ match }) => {
         .then(genre => {
           getPlaylist(genre, token)
             .then(res => setPlaylists(res));
+
+          const playlist = playlists[Math.floor(Math.random() * playlists.length)];
+
+          setUserPlaylist(playlist);
+
           setLoading(false);
         });
 
@@ -55,7 +64,7 @@ const Player = ({ match }) => {
       </p>
 
       <iframe
-        src={`https://open.spotify.com/embed/playlist/${playlists[0]}`}
+        src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
         width="300"
         height="380"
         frameBorder="0"

@@ -157,13 +157,6 @@ const Player = ({ match }) => {
 
 
 
-      {/* <iframe
-        src={`https://open.spotify.com/embed/playlist/${playlists[0]}`}
-        width="300"
-        height="380"
-        frameBorder="0"
-        allowtransparency="true"
-        allow="encrypted-media"></iframe> */}
       { !userPlaylist 
         ? <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p> 
         :

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
 import { postLocation } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
+import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 
 const Player = ({ match }) => {
   const [loading, setLoading] = useState(false);
@@ -34,8 +35,10 @@ const Player = ({ match }) => {
             .then(res => setPlaylists(res));
           setLoading(false);
         });
-
     };
+
+    getNewAccessToken(refreshToken)
+      .then(token => setToken(token['access_token']));
 
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);

@@ -11,7 +11,7 @@ export const postLocation = (coordinates) => {
 };
 
 export const postZipCode = (zipAndCountry) => {
-  return fetch(`${process.env.API_URL}/api/v1/weather`, {
+  return fetch(`${process.env.API_URL}/api/v1/weather/zip`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

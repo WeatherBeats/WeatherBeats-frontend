@@ -11,8 +11,6 @@ const Player = ({ match }) => {
   const [playlists, setPlaylists] = useState([]);
   const [userPlaylist, setUserPlaylist] = useState('');
 
-  // const randomPlaylist = playlists[Math.floor(Math.random() * playlists.length)];
-
   const coordinates = {
     latitude: '',
     longitude: ''
@@ -22,8 +20,6 @@ const Player = ({ match }) => {
 
     setLoading(true);
 
-    // success method passed into getCurrentPosition
-    // gets and sets coordinates
     const success = (position) => {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
@@ -50,10 +46,8 @@ const Player = ({ match }) => {
       setLoading(false);
     };
 
-    // getCurrentPosition gets user location
     navigator.geolocation.getCurrentPosition(success, error);
   };
-
 
   if(loading) return <Loading />;
 
@@ -63,13 +57,17 @@ const Player = ({ match }) => {
         <button onClick={onTrackingClick}>Enable Tracking</button>
       </p>
 
-      <iframe
-        src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
-        width="300"
-        height="380"
-        frameBorder="0"
-        allowtransparency="true"
-        allow="encrypted-media"></iframe>
+      { !userPlaylist 
+        ? <p>Please click &apos;Enable Tracking&apos; to find a playlist based on your weather!</p> 
+        :
+        <iframe
+          src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
+          width="300"
+          height="380"
+          frameBorder="0"
+          allowtransparency="true"
+          allow="encrypted-media"></iframe>
+      }
     </div>
   );
 };

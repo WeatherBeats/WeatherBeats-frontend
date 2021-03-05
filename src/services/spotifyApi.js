@@ -10,7 +10,7 @@ export const getPlaylist = (searchTerm, authToken) => {
       }
     })
     .then(res => res.json())
-    .then(json => json.playlist.items)
+    .then(json => json.playlists.items)
     .then(items => items.map(item => (
       item.id
     )));

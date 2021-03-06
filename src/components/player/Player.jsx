@@ -88,6 +88,7 @@ const Player = ({ match }) => {
           });
         setLoading(false);
       });
+    history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
   if(loading) return <Loading />;

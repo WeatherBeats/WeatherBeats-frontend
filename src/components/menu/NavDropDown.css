@@ -20,25 +20,19 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 
-  /* span {
+  a {
     text-decoration: none;
     color: gray;
-    padding: 12px 16px;
-    display: block; */
+    /* padding: 12px 16px; */
+    display: block;
+  }
 
-    /* Link {
-      text-decoration: none;
-    } */
-  /* } */
 
 }
 
 .DropContent span {
-  text-decoration: none;
-  color: gray;
   padding: 12px 16px;
   display: block;
-
 }
 
 .DropContent span:hover {background-color: #f1f1f1}

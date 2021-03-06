@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes, { string } from 'prop-types';
 import styles from './AboutSingle.css';
+import github from '../../assets/GitHub_icon.png';
 
 const AboutSingle = ({ name, image }) => {
   return (
@@ -10,7 +11,13 @@ const AboutSingle = ({ name, image }) => {
       <span>
         Bio words and words and words with words and perhaps more words as well.
       </span>
-      <p>GH - LI</p>
+      <p>
+        <img
+          src={github}
+          alt="GitHub icon"
+          style={{ width: '25%', height: '25%' }}
+        /> - LI
+      </p>
     </div>
   );
 };

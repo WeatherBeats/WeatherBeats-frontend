@@ -1,8 +1,14 @@
 .About {
-    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    
+    border: solid;
 
     @media (min-width: 500px) {
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
         padding: 5%;

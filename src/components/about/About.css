@@ -1,4 +1,11 @@
 .About {
-    margin: auto;
     padding: 10%;
+
+    @media (min-width: 500px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding: 5%;
+        
+    }
 }

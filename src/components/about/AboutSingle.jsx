@@ -1,19 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
+import styles from './AboutSingle.css';
 
-const AboutSingle = props => {
+const AboutSingle = ({ name, image }) => {
   return (
-    <div>
-      Single About
-      <p>NAME</p>
-      <p>IMAGE</p>
-      <p>CONTACT INFO: GitHub - LinkedIn</p>
+    <div className={styles.AboutSingle}>
+      <p>{name}</p>
+      <p><img src={image} alt={name}/></p>
+      <span>
+        Bio words and words and words with words and perhaps more words as well.
+      </span>
+      <p>GH - LI</p>
     </div>
   );
 };
 
 AboutSingle.propTypes = {
-
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
 };
 
 export default AboutSingle;

@@ -18,11 +18,12 @@ export default function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/how-to" component={HowTo}/>
+          <Route exact path="/faq" component={HowTo}/>
           <Route exact path="/about" component={About} />
           <Route 
             path="/player/:access_token/:refresh_token" 
             component={Player} />
+          <Route exact path="/player" component={Player} />
         </Switch>
       </Router>
     </>

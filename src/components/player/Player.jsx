@@ -94,9 +94,14 @@ const Player = ({ match }) => {
 
   return (
     <div className={ styles.Player }>
-      <p>
-        <button onClick={onTrackingClick}>Generate Playlist</button>
-      </p>
+      { !userPlaylist 
+        ? <p>
+          <button onClick={onTrackingClick}>Generate Playlist</button>
+        </p>
+        : <p>
+          <button onClick={onTrackingClick}>Check Weather Again</button>
+        </p>
+      }
 
       <form onSubmit={onZipCodeSubmit} className={ styles.Form }>
         {/* <div> */}

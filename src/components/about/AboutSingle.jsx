@@ -3,7 +3,7 @@ import PropTypes, { string } from 'prop-types';
 import styles from './AboutSingle.css';
 import github from '../../assets/GitHub_icon.png';
 
-const AboutSingle = ({ name, image }) => {
+const AboutSingle = ({ name, image, githubUrl }) => {
   return (
     <div className={styles.AboutSingle}>
       <p>{name}</p>
@@ -12,11 +12,13 @@ const AboutSingle = ({ name, image }) => {
         Bio words and words and words with words and perhaps more words as well.
       </span>
       <p>
-        <img
-          src={github}
-          alt="GitHub icon"
-          style={{ width: '25%', height: '25%' }}
-        /> - LI
+        <a href={githubUrl} target="_blank" rel="noreferrer">
+          <img
+            src={github}
+            alt="GitHub icon"
+            style={{ width: '25%', height: '25%' }}
+          />
+        </a> - LI
       </p>
     </div>
   );
@@ -24,7 +26,8 @@ const AboutSingle = ({ name, image }) => {
 
 AboutSingle.propTypes = {
   name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
+  githubUrl: PropTypes.string.isRequired
 };
 
 export default AboutSingle;

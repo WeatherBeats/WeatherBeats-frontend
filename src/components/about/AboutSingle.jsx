@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './AboutSingle.css';
 import github from '../../assets/GitHub_icon.png';
 
@@ -18,7 +18,14 @@ const AboutSingle = ({ name, image, githubUrl }) => {
             alt="GitHub icon"
             style={{ width: '25%', height: '25%' }}
           />
-        </a> - LI
+        </a>
+        <a href={githubUrl} target="_blank" rel="noreferrer">
+          <img
+            src={github}
+            alt="GitHub icon"
+            style={{ width: '25%', height: '25%' }}
+          />
+        </a>
       </p>
     </div>
   );

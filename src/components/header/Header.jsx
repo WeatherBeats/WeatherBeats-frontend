@@ -1,15 +1,14 @@
 import React from 'react';
-import NavDropDown from '../menu/NavDropDown';
+import Menu from '../menu/Menu';
 import styles from './Header.css';
 
 const header = () => {
   return (
     <>
-      <div className={styles.title}>
+      <div className={styles.Header}>
+        <Menu />
         <h1>WeatherBeats</h1>
       </div>
-      
-      <NavDropDown />
     </>
   );
 };

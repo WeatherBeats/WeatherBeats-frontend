@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import About from '../about/About';
 import NavDropDown from '../menu/NavDropDown';
 import styles from './Header.css';
 
-const header = props => {
+const header = () => {
   return (
     <>
       <div className={styles.title}>
@@ -14,10 +12,6 @@ const header = props => {
       <NavDropDown />
     </>
   );
-};
-
-header.propTypes = {
-
 };
 
 export default header;

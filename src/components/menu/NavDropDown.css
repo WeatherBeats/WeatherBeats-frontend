@@ -1,5 +1,44 @@
-.dropdownMenu {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.DropDown {
+  position: relative;
+  display: inline-block;
+  
+  img {
+    width: 40px;
+  }
 }
+
+.DropDown:hover .DropContent {
+  display: block;
+}
+
+.DropContent {
+  display: none;
+  position: absolute;
+  background-color: #191414;
+  min-width: 140px;
+  font-size: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+  /* span {
+    text-decoration: none;
+    color: gray;
+    padding: 12px 16px;
+    display: block; */
+
+    /* Link {
+      text-decoration: none;
+    } */
+  /* } */
+
+}
+
+.DropContent span {
+  text-decoration: none;
+  color: gray;
+  padding: 12px 16px;
+  display: block;
+
+}
+
+.DropContent span:hover {background-color: #f1f1f1}

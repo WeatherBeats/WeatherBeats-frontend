@@ -20,10 +20,10 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/faq" component={HowTo}/>
           <Route exact path="/about" component={About} />
+          <Route exact path="/player" component={Player} />
           <Route 
             path="/player/:access_token/:refresh_token" 
             component={Player} />
-          <Route exact path="/player" component={Player} />
         </Switch>
       </Router>
     </>

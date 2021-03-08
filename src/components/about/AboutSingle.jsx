@@ -1,29 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './AboutSingle.css';
-import github from '../../assets/GitHub_icon.png';
+import githubIcon from '../../assets/GitHub_icon.png';
 
-const AboutSingle = ({ name, image, githubUrl }) => {
+const AboutSingle = ({ name, photo, github, linkedIn }) => {
+
+  const iconStyle = {
+    width: '25%', 
+    height: '25%'
+  };
+
   return (
     <div className={styles.AboutSingle}>
       <p>{name}</p>
-      <p><img src={image} alt={name}/></p>
+      <p><img src={photo} alt={name}/></p>
       <span>
         Bio words and words and words with words and perhaps more words as well.
       </span>
       <p>
-        <a href={githubUrl} target="_blank" rel="noreferrer">
+        <a href={github} target="_blank" rel="noreferrer">
           <img
-            src={github}
+            src={githubIcon}
             alt="GitHub icon"
-            style={{ width: '25%', height: '25%' }}
+            style={iconStyle}
           />
         </a>
-        <a href={githubUrl} target="_blank" rel="noreferrer">
+        <a href={linkedIn} target="_blank" rel="noreferrer">
           <img
-            src={github}
-            alt="GitHub icon"
-            style={{ width: '25%', height: '25%' }}
+            src={githubIcon}
+            alt="LinkedIn icon"
+            style={iconStyle}
           />
         </a>
       </p>
@@ -33,8 +39,9 @@ const AboutSingle = ({ name, image, githubUrl }) => {
 
 AboutSingle.propTypes = {
   name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  githubUrl: PropTypes.string.isRequired
+  photo: PropTypes.string.isRequired,
+  github: PropTypes.string.isRequired,
+  linkedIn: PropTypes.string.isRequired
 };
 
 export default AboutSingle;

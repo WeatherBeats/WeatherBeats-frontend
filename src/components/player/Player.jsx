@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
-import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
+import { postLocation, postZipCode, postChosenWeather } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 import styles from './Player.css';
@@ -17,6 +17,7 @@ const Player = ({ match }) => {
   const [userPlaylist, setUserPlaylist] = useState(localStorage.getItem('currentPlaylist') || '');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
+  const [chosenWeather, setChosenWeather] = useState('');
 
   const history = useHistory();
 
@@ -81,6 +82,27 @@ const Player = ({ match }) => {
     };
 
     postZipCode(zipAndCountry)
+      .then(genre => {
+        getPlaylist(genre, token)
+          .then(res => {
+            setPlaylists(res);
+            const id = newUserPlaylist(res);
+            setUserPlaylist(id);
+          });
+        setLoading(false);
+      });
+    history.replace('/player/awesome/tunes', { from: 'Player' });
+  };
+
+  const onChosenWeatherSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const chosenWeather = {
+      weather
+    };
+
+    postChosenWeather(chosenWeather)
       .then(genre => {
         getPlaylist(genre, token)
           .then(res => {

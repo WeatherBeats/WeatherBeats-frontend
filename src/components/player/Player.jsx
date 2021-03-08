@@ -152,9 +152,13 @@ const Player = ({ match }) => {
             height="380"
             frameBorder="0"
             allowtransparency="true"
-            allow="encrypted-media"></iframe>
-
-          <button onClick={onNextClick}>Next Playlist</button>
+            allow="encrypted-media">
+          </iframe>
+          { playlists.length > 1 
+            ? <button onClick={onNextClick}>Next Playlist</button>
+            : <div></div>
+          }
+          
         </div>
       }
     </div>

@@ -7,7 +7,7 @@
   }
 }
 
-.DropDown:hover .DropContent {
+.DropDown.active .DropContent {
   display: block;
 }
 

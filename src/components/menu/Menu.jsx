@@ -6,9 +6,10 @@ const Menu = () => {
   return (
     <>
       <div className={ styles.DropDown }>
-        <a href="/">
-          <img src="./src/assets/menu.png" alt="menu" />
-        </a>
+      
+        <img src="/images/menu.png" alt="menu" />
+          
+      
         <div className={ styles.DropContent }>
           <span><Link to="/">Home</Link></span>
           <span><Link to="/player">Player</Link></span>

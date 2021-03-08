@@ -2,7 +2,57 @@
 
 exports[`App component renders App 1`] = `
 <DocumentFragment>
-  HeaderDropdown Menu
+  <div
+    class="Header"
+  >
+    <div
+      class="DropDown"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="menu"
+          src="./src/assets/menu.png"
+        />
+      </a>
+      <div
+        class="DropContent"
+      >
+        <span>
+          <a
+            href="/"
+          >
+            Home
+          </a>
+        </span>
+        <span>
+          <a
+            href="/player"
+          >
+            Player
+          </a>
+        </span>
+        <span>
+          <a
+            href="/about"
+          >
+            About Us
+          </a>
+        </span>
+        <span>
+          <a
+            href="/faq"
+          >
+            FAQ
+          </a>
+        </span>
+      </div>
+    </div>
+    <h1>
+      WeatherBeats
+    </h1>
+  </div>
   <div
     class="Home"
   >
@@ -12,9 +62,10 @@ exports[`App component renders App 1`] = `
     <a
       href="https://weatherbeats-staging.herokuapp.com/login"
     >
-      <button>
-        Spotify
-      </button>
+      <img
+        alt="Spotify logo"
+        src="/path/image"
+      />
     </a>
   </div>
 </DocumentFragment>

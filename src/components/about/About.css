@@ -13,6 +13,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        padding: 5%;
+        padding: 0;
+        padding-top: 1%;
     }
 }

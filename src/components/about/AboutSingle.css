@@ -5,9 +5,10 @@
 
     border: 2px solid black;
     border-radius: 10px;
-    margin: 5%;
+    margin: 0;
+    margin-bottom: 10%;
     padding: 5px;
-    width: 80vw;
+    width: 95vw;
 
     img {
         height: 100px;
@@ -16,7 +17,7 @@
     }
 
     span {
-        padding: 5%;
+        padding: 3%;
     }
 
     p {
@@ -25,13 +26,11 @@
 
     @media (min-width: 400px) {
         width: 80vw;
-        
     }
 
     @media (min-width: 500px) {
-        margin: 1%;
+        margin-bottom: 5%;
         padding: 5px;
-        width: 25vw;
-        
+        width: 30vw;
     }
 }

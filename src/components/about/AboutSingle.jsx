@@ -13,7 +13,7 @@ const AboutSingle = ({ name, photo, gitHub, linkedIn, bio }) => {
 
   return (
     <div className={styles.AboutSingle}>
-      <p>{name}</p>
+      <h2>{name}</h2>
       <p><img src={photo} alt={name}/></p>
       <span>
         {bio}

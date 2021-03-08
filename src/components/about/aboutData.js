@@ -2,14 +2,14 @@
 export const aboutData = [
   {
     name: 'Bryana Kitchen',
-    photo: '../src/assets/profilePics/Bryana.jpg',
+    photo: '../src/assets/profilePics/Bryana.png',
     gitHub: 'https://github.com/bryanakitchen/',
     linkedIn: 'https://www.linkedin.com/in/bryanakitchen/',
     bio: 'Bryana bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
   },
   {
     name: 'Donny Vu',
-    photo: '../src/assets/profilePics/Donny.jpg',
+    photo: '../src/assets/profilePics/Donny.png',
     gitHub: 'https://github.com/DonnyLVu/',
     linkedIn: 'https://www.linkedin.com/in/donnylvu/',
     bio: 'Donny bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
@@ -30,7 +30,7 @@ export const aboutData = [
   },
   {
     name: 'Shane Upchurch',
-    photo: '../src/assets/profilePics/Shane.jpg',
+    photo: '../src/assets/profilePics/Shane.png',
     gitHub: 'https://github.com/ShaneUP1/',
     linkedIn: 'https://www.linkedin.com/in/shaneupchurch/',
     bio: 'Shane bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'

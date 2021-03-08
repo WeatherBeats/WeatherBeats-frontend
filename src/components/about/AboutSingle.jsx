@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './AboutSingle.css';
-import githubIcon from '../../assets/GitHub_icon.png';
+import gitHubIcon from '../../assets/GitHub_icon.png';
+import linkedInIcon from '../../assets/LinkedIn_icon.png';
 
-const AboutSingle = ({ name, photo, github, linkedIn }) => {
+const AboutSingle = ({ name, photo, gitHub, linkedIn, bio }) => {
 
   const iconStyle = {
     width: '25%', 
@@ -15,19 +16,19 @@ const AboutSingle = ({ name, photo, github, linkedIn }) => {
       <p>{name}</p>
       <p><img src={photo} alt={name}/></p>
       <span>
-        Bio words and words and words with words and perhaps more words as well.
+        {bio}
       </span>
       <p>
-        <a href={github} target="_blank" rel="noreferrer">
+        <a href={gitHub} target="_blank" rel="noreferrer">
           <img
-            src={githubIcon}
+            src={gitHubIcon}
             alt="GitHub icon"
             style={iconStyle}
           />
         </a>
         <a href={linkedIn} target="_blank" rel="noreferrer">
           <img
-            src={githubIcon}
+            src={linkedInIcon}
             alt="LinkedIn icon"
             style={iconStyle}
           />
@@ -40,8 +41,9 @@ const AboutSingle = ({ name, photo, github, linkedIn }) => {
 AboutSingle.propTypes = {
   name: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
-  github: PropTypes.string.isRequired,
-  linkedIn: PropTypes.string.isRequired
+  gitHub: PropTypes.string.isRequired,
+  linkedIn: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired
 };
 
 export default AboutSingle;

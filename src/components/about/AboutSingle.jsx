@@ -8,7 +8,9 @@ const AboutSingle = ({ name, photo, gitHub, linkedIn, bio }) => {
 
   const iconStyle = {
     width: '25%', 
-    height: '25%'
+    height: '25%',
+    paddingLeft: '5%',
+    paddingRight: '5%'
   };
 
   return (

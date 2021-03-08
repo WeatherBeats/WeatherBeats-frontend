@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
-import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
+import { postLocation, postZipCode, postChosenWeather } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 import styles from './Player.css';
@@ -17,6 +17,7 @@ const Player = ({ match }) => {
   const [userPlaylist, setUserPlaylist] = useState(localStorage.getItem('currentPlaylist') || '');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
+  const [chosenWeather, setChosenWeather] = useState('');
 
   const history = useHistory();
 
@@ -93,6 +94,27 @@ const Player = ({ match }) => {
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
+  const onChosenWeatherSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+console.log(chosenWeather);
+    // const chosenWeather = {
+    //   chosenWeather
+    // };
+
+    postChosenWeather(chosenWeather)
+      .then(genre => {
+        getPlaylist(genre, token)
+          .then(res => {
+            setPlaylists(res);
+            const id = newUserPlaylist(res);
+            setUserPlaylist(id);
+          });
+        setLoading(false);
+      });
+    history.replace('/player/awesome/tunes', { from: 'Player' });
+  };
+
   if(loading) return <Loading />;
 
   return (
@@ -136,6 +158,25 @@ const Player = ({ match }) => {
           </select>
         </label>
         {/* </div> */}
+        <button>Submit</button>
+      </form>
+
+      <form onSubmit={onChosenWeatherSubmit} className={ styles.Form }>
+        <label htmlFor="chosen-weather-input">
+          <select
+            name="chosen-weather"
+            id="chosen-weather-input"
+            onChange={({ target }) => setChosenWeather(target.value)}
+          >
+            <option value="sunny">Sunny</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="thunder">Thunder</option>
+            <option value="rain">Rain</option>
+            <option value="freezing-rain">Freezing Rain</option>
+            <option value="snow">Snow</option>
+            <option value="hazy">Hazy</option>
+          </select>
+        </label>
         <button>Submit</button>
       </form>
 

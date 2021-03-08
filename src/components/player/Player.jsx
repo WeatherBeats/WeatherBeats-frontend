@@ -97,10 +97,10 @@ const Player = ({ match }) => {
   const onChosenWeatherSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
-    const chosenWeather = {
-      weather
-    };
+console.log(chosenWeather);
+    // const chosenWeather = {
+    //   chosenWeather
+    // };
 
     postChosenWeather(chosenWeather)
       .then(genre => {
@@ -158,6 +158,25 @@ const Player = ({ match }) => {
           </select>
         </label>
         {/* </div> */}
+        <button>Submit</button>
+      </form>
+
+      <form onSubmit={onChosenWeatherSubmit} className={ styles.Form }>
+        <label htmlFor="chosen-weather-input">
+          <select
+            name="chosen-weather"
+            id="chosen-weather-input"
+            onChange={({ target }) => setChosenWeather(target.value)}
+          >
+            <option value="sunny">Sunny</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="thunder">Thunder</option>
+            <option value="rain">Rain</option>
+            <option value="freezing-rain">Freezing Rain</option>
+            <option value="snow">Snow</option>
+            <option value="hazy">Hazy</option>
+          </select>
+        </label>
         <button>Submit</button>
       </form>
 

@@ -4,10 +4,15 @@
   justify-content: center;
   /* justify-content: space-between; */
   align-items: center;
-  font-size: 24px;
+  font-size: 130%;
 
   h1 {
+    
     text-align: center;
-    margin-left: 40px;
+    margin-left: 5%;
   }
+
+  @media (min-width: 500px) {
+    font-size: 24px;
+}
 }

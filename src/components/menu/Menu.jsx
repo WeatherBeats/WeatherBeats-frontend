@@ -7,7 +7,7 @@ const Menu = () => {
     <>
       <div className={ styles.DropDown }>
       
-        <img src="./src/assets/menu.png" alt="menu" />
+        <img src="/images/menu.png" alt="menu" />
           
       
         <div className={ styles.DropContent }>

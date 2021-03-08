@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
 import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
@@ -14,7 +14,7 @@ const Player = ({ match }) => {
   const [token, setToken] = useState(match.params.access_token);
   const [refreshToken, setRefreshToken] = useState(match.params.refresh_token);
   const [playlists, setPlaylists] = useState([]);
-  const [userPlaylist, setUserPlaylist] = useState('');
+  const [userPlaylist, setUserPlaylist] = useState(localStorage.getItem('currentPlaylist') || '');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
 
@@ -47,6 +47,7 @@ const Player = ({ match }) => {
               setPlaylists(res);
               const id = newUserPlaylist(res);
               setUserPlaylist(id);
+              localStorage.setItem('currentPlaylist', id);
             });
           setLoading(false);
         });
@@ -66,6 +67,7 @@ const Player = ({ match }) => {
 
   const onNextClick = () => {
     const id = newUserPlaylist(playlists);
+    localStorage.setItem('currentPlaylist', id);
     setUserPlaylist(id);
   };
 
@@ -88,6 +90,7 @@ const Player = ({ match }) => {
           });
         setLoading(false);
       });
+    history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
   if(loading) return <Loading />;

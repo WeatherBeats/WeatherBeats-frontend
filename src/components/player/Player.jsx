@@ -14,15 +14,11 @@ const Player = ({ match }) => {
   const [token, setToken] = useState(match.params.access_token);
   const [refreshToken, setRefreshToken] = useState(match.params.refresh_token);
   const [playlists, setPlaylists] = useState([]);
-  const [userPlaylist, setUserPlaylist] = useState('');
+  const [userPlaylist, setUserPlaylist] = useState(localStorage.getItem('currentPlaylist') || '');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
 
   const history = useHistory();
-  
-  useEffect(() => {
-    setUserPlaylist(localStorage.getItem('currentPlaylist'));
-  });
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
@@ -71,6 +67,7 @@ const Player = ({ match }) => {
 
   const onNextClick = () => {
     const id = newUserPlaylist(playlists);
+    localStorage.setItem('currentPlaylist', id);
     setUserPlaylist(id);
   };
 

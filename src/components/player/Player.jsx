@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Loading from '../loading/Loading';
 import { postLocation, postZipCode } from '../../services/weatherBeatsApi';
@@ -19,6 +19,10 @@ const Player = ({ match }) => {
   const [country, setCountry] = useState('');
 
   const history = useHistory();
+  
+  useEffect(() => {
+    setUserPlaylist(localStorage.getItem('currentPlaylist'));
+  });
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
@@ -47,6 +51,7 @@ const Player = ({ match }) => {
               setPlaylists(res);
               const id = newUserPlaylist(res);
               setUserPlaylist(id);
+              localStorage.setItem('currentPlaylist', id);
             });
           setLoading(false);
         });
@@ -88,6 +93,7 @@ const Player = ({ match }) => {
           });
         setLoading(false);
       });
+    history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
   if(loading) return <Loading />;

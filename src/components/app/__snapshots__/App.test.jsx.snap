@@ -6,16 +6,12 @@ exports[`App component renders App 1`] = `
     class="Header"
   >
     <div
-      class="DropDown"
+      class="DropDown false"
     >
-      <a
-        href="/"
-      >
-        <img
-          alt="menu"
-          src="./src/assets/menu.png"
-        />
-      </a>
+      <img
+        alt="menu"
+        src="/images/menu.png"
+      />
       <div
         class="DropContent"
       >

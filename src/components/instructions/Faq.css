@@ -1,9 +1,33 @@
+/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"); */
+
 .FaqList {
-    text-decoration: none;
+    list-style-type: none;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* font-family: 'Open Sans', sans-serif; */
 }
 
 .Faq {
-   summary {
+    margin: 10px;
+    /* border: solid yellow 1px; */
+
+    summary {
        cursor: pointer;
-   }
+       margin-bottom: 5px;
+
+       font-weight: bold;
+       list-style-image: url("/public/images/light.png");
+       background-repeat: no-repeat;
+       background-size: cover;
+    }
+
+    summary::-webkit-details-marker {
+        background: url("/public/images/light.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: transparent; 
+    }
 }

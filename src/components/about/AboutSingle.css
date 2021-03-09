@@ -51,3 +51,12 @@
     
     }
 }
+
+.iconStyle {
+    img {
+        width: 25%; 
+        height: 25%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}

@@ -6,13 +6,6 @@ import linkedInIcon from '../../assets/LinkedIn_icon.png';
 
 const AboutSingle = ({ name, photo, gitHub, linkedIn, bio }) => {
 
-  const iconStyle = {
-    width: '25%', 
-    height: '25%',
-    paddingLeft: '5%',
-    paddingRight: '5%'
-  };
-
   return (
     <div className={styles.AboutSingle}>
       <h2>{name}</h2>
@@ -23,19 +16,17 @@ const AboutSingle = ({ name, photo, gitHub, linkedIn, bio }) => {
       <span>
         {bio}
       </span>
-      <p>
+      <p className={styles.iconStyle}>
         <a href={gitHub} target="_blank" rel="noreferrer">
           <img
             src={gitHubIcon}
             alt="GitHub icon"
-            style={iconStyle}
           />
         </a>
         <a href={linkedIn} target="_blank" rel="noreferrer">
           <img
             src={linkedInIcon}
             alt="LinkedIn icon"
-            style={iconStyle}
           />
         </a>
       </p>

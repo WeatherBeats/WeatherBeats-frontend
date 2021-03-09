@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@300&family=Titillium+Web:wght@300&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
@@ -12,8 +12,8 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-  /* font-family: 'Noto Sans'; */
-  /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Raleway', sans-serif;
+  font-family: 'Titillium Web', sans-serif; */
+
 }

@@ -1,5 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"); */
-
 .FaqList {
     list-style-type: none;
     width: 80%;
@@ -7,12 +5,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* font-family: 'Open Sans', sans-serif; */
 }
 
 .Faq {
     margin: 10px;
-    /* border: solid yellow 1px; */
 
     summary {
        cursor: pointer;

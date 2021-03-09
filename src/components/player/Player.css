@@ -5,9 +5,7 @@
 
     p {
         width: 400px;
-        /* max-width: 90%; */
         text-align: center;
-        /* this is not centered */
 
         button {
             background-color: #1DB954;
@@ -22,6 +20,7 @@
             text-transform: uppercase;
             white-space: normal;
             filter: drop-shadow(0 0 0.50rem #191414);
+            cursor: pointer;
         }
 
         button:hover {
@@ -56,6 +55,7 @@
         white-space: normal;
         margin-top: 15px;
         filter: drop-shadow(0 0 0.50rem #191414);
+        cursor: pointer;
     }
 
     button:hover {
@@ -85,6 +85,10 @@
             white-space: normal;
             margin-top: 2px;
         }
+
+        select {
+            cursor: pointer;
+        }
     }
 
     button {
@@ -100,7 +104,7 @@
         text-transform: uppercase;
         white-space: normal;
         margin-top: 10px;
-        /* filter: drop-shadow(0 0 0.50rem #191414); */
+        cursor: pointer;
     }
 
     button:hover {

@@ -5,7 +5,7 @@ export const aboutData = [
     photo: '../src/assets/profilePics/Bryana.png',
     gitHub: 'https://github.com/bryanakitchen/',
     linkedIn: 'https://www.linkedin.com/in/bryanakitchen/',
-    bio: 'Bryana bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
+    bio: 'Born and raised in the Mitten, Bryana enjoys spending time outside in nature or at a live music event.  She prides herself in tackling new projects and hobbies such as fluid painting and roller derby.'
   },
   {
     name: 'Donny Vu',
@@ -33,6 +33,6 @@ export const aboutData = [
     photo: '../src/assets/profilePics/Shane.png',
     gitHub: 'https://github.com/ShaneUP1/',
     linkedIn: 'https://www.linkedin.com/in/shaneupchurch/',
-    bio: 'Shane bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
+    bio: 'Whether it\'s Kendrick Lamar on a road-trip, Pretty Lights in the gym, or Manu Chao in the kitchen, Shane is a lover of good tunes. When not behind the computer you can find him on the trail or at the beach with his family.'
   }
 ];

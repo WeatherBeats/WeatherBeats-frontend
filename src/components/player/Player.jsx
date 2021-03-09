@@ -22,8 +22,7 @@ const Player = ({ match }) => {
   const history = useHistory();
 
   useEffect(() => {
-
-    if(refreshToken === undefined) {
+    if(refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
     } else {
       (localStorage.setItem('savedToken', refreshToken));

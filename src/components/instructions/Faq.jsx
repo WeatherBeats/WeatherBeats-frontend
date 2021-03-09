@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HowTo = () => {
+const Faq = () => {
   return (
     <div>
       How To
@@ -8,4 +8,4 @@ const HowTo = () => {
   );
 };
 
-export default HowTo;
+export default Faq;

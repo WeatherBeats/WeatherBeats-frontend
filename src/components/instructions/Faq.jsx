@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Faq.css';
 
 const Faq = ({ question, response }) => {
   return (
-    <details>
+    <details className={ styles.Faq }>
       <summary>{question}</summary>
       {response}
     </details>

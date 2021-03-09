@@ -1,3 +1,9 @@
+.FaqList {
+    text-decoration: none;
+}
+
 .Faq {
-    border-radius: solid yellow 1px;
+   summary {
+       cursor: pointer;
+   }
 }

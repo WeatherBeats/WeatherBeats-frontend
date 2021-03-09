@@ -12,7 +12,7 @@ const FaqList = () => {
   
   return (
 
-    <ul className={styles.Faq}>
+    <ul className={ styles.FaqList }>
       {faqElements}
     </ul>
   );

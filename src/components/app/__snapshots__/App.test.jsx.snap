@@ -53,11 +53,16 @@ exports[`App component renders App 1`] = `
     class="Home"
   >
     <p>
-      WeatherBeats generates a playlist based on the weather in your area.
+      <i>
+        weather-inspired playlists based on the weather in your area
+      </i>
     </p>
     <a
       href="https://weatherbeats-staging.herokuapp.com/login"
     >
+      <p>
+        Log in with
+      </p>
       <img
         alt="Spotify logo"
         src="/path/image"

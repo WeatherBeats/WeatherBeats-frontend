@@ -30,10 +30,7 @@ const Player = ({ match }) => {
     }
   }, []);
 
-console.log('TOP - Refresh Token: ' + refreshToken);
-
-
-
+console.log('TOP OF FILE - Refresh Token: ' + refreshToken);
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
@@ -82,8 +79,6 @@ console.log('TOP - Refresh Token: ' + refreshToken);
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
-
-console.log('REFRESH - Check Weather Again button: ' + refreshToken);    
   };
 
   const onNextClick = () => {
@@ -134,8 +129,6 @@ console.log(chosenWeather);
       });
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
-
-console.log('BOTTOM - Refresh Token: ' + refreshToken);
 
   if(loading) return <Loading />;
 

@@ -19,6 +19,18 @@ const Player = ({ match }) => {
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
 
+
+  useEffect(() => {
+
+    if(refreshToken === undefined) {
+      setRefreshToken(localStorage.getItem('savedToken', refreshToken));
+    } else {
+      (localStorage.setItem('savedToken', refreshToken));
+    }
+  }, []);
+
+console.log('Refresh Token: ' + refreshToken);
+
   const history = useHistory();
 
   const newUserPlaylist = (playlistIds) => {
@@ -47,15 +59,24 @@ const Player = ({ match }) => {
             .then(res => {
               setPlaylists(res);
               const id = newUserPlaylist(res);
+// console.log(id);
               setUserPlaylist(id);
               localStorage.setItem('currentPlaylist', id);
+              // localStorage.setItem('refreshToken', refresh);
             });
           setLoading(false);
         });
+
+console.log('REFRESH - Check Weather Again button: ' + refreshToken);
     };
 
     getNewAccessToken(refreshToken)
-      .then(token => setToken(token['access_token']));
+      .then(token => {
+        setToken(token['access_token']);
+        history.replace('/player/awesome/tunes', { from: 'Player' });
+      });
+
+      
     
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);
@@ -63,7 +84,7 @@ const Player = ({ match }) => {
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
-    history.replace('/player/awesome/tunes', { from: 'Player' });
+    
   };
 
   const onNextClick = () => {
@@ -114,6 +135,8 @@ console.log(chosenWeather);
       });
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
+
+
 
   if(loading) return <Loading />;
 

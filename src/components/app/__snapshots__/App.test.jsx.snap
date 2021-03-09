@@ -60,6 +60,9 @@ exports[`App component renders App 1`] = `
     <a
       href="https://weatherbeats-staging.herokuapp.com/login"
     >
+      <p>
+        Log in with
+      </p>
       <img
         alt="Spotify logo"
         src="/path/image"

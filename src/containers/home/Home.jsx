@@ -15,6 +15,7 @@ const Home = () => {
       The black logo should be used on light colored backgrounds.
       The white logo should be used on dark colored backgrounds. */}
       <a href="https://weatherbeats-staging.herokuapp.com/login">
+        <p>Log in with</p>
         <img src={spotify} alt="Spotify logo"/>
       </a>
       

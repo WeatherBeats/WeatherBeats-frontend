@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Faq = ({ question, response }) => {
+  console.log(question);
   return (
     <details>
       <summary>{question}</summary>

@@ -7,6 +7,10 @@ import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
+import backgroundTranslator from '../background/Background';
+
+import clouds from '../../../public/backgroundImages/david-tovar-IU-0htNvVrk-unsplash.jpg';
+console.log('this is clouds imported', clouds);
 
 const Player = ({ match }) => {
 
@@ -18,6 +22,7 @@ const Player = ({ match }) => {
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
+  const [backgroundImage, setBackground] = useState('');
 
   const history = useHistory();
 
@@ -43,6 +48,8 @@ const Player = ({ match }) => {
 
       postLocation(coordinates)
         .then(genre => {
+          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          // setBackground(backgroundTranslator(genre));
           getPlaylist(genre, token)
             .then(res => {
               setPlaylists(res);
@@ -56,7 +63,7 @@ const Player = ({ match }) => {
 
     getNewAccessToken(refreshToken)
       .then(token => setToken(token['access_token']));
-    
+
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);
       setLoading(false);
@@ -83,6 +90,7 @@ const Player = ({ match }) => {
 
     postZipCode(zipAndCountry)
       .then(genre => {
+        document.body.style.background = `url(${backgroundTranslator(genre)})`;
         getPlaylist(genre, token)
           .then(res => {
             setPlaylists(res);
@@ -97,13 +105,12 @@ const Player = ({ match }) => {
   const onChosenWeatherSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-console.log(chosenWeather);
-    // const chosenWeather = {
-    //   chosenWeather
-    // };
+    console.log(chosenWeather);
+
 
     postChosenWeather(chosenWeather)
       .then(genre => {
+        document.body.style.background = `url(${backgroundTranslator(genre)})`;
         getPlaylist(genre, token)
           .then(res => {
             setPlaylists(res);
@@ -115,20 +122,21 @@ console.log(chosenWeather);
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
-  if(loading) return <Loading />;
-
+  if (loading) return <Loading />;
   return (
-    <div className={ styles.Player }>
-      { !userPlaylist 
-        ? <p>
-          <button onClick={onTrackingClick}>Generate Playlist</button>
-        </p>
-        : <p>
-          <button onClick={onTrackingClick}>Check Weather Again</button>
-        </p>
+    <div className={styles.Player}>
+
+      {
+        !userPlaylist
+          ? <p>
+            <button onClick={onTrackingClick}>Generate Playlist</button>
+          </p>
+          : <p>
+            <button onClick={onTrackingClick}>Check Weather Again</button>
+          </p>
       }
 
-      <form onSubmit={onZipCodeSubmit} className={ styles.Form }>
+      <form onSubmit={onZipCodeSubmit} className={styles.Form}>
         {/* <div> */}
         <label htmlFor="zip-code-input">
           <input
@@ -138,7 +146,7 @@ console.log(chosenWeather);
             onChange={({ target }) => setZipCode(target.value)}
           />
         </label>
-        
+
         <label htmlFor="country-select">
           <select
             name="country"
@@ -161,7 +169,7 @@ console.log(chosenWeather);
         <button>Submit</button>
       </form>
 
-      <form onSubmit={onChosenWeatherSubmit} className={ styles.Form }>
+      <form onSubmit={onChosenWeatherSubmit} className={styles.Form}>
         <label htmlFor="chosen-weather-input">
           <select
             name="chosen-weather"
@@ -180,29 +188,30 @@ console.log(chosenWeather);
         <button>Submit</button>
       </form>
 
-      { !userPlaylist 
-        ? <div>
-          <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p>
-          <p>You may also enter a Zip Code to generate a playlist based off of the weather in another location.</p> 
-        </div>
-        :
-        <div className={ styles.playlist }>
-          <iframe
-            src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
-            width="300"
-            height="380"
-            frameBorder="0"
-            allowtransparency="true"
-            allow="encrypted-media">
-          </iframe>
-          { playlists.length > 1 
-            ? <button onClick={onNextClick}>Next Playlist</button>
-            : <div></div>
-          }
-          
-        </div>
+      {
+        !userPlaylist
+          ? <div>
+            <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p>
+            <p>You may also enter a Zip Code to generate a playlist based off of the weather in another location.</p>
+          </div>
+          :
+          <div className={styles.playlist}>
+            <iframe
+              src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
+              width="300"
+              height="380"
+              frameBorder="0"
+              allowtransparency="true"
+              allow="encrypted-media">
+            </iframe>
+            {playlists.length > 1
+              ? <button onClick={onNextClick}>Next Playlist</button>
+              : <div></div>
+            }
+
+          </div>
       }
-    </div>
+    </div >
   );
 };
 

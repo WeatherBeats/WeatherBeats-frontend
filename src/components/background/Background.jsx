@@ -60,7 +60,6 @@ function backgroundTranslator(genre) {
   const backgroundImage = dict[genre];
 
   return backgroundImage;
-
 }
 
 export default backgroundTranslator;

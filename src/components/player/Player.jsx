@@ -9,9 +9,6 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 
-import clouds from '../../../public/backgroundImages/david-tovar-IU-0htNvVrk-unsplash.jpg';
-console.log('this is clouds imported', clouds);
-
 const Player = ({ match }) => {
 
   const [loading, setLoading] = useState(false);
@@ -22,7 +19,6 @@ const Player = ({ match }) => {
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
-  const [backgroundImage, setBackground] = useState('');
 
   const history = useHistory();
 
@@ -49,7 +45,6 @@ const Player = ({ match }) => {
       postLocation(coordinates)
         .then(genre => {
           document.body.style.background = `url(${backgroundTranslator(genre)})`;
-          // setBackground(backgroundTranslator(genre));
           getPlaylist(genre, token)
             .then(res => {
               setPlaylists(res);
@@ -137,7 +132,6 @@ const Player = ({ match }) => {
       }
 
       <form onSubmit={onZipCodeSubmit} className={styles.Form}>
-        {/* <div> */}
         <label htmlFor="zip-code-input">
           <input
             placeholder="Zip Code"
@@ -165,7 +159,6 @@ const Player = ({ match }) => {
             <option value="US">United States</option>
           </select>
         </label>
-        {/* </div> */}
         <button>Submit</button>
       </form>
 

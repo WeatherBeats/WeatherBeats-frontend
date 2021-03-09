@@ -1,11 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Faq = () => {
+const Faq = ({ question, response }) => {
   return (
-    <div>
-      How To
-    </div>
+    <details>
+      <summary>{question}</summary>
+      {response}
+    </details>
   );
+};
+
+Faq.propTypes = {
+  question: PropTypes.string.isRequired,
+  response: PropTypes.string.isRequired
 };
 
 export default Faq;

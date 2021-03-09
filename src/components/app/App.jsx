@@ -7,7 +7,7 @@ import {
 import Home from '../../containers/home/Home';
 import About from '../about/About';
 import Header from '../header/Header';
-import HowTo from '../instructions/HowTo';
+import Faq from '../instructions/faq';
 import Player from '../player/Player';
 import './App.css';
 
@@ -18,7 +18,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/faq" component={HowTo}/>
+          <Route exact path="/faq" component={Faq}/>
           <Route exact path="/about" component={About} />
           <Route exact path="/player" component={Player} />
           <Route 

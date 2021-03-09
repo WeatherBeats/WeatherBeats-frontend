@@ -1,13 +1,19 @@
 .DropDown {
   position: relative;
   display: inline-block;
-  
+
   img {
-    width: 40px;
+    width: 35px;
+  }
+
+  @media (min-width: 500px) {
+    img {
+      width: 40px;
+    }
   }
 }
 
-.DropDown:hover .DropContent {
+.DropDown.active .DropContent {
   display: block;
 }
 

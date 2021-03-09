@@ -1,14 +1,14 @@
 export const faqData = [
   {
-    question: 'Hello',
+    question: 'Faqs',
     response: 'hi'
   },
   {
-    question: 'a',
-    response: 'b'
+    question: 'go',
+    response: 'oh hello'
   },
   {
-    question: 'a',
-    response: 'b'
+    question: 'here',
+    response: 'fake data'
   },
 ];

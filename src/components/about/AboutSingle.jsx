@@ -8,15 +8,19 @@ const AboutSingle = ({ name, photo, gitHub, linkedIn, bio }) => {
 
   return (
     <div className={styles.AboutSingle}>
-      <h2>{name}</h2>
-      <p><img 
-        src={photo} 
-        alt={name}
-      /></p>
-      <span>
-        {bio}
-      </span>
-      <p className={styles.iconStyle}>
+
+      <p className={styles.topContainer}>
+        <h2>{name}</h2>
+        <img 
+          src={photo} 
+          alt={name}
+        />
+        <section className={styles.bio}>
+          {bio}
+        </section>
+      </p>
+
+      <p className={styles.iconContainer}>
         <a href={gitHub} target="_blank" rel="noreferrer">
           <img
             src={gitHubIcon}

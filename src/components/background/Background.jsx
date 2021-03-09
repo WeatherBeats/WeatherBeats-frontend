@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-
 import thunderstorm from '../assets/backgroundImages/raychel-sanner-1cJXplTxrmI-unsplash.jpg';
 import rain from '../assets/backgroundImages/rain-large.jpg';
 import snow from '../assets/backgroundImages/snowing.jpg';
@@ -29,8 +28,8 @@ function backgroundTranslator(weather) {
     'peril': snow,
 
     'soothing': rain,
-    // 'r06d': 'angry', this is rain hut thunderstorm will appear
-    // 'r06n': 'angry',
+    // 'r06d': 'angry', this is rain but thunderstorm will appear
+    // 'r06n': 'angry', this should be heavy shower rain
 
     'peaceful': snow,
 

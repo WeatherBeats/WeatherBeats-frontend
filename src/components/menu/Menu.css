@@ -1,6 +1,7 @@
 .DropDown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 
   img {
     width: 35px;

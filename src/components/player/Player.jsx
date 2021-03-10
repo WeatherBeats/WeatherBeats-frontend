@@ -53,7 +53,7 @@ const Player = ({ match }) => {
 
       postLocation(coordinates)
         .then(genre => {
-          if(chosenGenre && chosenGenre !== '') {
+          if(chosenGenre) {
             const searchTerms = `${genre}+${chosenGenre}`;
             document.body.style.background = `url(${backgroundTranslator(genre)})`;
             getPlaylist(searchTerms, token)

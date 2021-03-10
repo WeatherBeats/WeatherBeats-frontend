@@ -30,6 +30,7 @@
 
     @media (min-width: 700px) {
         margin-bottom: 12%;
+        height: 475px;
         width: 40vw;
 
         img {

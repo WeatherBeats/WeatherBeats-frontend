@@ -98,8 +98,9 @@ const Player = ({ match }) => {
 
     postZipCode(zipAndCountry)
       .then(genre => {
+        const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.background = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(genre, token)
+        getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
             const id = newUserPlaylist(res);
@@ -116,8 +117,9 @@ const Player = ({ match }) => {
 
     postChosenWeather(chosenWeather)
       .then(genre => {
+        const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.background = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(genre, token)
+        getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
             const id = newUserPlaylist(res);

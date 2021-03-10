@@ -104,10 +104,10 @@ const Player = ({ match }) => {
             setPlaylists(res);
             const id = newUserPlaylist(res);
             setUserPlaylist(id);
+            localStorage.setItem('currentPlaylist', id);
           });
         setLoading(false);
       });
-    history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
   const onChosenWeatherSubmit = (e) => {
@@ -130,7 +130,29 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    onTrackingClick();
+    if(zipCode) {
+      setLoading(true);
+      
+      const zipAndCountry = {
+        zipCode,
+        country
+      };
+
+      postZipCode(zipAndCountry)
+        .then(genre => {
+          const searchTerms = `${genre}${chosenGenre}`;
+          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          getPlaylist(searchTerms, token)
+            .then(res => {
+              setPlaylists(res);
+              const id = newUserPlaylist(res);
+              setUserPlaylist(id);
+              localStorage.setItem('currentPlaylist', id);
+            });
+          setLoading(false);
+        });
+    }
+    else onTrackingClick();
   };
 
   if(loading) return <Loading />;

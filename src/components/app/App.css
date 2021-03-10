@@ -13,4 +13,8 @@ body, html {
   flex-direction: row;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
+
+  background-image: url('../../../public/backgroundImages/landing-page.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

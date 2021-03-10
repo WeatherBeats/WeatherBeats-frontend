@@ -202,27 +202,6 @@ const Player = ({ match }) => {
       </div>
 
       {/* COLUMN TWO ------------------------- */}
-      <form onSubmit={onGenreSubmit} className={styles.Form}>
-        <label htmlFor="chosen-genre-input">
-          <select
-            name="chosen-genre"
-            id="chosen-genre-input"
-            onChange={({ target }) => setChosenGenre(target.value)}
-          >
-            <option value="">Pick Genre</option>
-            <option value="">Random</option>
-            <option value="+country">Country</option>
-            <option value="+rap">Rap</option>
-            <option value="+rock">Rock</option>
-            <option value="+hip-hop">Hip-Hop</option>
-            <option value="+blues">Blues</option>
-            <option value="+jazz">Jazz</option>
-            <option value="+electronic">Electronic</option>
-          </select>
-        </label>
-        <button>Submit</button>
-      </form>
-
       {
         !userPlaylist
           ? <div>
@@ -277,13 +256,13 @@ const Player = ({ match }) => {
               onChange={({ target }) => setChosenGenre(target.value)}
             >
               <option>Pick Genre</option>
-              <option value="country">Country</option>
-              <option value="rap">Rap</option>
-              <option value="rock">Rock</option>
-              <option value="hip-hop">Hip-Hop</option>
-              <option value="blues">Blues</option>
-              <option value="jazz">Jazz</option>
-              <option value="electronic">Electronic</option>
+              <option value="+country">Country</option>
+              <option value="+rap">Rap</option>
+              <option value="+rock">Rock</option>
+              <option value="+hip-hop">Hip-Hop</option>
+              <option value="+blues">Blues</option>
+              <option value="+jazz">Jazz</option>
+              <option value="+electronic">Electronic</option>
             </select>
           </label>
           <button>Submit</button>

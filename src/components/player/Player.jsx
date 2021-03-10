@@ -136,66 +136,48 @@ const Player = ({ match }) => {
   if(loading) return <Loading />;
   return (
     <div className={styles.Player}>
-      {
-        !userPlaylist
-          ? <p>
-            <button onClick={onTrackingClick}>Generate Playlist</button>
-          </p>
-          : <p>
-            <button onClick={onTrackingClick}>Check Weather Again</button>
-          </p>
-      }
-      <form onSubmit={onZipCodeSubmit} className={styles.Form}>
-        <label htmlFor="zip-code-input">
-          <input
-            placeholder="Zip Code"
-            type="text"
-            id="zip-code-input"
-            onChange={({ target }) => setZipCode(target.value)}
-          />
-        </label>
+      {/* COLUMN ONE ------------------------- */}
+      <div className={styles.columnOne}>
+        {
+          !userPlaylist
+            ? 
+            <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
+            : 
+            <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+        }
 
-        <label htmlFor="country-select">
-          <select
-            name="country"
-            id="country-select"
-            onChange={({ target }) => setCountry(target.value)}
-          >
-            <option value="">Country</option>
-            <option value="AU">Australia</option>
-            <option value="BR">Brazil</option>
-            <option value="CA">Canada</option>
-            <option value="CN">China</option>
-            <option value="IN">India</option>
-            <option value="MX">Mexico</option>
-            <option value="NG">Nigeria</option>
-            <option value="UK">United Kingdom</option>
-            <option value="US">United States</option>
-          </select>
-        </label>
-        <button>Submit</button>
-      </form>
+        <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>
+          <label htmlFor="zip-code-input">
+            <input
+              placeholder="Zip Code"
+              type="text"
+              id="zip-code-input"
+              onChange={({ target }) => setZipCode(target.value)}
+            />
+          </label>
+          <label htmlFor="country-select">
+            <select
+              name="country"
+              id="country-select"
+              onChange={({ target }) => setCountry(target.value)}
+            >
+              <option value="">Country</option>
+              <option value="AU">Australia</option>
+              <option value="BR">Brazil</option>
+              <option value="CA">Canada</option>
+              <option value="CN">China</option>
+              <option value="IN">India</option>
+              <option value="MX">Mexico</option>
+              <option value="NG">Nigeria</option>
+              <option value="UK">United Kingdom</option>
+              <option value="US">United States</option>
+            </select>
+          </label>
+          <button>Submit</button>
+        </form>
+      </div>
 
-      <form onSubmit={onChosenWeatherSubmit} className={styles.Form}>
-        <label htmlFor="chosen-weather-input">
-          <select
-            name="chosen-weather"
-            id="chosen-weather-input"
-            onChange={({ target }) => setChosenWeather(target.value)}
-          >
-            <option>Pick Weather</option>
-            <option value="sunny">Sunny</option>
-            <option value="cloudy">Cloudy</option>
-            <option value="thunder">Thunder</option>
-            <option value="rain">Rain</option>
-            <option value="freezing-rain">Freezing Rain</option>
-            <option value="snow">Snow</option>
-            <option value="hazy">Hazy</option>
-          </select>
-        </label>
-        <button>Submit</button>
-      </form>
-
+      {/* COLUMN TWO ------------------------- */}
       <form onSubmit={onGenreSubmit} className={styles.Form}>
         <label htmlFor="chosen-genre-input">
           <select
@@ -237,6 +219,51 @@ const Player = ({ match }) => {
             }
           </div>
       }
+
+      {/* COLUMN THREE ------------------------- */}
+
+      <div className={styles.columnThree}>
+        <p>Advanced Search</p>
+        <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
+          <label htmlFor="chosen-weather-input">
+            <select
+              name="chosen-weather"
+              id="chosen-weather-input"
+              onChange={({ target }) => setChosenWeather(target.value)}
+            >
+              <option>Pick Weather</option>
+              <option value="sunny">Sunny</option>
+              <option value="cloudy">Cloudy</option>
+              <option value="thunder">Thunder</option>
+              <option value="rain">Rain</option>
+              <option value="freezing-rain">Freezing Rain</option>
+              <option value="snow">Snow</option>
+              <option value="hazy">Hazy</option>
+            </select>
+          </label>
+          <button>Submit</button>
+        </form>
+
+        <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
+          <label htmlFor="chosen-genre-input">
+            <select
+              name="chosen-genre"
+              id="chosen-genre-input"
+              onChange={({ target }) => setChosenGenre(target.value)}
+            >
+              <option>Pick Genre</option>
+              <option value="country">Country</option>
+              <option value="rap">Rap</option>
+              <option value="rock">Rock</option>
+              <option value="hip-hop">Hip-Hop</option>
+              <option value="blues">Blues</option>
+              <option value="jazz">Jazz</option>
+              <option value="electronic">Electronic</option>
+            </select>
+          </label>
+          <button>Submit</button>
+        </form>
+      </div>
     </div >
   );
 };

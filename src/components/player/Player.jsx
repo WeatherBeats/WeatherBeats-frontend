@@ -22,7 +22,7 @@ const Player = ({ match }) => {
   const [chosenGenre, setChosenGenre] = useState('');
 
   const history = useHistory();
-  
+
   useEffect(() => {
     if(refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
@@ -41,7 +41,7 @@ const Player = ({ match }) => {
     longitude: ''
   };
   
-  const onTrackingClick = (chosenGenre) => {
+  const onTrackingClick = () => {
     setLoading(true);
 
     const success = (position) => {
@@ -53,29 +53,16 @@ const Player = ({ match }) => {
 
       postLocation(coordinates)
         .then(genre => {
-          if(chosenGenre && chosenGenre !== '') {
-            const searchTerms = `${genre}+${chosenGenre}`;
-            document.body.style.background = `url(${backgroundTranslator(genre)})`;
-            getPlaylist(searchTerms, token)
-              .then(res => {
-                setPlaylists(res);
-                const id = newUserPlaylist(res);
-                setUserPlaylist(id);
-                localStorage.setItem('currentPlaylist', id);
-              });
-            setLoading(false);
-          } else {
-            const searchTerms = genre;
-            document.body.style.background = `url(${backgroundTranslator(genre)})`;
-            getPlaylist(searchTerms, token)
-              .then(res => {
-                setPlaylists(res);
-                const id = newUserPlaylist(res);
-                setUserPlaylist(id);
-                localStorage.setItem('currentPlaylist', id);
-              });
-            setLoading(false);
-          }
+          const searchTerms = `${genre}${chosenGenre}`;
+          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          getPlaylist(searchTerms, token)
+            .then(res => {
+              setPlaylists(res);
+              const id = newUserPlaylist(res);
+              setUserPlaylist(id);
+              localStorage.setItem('currentPlaylist', id);
+            });
+          setLoading(false);
         });
     };
 
@@ -143,7 +130,7 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    onTrackingClick(chosenGenre);
+    onTrackingClick();
   };
 
   if(loading) return <Loading />;
@@ -191,6 +178,26 @@ const Player = ({ match }) => {
       </div>
 
       {/* COLUMN TWO ------------------------- */}
+      <form onSubmit={onGenreSubmit} className={styles.Form}>
+        <label htmlFor="chosen-genre-input">
+          <select
+            name="chosen-genre"
+            id="chosen-genre-input"
+            onChange={({ target }) => setChosenGenre(target.value)}
+          >
+            <option value="">Pick Genre</option>
+            <option value="">Random</option>
+            <option value="+country">Country</option>
+            <option value="+rap">Rap</option>
+            <option value="+rock">Rock</option>
+            <option value="+hip-hop">Hip-Hop</option>
+            <option value="+blues">Blues</option>
+            <option value="+jazz">Jazz</option>
+            <option value="+electronic">Electronic</option>
+          </select>
+        </label>
+        <button>Submit</button>
+      </form>
 
       {
         !userPlaylist

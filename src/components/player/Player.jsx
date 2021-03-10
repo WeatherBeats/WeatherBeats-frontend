@@ -24,7 +24,7 @@ const Player = ({ match }) => {
   const history = useHistory();
 
   useEffect(() => {
-    if(refreshToken === undefined || refreshToken === 'tunes') {
+    if (refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
     } else {
       (localStorage.setItem('savedToken', refreshToken));
@@ -40,7 +40,7 @@ const Player = ({ match }) => {
     latitude: '',
     longitude: ''
   };
-  
+
   const onTrackingClick = () => {
     setLoading(true);
 
@@ -54,7 +54,7 @@ const Player = ({ match }) => {
       postLocation(coordinates)
         .then(genre => {
           const searchTerms = `${genre}${chosenGenre}`;
-          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
           getPlaylist(searchTerms, token)
             .then(res => {
               setPlaylists(res);
@@ -99,7 +99,7 @@ const Player = ({ match }) => {
     postZipCode(zipAndCountry)
       .then(genre => {
         const searchTerms = `${genre}${chosenGenre}`;
-        document.body.style.background = `url(${backgroundTranslator(genre)})`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
         getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
@@ -118,7 +118,7 @@ const Player = ({ match }) => {
     postChosenWeather(chosenWeather)
       .then(genre => {
         const searchTerms = `${genre}${chosenGenre}`;
-        document.body.style.background = `url(${backgroundTranslator(genre)})`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
         getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
@@ -132,9 +132,9 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    if(zipCode) {
+    if (zipCode) {
       setLoading(true);
-      
+
       const zipAndCountry = {
         zipCode,
         country
@@ -143,7 +143,7 @@ const Player = ({ match }) => {
       postZipCode(zipAndCountry)
         .then(genre => {
           const searchTerms = `${genre}${chosenGenre}`;
-          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
           getPlaylist(searchTerms, token)
             .then(res => {
               setPlaylists(res);
@@ -157,16 +157,16 @@ const Player = ({ match }) => {
     else onTrackingClick();
   };
 
-  if(loading) return <Loading />;
+  if (loading) return <Loading />;
   return (
     <div className={styles.Player}>
       {/* COLUMN ONE ------------------------- */}
       <div className={styles.columnOne}>
         {
           !userPlaylist
-            ? 
+            ?
             <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
-            : 
+            :
             <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
         }
 
@@ -235,13 +235,14 @@ const Player = ({ match }) => {
               src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
               frameBorder="0"
               allowtransparency="true"
-              allow="encrypted-media">
-            </iframe>
-            {playlists.length > 1
-              ? <button onClick={onNextClick}>Next Playlist</button>
-              : <div></div>
+              allow="encrypted-media" >
+            </iframe >
+            {
+              playlists.length > 1
+                ? <button onClick={onNextClick}>Next Playlist</button>
+                : <div></div>
             }
-          </div>
+          </div >
       }
 
       {/* COLUMN THREE ------------------------- */}

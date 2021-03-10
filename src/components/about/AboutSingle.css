@@ -32,17 +32,10 @@
         margin-bottom: 12%;
         height: 475px;
         width: 40vw;
-
-        img {
-            height: 150px;
-            width: 150px;
-            border-radius: 75px;
-        }
     }
 
     @media (min-width: 1000px) {
         margin-bottom: 4%;
-        padding: 5px;
         height: 525px;
         width: 30vw;
 
@@ -65,8 +58,8 @@
 .iconContainer {
     position: relative;
     top: -3%;
+    
     img {
-        
         width: 25%; 
         height: 90%;
         padding-left: 5%;

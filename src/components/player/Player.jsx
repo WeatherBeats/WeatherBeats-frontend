@@ -19,18 +19,17 @@ const Player = ({ match }) => {
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
+  const [chosenGenre, setChosenGenre] = useState('');
 
   const history = useHistory();
-
+  
   useEffect(() => {
-    if (refreshToken === undefined || refreshToken === 'tunes') {
+    if(refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
     } else {
       (localStorage.setItem('savedToken', refreshToken));
     }
   }, []);
-
-  console.log('TOP OF FILE - Refresh Token: ' + refreshToken);
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
@@ -41,8 +40,8 @@ const Player = ({ match }) => {
     latitude: '',
     longitude: ''
   };
-
-  const onTrackingClick = () => {
+  
+  const onTrackingClick = (chosenGenre) => {
     setLoading(true);
 
     const success = (position) => {
@@ -54,15 +53,29 @@ const Player = ({ match }) => {
 
       postLocation(coordinates)
         .then(genre => {
-          document.body.style.background = `url(${backgroundTranslator(genre)})`;
-          getPlaylist(genre, token)
-            .then(res => {
-              setPlaylists(res);
-              const id = newUserPlaylist(res);
-              setUserPlaylist(id);
-              localStorage.setItem('currentPlaylist', id);
-            });
-          setLoading(false);
+          if(chosenGenre && chosenGenre !== '') {
+            const searchTerms = `${genre}+${chosenGenre}`;
+            document.body.style.background = `url(${backgroundTranslator(genre)})`;
+            getPlaylist(searchTerms, token)
+              .then(res => {
+                setPlaylists(res);
+                const id = newUserPlaylist(res);
+                setUserPlaylist(id);
+                localStorage.setItem('currentPlaylist', id);
+              });
+            setLoading(false);
+          } else {
+            const searchTerms = genre;
+            document.body.style.background = `url(${backgroundTranslator(genre)})`;
+            getPlaylist(searchTerms, token)
+              .then(res => {
+                setPlaylists(res);
+                const id = newUserPlaylist(res);
+                setUserPlaylist(id);
+                localStorage.setItem('currentPlaylist', id);
+              });
+            setLoading(false);
+          }
         });
     };
 
@@ -113,8 +126,6 @@ const Player = ({ match }) => {
   const onChosenWeatherSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(chosenWeather);
-
 
     postChosenWeather(chosenWeather)
       .then(genre => {
@@ -130,10 +141,14 @@ const Player = ({ match }) => {
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
-  if (loading) return <Loading />;
+  const onGenreSubmit = (e) => {
+    e.preventDefault();
+    onTrackingClick(chosenGenre);
+  };
+
+  if(loading) return <Loading />;
   return (
     <div className={styles.Player}>
-
       {
         !userPlaylist
           ? <p>
@@ -143,7 +158,6 @@ const Player = ({ match }) => {
             <button onClick={onTrackingClick}>Check Weather Again</button>
           </p>
       }
-
       <form onSubmit={onZipCodeSubmit} className={styles.Form}>
         <label htmlFor="zip-code-input">
           <input
@@ -182,6 +196,7 @@ const Player = ({ match }) => {
             id="chosen-weather-input"
             onChange={({ target }) => setChosenWeather(target.value)}
           >
+            <option>Pick Weather</option>
             <option value="sunny">Sunny</option>
             <option value="cloudy">Cloudy</option>
             <option value="thunder">Thunder</option>
@@ -189,6 +204,26 @@ const Player = ({ match }) => {
             <option value="freezing-rain">Freezing Rain</option>
             <option value="snow">Snow</option>
             <option value="hazy">Hazy</option>
+          </select>
+        </label>
+        <button>Submit</button>
+      </form>
+
+      <form onSubmit={onGenreSubmit} className={styles.Form}>
+        <label htmlFor="chosen-genre-input">
+          <select
+            name="chosen-genre"
+            id="chosen-genre-input"
+            onChange={({ target }) => setChosenGenre(target.value)}
+          >
+            <option>Pick Genre</option>
+            <option value="country">Country</option>
+            <option value="rap">Rap</option>
+            <option value="rock">Rock</option>
+            <option value="hip-hop">Hip-Hop</option>
+            <option value="blues">Blues</option>
+            <option value="jazz">Jazz</option>
+            <option value="electronic">Electronic</option>
           </select>
         </label>
         <button>Submit</button>
@@ -212,7 +247,6 @@ const Player = ({ match }) => {
               ? <button onClick={onNextClick}>Next Playlist</button>
               : <div></div>
             }
-
           </div>
       }
     </div >

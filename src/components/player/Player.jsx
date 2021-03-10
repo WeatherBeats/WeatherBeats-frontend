@@ -216,6 +216,7 @@ const Player = ({ match }) => {
       {/* COLUMN THREE ------------------------- */}
 
       <div className={styles.columnThree}>
+        <p>Advanced Search</p>
         <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
           <label htmlFor="chosen-weather-input">
             <select

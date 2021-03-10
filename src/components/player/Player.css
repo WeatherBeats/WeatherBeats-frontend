@@ -3,14 +3,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* width: 50%; */
-    /* max-width: fit-content; */
+    width: 95vw;
+    height: 70vh;
 
     border: solid 5px blue;
 
     p {
         width: 400px;
+        /* max-width: fit-content; */
         text-align: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: solid 5px red;
 
         /* main button */
         button {
@@ -41,7 +48,7 @@
     flex-direction: column;
     align-items: center;
     margin: 15px;
-    max-width: 40%;
+    width: 40vw;
 
     border: solid 5px green;
 
@@ -49,9 +56,8 @@
         border-radius: 0.50rem;
         filter: drop-shadow(0 0 0.50rem #1db9548f);
         margin: 10px;
-        /* player is dynamic! */
-        max-width: 100%;
-        height: 380px;
+        width: 40vw;
+        height: 60vh;
     }
 
     button {
@@ -74,13 +80,6 @@
     button:hover {
         background-color: #26f16d;
     }
-
-    /* @media (max-width: 640px) {
-        iframe {
-            width: 300px;
-            height: 380px;    
-        }
-    } */
 
 }
 
@@ -139,13 +138,13 @@
 
 .columnOne {
     border: solid 5px green;
-    max-width: 25%;
+    width: 25%;
 
 }
 
 .columnThree {
     border: solid 5px green;
-    max-width: 25%;
+    width: 25%;
 
 }
 
@@ -154,12 +153,31 @@
         flex-direction: column;
 
         iframe {
-            width: 300px;
-            height: 380px;    
+            /* width: 300px;
+            height: 380px;     */
+            width: 80vw;
+            height: 40vh;    
+
         }
     }
 
-    .columnOne, .columnThree, .playlist {
-        max-width: fit-content;
+     /* green stuff */
+    .columnOne, .columnThree {
+        width: 90vw;
+        height: 30vh;
+        background-color: honeydew;
+    }
+
+    .playlist {
+        width: 90vw;
+        height: 30vh;
+        background-color:indigo;
+    }
+
+    .Form {
+        flex-direction: row;
+        justify-content: center;
+
+        /* inputs  */
     }
 }

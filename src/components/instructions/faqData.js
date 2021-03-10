@@ -34,6 +34,6 @@ export const faqData = [
   },
   {
     question: 'I love this app!',
-    response: 'We’re so glad you’re enjoying WeatherBeats!.'
+    response: 'We’re so glad you’re enjoying WeatherBeats!'
   },
 ];

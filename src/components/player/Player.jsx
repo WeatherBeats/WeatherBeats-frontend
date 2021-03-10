@@ -22,9 +22,9 @@ const Player = ({ match }) => {
   const [chosenGenre, setChosenGenre] = useState('');
 
   const history = useHistory();
-  
+
   useEffect(() => {
-    if(refreshToken === undefined || refreshToken === 'tunes') {
+    if (refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
     } else {
       (localStorage.setItem('savedToken', refreshToken));
@@ -40,7 +40,7 @@ const Player = ({ match }) => {
     latitude: '',
     longitude: ''
   };
-  
+
   const onTrackingClick = (chosenGenre) => {
     setLoading(true);
 
@@ -53,9 +53,10 @@ const Player = ({ match }) => {
 
       postLocation(coordinates)
         .then(genre => {
-          if(chosenGenre && chosenGenre !== '') {
+          if (chosenGenre && chosenGenre !== '') {
             const searchTerms = `${genre}+${chosenGenre}`;
             document.body.style.background = `url(${backgroundTranslator(genre)})`;
+            document.body.className = 'backgroundWeatherStyle';
             getPlaylist(searchTerms, token)
               .then(res => {
                 setPlaylists(res);
@@ -129,7 +130,8 @@ const Player = ({ match }) => {
 
     postChosenWeather(chosenWeather)
       .then(genre => {
-        document.body.style.background = `url(${backgroundTranslator(genre)})`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+        // document.body.style.background = 'background-position = center';
         getPlaylist(genre, token)
           .then(res => {
             setPlaylists(res);
@@ -146,7 +148,7 @@ const Player = ({ match }) => {
     onTrackingClick(chosenGenre);
   };
 
-  if(loading) return <Loading />;
+  if (loading) return <Loading />;
   return (
     <div className={styles.Player}>
       {
@@ -241,13 +243,14 @@ const Player = ({ match }) => {
               src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
               frameBorder="0"
               allowtransparency="true"
-              allow="encrypted-media">
-            </iframe>
-            {playlists.length > 1
-              ? <button onClick={onNextClick}>Next Playlist</button>
-              : <div></div>
+              allow="encrypted-media" >
+            </iframe >
+            {
+              playlists.length > 1
+                ? <button onClick={onNextClick}>Next Playlist</button>
+                : <div></div>
             }
-          </div>
+          </div >
       }
     </div >
   );

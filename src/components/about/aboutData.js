@@ -23,10 +23,10 @@ export const aboutData = [
   },
   {
     name: 'Perry Sittser',
-    photo: '/profilePics/Perry.jpg',
+    photo: '/profilePics/Perry.png',
     gitHub: 'https://github.com/sittserp/',
     linkedIn: 'https://www.linkedin.com/in/sittserp/',
-    bio: 'Perry bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
+    bio: 'Foraging information from across the web and bringing it together for people to use or listen to gives Perry a great sense of accomplishment. He enjoys spending time with his family outdoors, learning new skills, and discovering new things.'
   },
   {
     name: 'Shane Upchurch',

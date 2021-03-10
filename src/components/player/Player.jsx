@@ -159,7 +159,7 @@ const Player = ({ match }) => {
             <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
         }
 
-        <form onSubmit={onZipCodeSubmit} className={styles.Form}>
+        <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>
           <label htmlFor="zip-code-input">
             <input
               placeholder="Zip Code"
@@ -216,7 +216,7 @@ const Player = ({ match }) => {
       {/* COLUMN THREE ------------------------- */}
 
       <div className={styles.columnThree}>
-        <form onSubmit={onChosenWeatherSubmit} className={styles.Form}>
+        <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
           <label htmlFor="chosen-weather-input">
             <select
               name="chosen-weather"
@@ -236,7 +236,7 @@ const Player = ({ match }) => {
           <button>Submit</button>
         </form>
 
-        <form onSubmit={onGenreSubmit} className={styles.Form}>
+        <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
           <label htmlFor="chosen-genre-input">
             <select
               name="chosen-genre"

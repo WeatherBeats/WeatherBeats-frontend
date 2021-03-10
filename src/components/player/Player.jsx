@@ -53,18 +53,10 @@ const Player = ({ match }) => {
 
       postLocation(coordinates)
         .then(genre => {
-          if(chosenGenre) {
-            const searchTerms = `${genre}+${chosenGenre}`;
-            document.body.style.background = `url(${backgroundTranslator(genre)})`;
-            getPlaylist(searchTerms, token)
-              .then(res => {
-                setPlaylists(res);
-                const id = newUserPlaylist(res);
-                setUserPlaylist(id);
-                localStorage.setItem('currentPlaylist', id);
-              });
-            setLoading(false);
-          } else {
+          if(!chosenGenre) {
+            console.log(chosenGenre);
+
+
             const searchTerms = genre;
             document.body.style.background = `url(${backgroundTranslator(genre)})`;
             getPlaylist(searchTerms, token)
@@ -75,6 +67,24 @@ const Player = ({ match }) => {
                 localStorage.setItem('currentPlaylist', id);
               });
             setLoading(false);
+            
+          } else {
+
+
+            const searchTerms = `${genre}+${chosenGenre}`;
+            document.body.style.background = `url(${backgroundTranslator(genre)})`;
+            getPlaylist(searchTerms, token)
+              .then(res => {
+                setPlaylists(res);
+                const id = newUserPlaylist(res);
+                setUserPlaylist(id);
+                localStorage.setItem('currentPlaylist', id);
+              });
+            setLoading(false);
+
+
+
+
           }
         });
     };

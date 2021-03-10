@@ -131,7 +131,6 @@ const Player = ({ match }) => {
     postChosenWeather(chosenWeather)
       .then(genre => {
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-        // document.body.style.background = 'background-position = center';
         getPlaylist(genre, token)
           .then(res => {
             setPlaylists(res);

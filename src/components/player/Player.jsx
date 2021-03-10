@@ -19,7 +19,7 @@ const Player = ({ match }) => {
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
-  const [chosenGenre, setChosenGenre] = useState('');
+  const [chosenGenre, setChosenGenre] = useState(null);
 
   const history = useHistory();
 
@@ -50,11 +50,15 @@ const Player = ({ match }) => {
 
       coordinates.latitude = lat;
       coordinates.longitude = long;
+      console.log('Above postLocation: ' + chosenGenre);
 
       postLocation(coordinates)
         .then(genre => {
-          if (chosenGenre && chosenGenre !== '') {
-            const searchTerms = `${genre}+${chosenGenre}`;
+          if (!chosenGenre) {
+            console.log('Inside if block: ' + chosenGenre);
+
+
+            const searchTerms = genre;
             document.body.style.background = `url(${backgroundTranslator(genre)})`;
             document.body.className = 'backgroundWeatherStyle';
             getPlaylist(searchTerms, token)
@@ -65,8 +69,11 @@ const Player = ({ match }) => {
                 localStorage.setItem('currentPlaylist', id);
               });
             setLoading(false);
+
           } else {
-            const searchTerms = genre;
+            console.log('Else block (chosenGenre)' + chosenGenre);
+
+            const searchTerms = `${genre}+${chosenGenre}`;
             document.body.style.background = `url(${backgroundTranslator(genre)})`;
             getPlaylist(searchTerms, token)
               .then(res => {
@@ -76,6 +83,10 @@ const Player = ({ match }) => {
                 localStorage.setItem('currentPlaylist', id);
               });
             setLoading(false);
+
+
+
+
           }
         });
     };
@@ -146,6 +157,8 @@ const Player = ({ match }) => {
     e.preventDefault();
     onTrackingClick(chosenGenre);
   };
+
+  console.log('Bottom of file: ' + chosenGenre);
 
   if (loading) return <Loading />;
   return (

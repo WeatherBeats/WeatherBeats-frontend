@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    
 }
 
 .Faq {
@@ -21,6 +21,7 @@
        list-style-image: url("/public/images/light.png");
        background-repeat: no-repeat;
        background-size: cover;
+       outline: none;
     }
 
     summary::-webkit-details-marker {

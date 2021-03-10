@@ -50,11 +50,12 @@ const Player = ({ match }) => {
 
       coordinates.latitude = lat;
       coordinates.longitude = long;
+      console.log('Above postLocation: ' + chosenGenre);
 
       postLocation(coordinates)
         .then(genre => {
           if(!chosenGenre) {
-            console.log(chosenGenre);
+            console.log('Inside if block: ' + chosenGenre);
 
 
             const searchTerms = genre;
@@ -69,7 +70,7 @@ const Player = ({ match }) => {
             setLoading(false);
             
           } else {
-
+            console.log('Else block (chosenGenre)' + chosenGenre);
 
             const searchTerms = `${genre}+${chosenGenre}`;
             document.body.style.background = `url(${backgroundTranslator(genre)})`;
@@ -155,6 +156,8 @@ const Player = ({ match }) => {
     e.preventDefault();
     onTrackingClick(chosenGenre);
   };
+
+  console.log('Bottom of file: ' + chosenGenre);
 
   if(loading) return <Loading />;
   return (

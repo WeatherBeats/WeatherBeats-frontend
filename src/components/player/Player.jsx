@@ -153,12 +153,10 @@ const Player = ({ match }) => {
       <div className={styles.columnOne}>
         {
           !userPlaylist
-            ? <p>
-              <button onClick={onTrackingClick}>Generate Playlist</button>
-            </p>
-            : <p>
-              <button onClick={onTrackingClick}>Check Weather Again</button>
-            </p>
+            ? 
+            <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
+            : 
+            <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
         }
 
         <form onSubmit={onZipCodeSubmit} className={styles.Form}>

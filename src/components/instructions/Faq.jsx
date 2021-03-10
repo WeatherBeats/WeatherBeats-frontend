@@ -6,7 +6,7 @@ const Faq = ({ question, response }) => {
   return (
     <details className={ styles.Faq }>
       <summary>{question}</summary>
-      {response}
+      <p>{response}</p>
     </details>
   );
 };

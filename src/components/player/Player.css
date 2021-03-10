@@ -35,10 +35,13 @@
     align-items: center;
     margin: 15px;
 
+
     iframe {
         border-radius: 0.50rem;
         filter: drop-shadow(0 0 0.50rem #1db9548f);
         margin: 10px;
+        width: 500px;
+        height: 380px;
     }
 
     button {
@@ -61,6 +64,14 @@
     button:hover {
         background-color: #26f16d;
     }
+
+    @media (max-width: 640px) {
+        iframe {
+            width: 300px;
+            height: 380px;    
+        }
+    }
+
 }
 
 .Form {
@@ -111,3 +122,15 @@
         background-color: #26f16d;
     }
 }
+
+/* .playlist {
+        @media only screen and (max-width: 640px) {
+        iframe {
+            width: 300px;
+            height: 380px;    
+            border: solid yellow 5px;
+        }
+    }
+
+
+} */

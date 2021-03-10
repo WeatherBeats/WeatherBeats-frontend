@@ -12,7 +12,7 @@ export const aboutData = [
     photo: '/profilePics/Donny.png',
     gitHub: 'https://github.com/DonnyLVu/',
     linkedIn: 'https://www.linkedin.com/in/donnylvu/',
-    bio: 'Donny bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
+    bio: 'Hello there I\'m Donny, working on code to further expand what an application can be. Other than code, you can catch me looking for some cool shows and movies to watch.'
   },
   {
     name: 'Franco Ortega',

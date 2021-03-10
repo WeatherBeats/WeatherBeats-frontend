@@ -19,7 +19,7 @@ const Player = ({ match }) => {
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
-  const [chosenGenre, setChosenGenre] = useState(null);
+  const [chosenGenre, setChosenGenre] = useState('');
 
   const history = useHistory();
 
@@ -41,7 +41,7 @@ const Player = ({ match }) => {
     longitude: ''
   };
 
-  const onTrackingClick = (chosenGenre) => {
+  const onTrackingClick = () => {
     setLoading(true);
 
     const success = (position) => {
@@ -50,44 +50,19 @@ const Player = ({ match }) => {
 
       coordinates.latitude = lat;
       coordinates.longitude = long;
-      console.log('Above postLocation: ' + chosenGenre);
 
       postLocation(coordinates)
         .then(genre => {
-          if (!chosenGenre) {
-            console.log('Inside if block: ' + chosenGenre);
-
-
-            const searchTerms = genre;
-            document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-            document.body.className = 'backgroundWeatherStyle';
-            getPlaylist(searchTerms, token)
-              .then(res => {
-                setPlaylists(res);
-                const id = newUserPlaylist(res);
-                setUserPlaylist(id);
-                localStorage.setItem('currentPlaylist', id);
-              });
-            setLoading(false);
-
-          } else {
-            console.log('Else block (chosenGenre)' + chosenGenre);
-
-            const searchTerms = `${genre}+${chosenGenre}`;
-            document.body.style.background = `url(${backgroundTranslator(genre)})`;
-            getPlaylist(searchTerms, token)
-              .then(res => {
-                setPlaylists(res);
-                const id = newUserPlaylist(res);
-                setUserPlaylist(id);
-                localStorage.setItem('currentPlaylist', id);
-              });
-            setLoading(false);
-
-
-
-
-          }
+          const searchTerms = `${genre}${chosenGenre}`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+          getPlaylist(searchTerms, token)
+            .then(res => {
+              setPlaylists(res);
+              const id = newUserPlaylist(res);
+              setUserPlaylist(id);
+              localStorage.setItem('currentPlaylist', id);
+            });
+          setLoading(false);
         });
     };
 
@@ -123,7 +98,7 @@ const Player = ({ match }) => {
 
     postZipCode(zipAndCountry)
       .then(genre => {
-        document.body.style.background = `url(${backgroundTranslator(genre)})`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
         getPlaylist(genre, token)
           .then(res => {
             setPlaylists(res);
@@ -155,10 +130,8 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    onTrackingClick(chosenGenre);
+    onTrackingClick();
   };
-
-  console.log('Bottom of file: ' + chosenGenre);
 
   if (loading) return <Loading />;
   return (
@@ -230,14 +203,15 @@ const Player = ({ match }) => {
             id="chosen-genre-input"
             onChange={({ target }) => setChosenGenre(target.value)}
           >
-            <option>Pick Genre</option>
-            <option value="country">Country</option>
-            <option value="rap">Rap</option>
-            <option value="rock">Rock</option>
-            <option value="hip-hop">Hip-Hop</option>
-            <option value="blues">Blues</option>
-            <option value="jazz">Jazz</option>
-            <option value="electronic">Electronic</option>
+            <option value="">Pick Genre</option>
+            <option value="">Random</option>
+            <option value="+country">Country</option>
+            <option value="+rap">Rap</option>
+            <option value="+rock">Rock</option>
+            <option value="+hip-hop">Hip-Hop</option>
+            <option value="+blues">Blues</option>
+            <option value="+jazz">Jazz</option>
+            <option value="+electronic">Electronic</option>
           </select>
         </label>
         <button>Submit</button>

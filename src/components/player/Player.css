@@ -3,10 +3,13 @@
     flex-direction: column;
     align-items: center;
 
+    border: solid 5px blue;
+
     p {
         width: 400px;
         text-align: center;
 
+        /* main button */
         button {
             background-color: #1DB954;
             color: #191414;
@@ -21,6 +24,7 @@
             white-space: normal;
             filter: drop-shadow(0 0 0.50rem #191414);
             cursor: pointer;
+
         }
 
         button:hover {
@@ -35,6 +39,7 @@
     align-items: center;
     margin: 15px;
 
+    border: solid 5px green;
 
     iframe {
         border-radius: 0.50rem;
@@ -78,6 +83,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    border: solid 5px yellow;
+
     
     label {
         margin: 5px;
@@ -102,6 +110,7 @@
         }
     }
 
+    /* all buttons */
     button {
         background-color: #1DB954;
         color: #191414;
@@ -134,3 +143,11 @@
 
 
 } */
+
+.columnOne {
+    border: solid 5px green;
+}
+
+.columnThree {
+    border: solid 5px green;
+}

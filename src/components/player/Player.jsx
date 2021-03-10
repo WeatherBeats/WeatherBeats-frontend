@@ -204,8 +204,6 @@ const Player = ({ match }) => {
           <div className={styles.playlist}>
             <iframe
               src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
-              width="300"
-              height="380"
               frameBorder="0"
               allowtransparency="true"
               allow="encrypted-media">

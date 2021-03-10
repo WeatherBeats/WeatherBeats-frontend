@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <div className={styles.Home}>
       <div className={styles.line}>
-        <p>WeatherBeats</p>
+        <p className={styles.p1}>WeatherBeats</p>
         <div>
-          <p>Log in with</p>
+          <p className={styles.p2}>Log in with</p>
           <a href="https://weatherbeats-staging.herokuapp.com/login">
             <img src={spotify} alt="Spotify logo"/>
           </a>

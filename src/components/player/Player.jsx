@@ -18,8 +18,8 @@ const Player = ({ match }) => {
   const [userPlaylist, setUserPlaylist] = useState(localStorage.getItem('currentPlaylist') || '');
   const [zipCode, setZipCode] = useState('');
   const [country, setCountry] = useState('');
-  const [chosenWeather, setChosenWeather] = useState(null);
-  const [chosenGenre, setChosenGenre] = useState('');
+  const [chosenWeather, setChosenWeather] = useState('');
+  const [chosenGenre, setChosenGenre] = useState(null);
 
   const history = useHistory();
   

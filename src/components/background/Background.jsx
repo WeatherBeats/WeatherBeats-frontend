@@ -1,13 +1,18 @@
 /* eslint-disable max-len */
-import thunderstorm from '../../../public/backgroundImages/raychel-sanner-1cJXplTxrmI-unsplash.jpg';
-import rain from '../../../public/backgroundImages/rain-large.jpg';
-import snow from '../../../public/backgroundImages/snowing.jpg';
-import sunny from '../../../public/backgroundImages/cloudy-sunny-58b1b9.jpg';
-import clouds from '../../../public/backgroundImages/david-tovar-IU-0htNvVrk-unsplash.jpg';
-import mist from '../../../public/backgroundImages/augustine-wong-v7zqZiowVHA-unsplash.jpg';
-import fog from '../../../public/backgroundImages/foggy-forest-353a3e.jpg';
-import sand from '../../../public/backgroundImages/wolfgang-hasselmann-L4VxDFJmaOM-unsplash.jpg';
-import hazy from '../../../public/backgroundImages/ralph-ravi-kayden-Y0k61ZYpByM-unsplash.jpg';
+import thunderstorm from '../../../public/backgroundImages/thunderstorm.jpg';
+import rain from '../../../public/backgroundImages/rain.jpg';
+import snow from '../../../public/backgroundImages/snow.jpg';
+import sunny from '../../../public/backgroundImages/sunny.jpg';
+import clouds from '../../../public/backgroundImages/clouds.jpg';
+import mist from '../../../public/backgroundImages/mist.jpg';
+import fog from '../../../public/backgroundImages/fog.jpg';
+import sand from '../../../public/backgroundImages/sandy.jpg';
+import hazy from '../../../public/backgroundImages/hazy.jpg';
+
+import heavyRain from '../../../public/backgroundImages/heavyRain.jpg';
+import heavyShowerRain from '../../../public/backgroundImages/heavyShowerRain.jpg';
+import smoke from '../../../public/backgroundImages/smoke.jpg';
+import freezingRain from '../../../public/backgroundImages/freezingRain.jpg';
 
 function backgroundTranslator(genre) {
 
@@ -28,17 +33,20 @@ function backgroundTranslator(genre) {
     'chill': rain,
     'chill+night': rain,
 
-    // Gloomy here is rain
-    // 'r03d': 'gloomy',
-    // 'r03n': 'gloomy',
+    // heavy rain
+    'intense': heavyRain,
+    'intense+night': heavyRain,
 
-    'peril': snow,
-    'peril+night': snow,
+
+    'peril': freezingRain,
+    'peril+night': freezingRain,
 
     'soothing': rain,
     'soothing+night': rain,
-    // 'r06d': 'angry', this is rain but thunderstorm will appear
-    // 'r06n': 'angry', this should be heavy shower rain
+
+    // Heavy shower rain
+    'extreme': heavyShowerRain,
+    'extreme+night': heavyShowerRain,
 
     'peaceful': snow,
     'peaceful+night': snow,
@@ -55,9 +63,10 @@ function backgroundTranslator(genre) {
     //  Find better pics for mist
     'misty': mist,
     'misty+night': mist,
+
     // Find smoke
-    'smoke': mist,
-    'smoke+night': mist,
+    smoke,
+    'smoke+night': smoke,
 
     hazy,
     'hazy+night': hazy,

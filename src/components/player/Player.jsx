@@ -98,8 +98,9 @@ const Player = ({ match }) => {
 
     postZipCode(zipAndCountry)
       .then(genre => {
+        const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(genre, token)
+        getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
             const id = newUserPlaylist(res);
@@ -116,8 +117,9 @@ const Player = ({ match }) => {
 
     postChosenWeather(chosenWeather)
       .then(genre => {
+        const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(genre, token)
+        getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
             const id = newUserPlaylist(res);
@@ -130,9 +132,9 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    if(zipCode) {
+    if (zipCode) {
       setLoading(true);
-      
+
       const zipAndCountry = {
         zipCode,
         country
@@ -141,7 +143,7 @@ const Player = ({ match }) => {
       postZipCode(zipAndCountry)
         .then(genre => {
           const searchTerms = `${genre}${chosenGenre}`;
-          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
           getPlaylist(searchTerms, token)
             .then(res => {
               setPlaylists(res);
@@ -162,9 +164,9 @@ const Player = ({ match }) => {
       <div className={styles.columnOne}>
         {
           !userPlaylist
-            ? 
+            ?
             <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
-            : 
+            :
             <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
         }
 

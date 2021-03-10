@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-body {
+/* added html.  if something breaks, look here :) */
+body, html {
   width: 100%;
   height: 100vh;
   

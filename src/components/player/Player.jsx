@@ -196,6 +196,7 @@ const Player = ({ match }) => {
             id="chosen-weather-input"
             onChange={({ target }) => setChosenWeather(target.value)}
           >
+            <option>Pick Weather</option>
             <option value="sunny">Sunny</option>
             <option value="cloudy">Cloudy</option>
             <option value="thunder">Thunder</option>
@@ -215,7 +216,7 @@ const Player = ({ match }) => {
             id="chosen-genre-input"
             onChange={({ target }) => setChosenGenre(target.value)}
           >
-            <option value="">Mix it up</option>
+            <option>Pick Genre</option>
             <option value="country">Country</option>
             <option value="rap">Rap</option>
             <option value="rock">Rock</option>

@@ -59,7 +59,7 @@ const Player = ({ match }) => {
 
 
             const searchTerms = genre;
-            document.body.style.background = `url(${backgroundTranslator(genre)})`;
+            document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
             document.body.className = 'backgroundWeatherStyle';
             getPlaylist(searchTerms, token)
               .then(res => {

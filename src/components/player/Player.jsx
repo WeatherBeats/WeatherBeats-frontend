@@ -55,6 +55,7 @@ const Player = ({ match }) => {
       postLocation(coordinates)
         .then(genre => {
           if(!chosenGenre) {
+
             console.log('Inside if block: ' + chosenGenre);
 
 
@@ -70,6 +71,7 @@ const Player = ({ match }) => {
             setLoading(false);
             
           } else {
+
             console.log('Else block (chosenGenre)' + chosenGenre);
 
             const searchTerms = `${genre}+${chosenGenre}`;

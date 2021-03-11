@@ -27,8 +27,7 @@
   }
 }
 
-.FormOne,
-.FormTwo {
+.FormOne, .FormTwo {
   display: flex;
   flex-direction: column;
   align-items: center;

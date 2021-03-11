@@ -22,7 +22,7 @@ export const selectWeatherData = [
 ];
 
 export const selectCountryData = [
-  { country: 'Pick Country', value: '' },
+  { country: 'Country', value: '' },
   { country: 'Australia', value: 'AU' },
   { country: 'Brazil', value: 'BR' },
   { country: 'Canada', value: 'CA' },

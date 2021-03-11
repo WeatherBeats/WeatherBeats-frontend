@@ -36,7 +36,6 @@ const Player = ({ match }) => {
     }
   }, []);
 
-
   const generatePlaylist = (searchTerms, token) => {
     getPlaylist(searchTerms, token)
       .then(res => {
@@ -47,9 +46,6 @@ const Player = ({ match }) => {
       });
     setLoading(false);
   };
-
-
-
 
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
@@ -117,6 +113,7 @@ const Player = ({ match }) => {
         const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
         generatePlaylist(searchTerms, token);
+        setChosenWeather('');
       });
   };
 
@@ -136,9 +133,16 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    if(zipCode) {
-      setLoading(true);
+    if(chosenWeather) {
+      
+      const searchTerms = `${chosenWeatherResponse.substring(1)}${chosenGenre}`;
+      document.body.style.backgroundImage = `url(${backgroundTranslator(chosenWeatherResponse.substring(1))})`;
+      generatePlaylist(searchTerms, token);
+    }
+
+    else if(zipCode) {
 
       const zipAndCountry = {
         zipCode,
@@ -147,13 +151,12 @@ const Player = ({ match }) => {
 
       postZipCode(zipAndCountry)
         .then(genre => {
-          const searchTerms = `${genre}${chosenGenre}${chosenWeatherResponse}`;
+          const searchTerms = `${genre}${chosenGenre}`;
           document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
           generatePlaylist(searchTerms, token);
         });
     }
     else {
-      setLoading(true);
 
       const weatherSearch = chosenWeatherResponse.substring(1);
       const searchTerms = `${weatherSearch}${chosenGenre}`;
@@ -206,10 +209,6 @@ const Player = ({ match }) => {
                 allowtransparency="true"
                 allow="encrypted-media">
               </iframe>
-              {/* {playlists.length > 1
-                ? <button onClick={onNextClick}>Next Playlist</button>
-                : <div></div>
-              } */}
             </div>
         }
 

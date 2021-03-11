@@ -20,11 +20,12 @@ const Player = ({ match }) => {
   const [country, setCountry] = useState('');
   const [chosenWeather, setChosenWeather] = useState('');
   const [chosenGenre, setChosenGenre] = useState('');
+  const [chosenWeatherResponse, setChosenWeatherResponse] = useState('');
 
   const history = useHistory();
 
   useEffect(() => {
-    if (refreshToken === undefined || refreshToken === 'tunes') {
+    if(refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
     } else {
       (localStorage.setItem('savedToken', refreshToken));
@@ -117,6 +118,7 @@ const Player = ({ match }) => {
 
     postChosenWeather(chosenWeather)
       .then(genre => {
+        setChosenWeatherResponse(`+${genre}`);
         const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
         getPlaylist(searchTerms, token)
@@ -132,7 +134,8 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    if (zipCode) {
+    console.log(zipCode);
+    if(zipCode) {
       setLoading(true);
 
       const zipAndCountry = {
@@ -142,7 +145,7 @@ const Player = ({ match }) => {
 
       postZipCode(zipAndCountry)
         .then(genre => {
-          const searchTerms = `${genre}${chosenGenre}`;
+          const searchTerms = `${genre}${chosenGenre}${chosenWeatherResponse}`;
           document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
           getPlaylist(searchTerms, token)
             .then(res => {
@@ -154,10 +157,40 @@ const Player = ({ match }) => {
           setLoading(false);
         });
     }
-    else onTrackingClick();
+    else {
+      setLoading(true);
+
+      const success = (position) => {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+
+        coordinates.latitude = lat;
+        coordinates.longitude = long;
+        console.log(coordinates);
+        postLocation(coordinates)
+          .then(genre => {
+            const searchTerms = `${genre}${chosenGenre}${chosenWeatherResponse}`;
+            document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+            getPlaylist(searchTerms, token)
+              .then(res => {
+                setPlaylists(res);
+                const id = newUserPlaylist(res);
+                setUserPlaylist(id);
+                localStorage.setItem('currentPlaylist', id);
+              });
+            setLoading(false);
+          });
+        const error = (err) => {
+          console.warn(`Error(${err.code}): ${err.message}`);
+          setLoading(false);
+        };
+    
+        navigator.geolocation.getCurrentPosition(success, error);
+      };
+    }
   };
 
-  if (loading) return <Loading />;
+  if(loading) return <Loading />;
   return (
     <div className={styles.Player}>
       {/* COLUMN ONE ------------------------- */}

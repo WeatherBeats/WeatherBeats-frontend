@@ -1,5 +1,4 @@
 export const selectGenreData = [
-  
   { genre: 'Pick Genre', value: '' },
   { genre: 'blues', value: 'blues' },
   { genre: 'electronic', value: 'electronic' },

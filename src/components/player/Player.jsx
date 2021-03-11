@@ -9,9 +9,7 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
-// import SelectGenre from './SelectGenre';
-
-import { selectGenreData, selectGenreData2 } from './selectGenreData.js';
+import { selectGenreData } from './selectGenreData.js';
 
 const Player = ({ match }) => {
 
@@ -178,11 +176,6 @@ const Player = ({ match }) => {
   };
 
 
-  // console.log(chosenGenre);
-  // if(chosenGenre === '+rap') {
-  //   console.log('It works!!!');
-  //   console.log(chosenGenre);
-  // }
 
   const selectElements = selectGenreData.map(item => (
     (item.genre === chosenGenre)

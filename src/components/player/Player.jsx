@@ -46,6 +46,8 @@ const Player = ({ match }) => {
 
   const onTrackingClick = () => {
     setLoading(true);
+    setChosenWeather('');
+    console.log(chosenWeather);
 
     const success = (position) => {
       const lat = position.coords.latitude;

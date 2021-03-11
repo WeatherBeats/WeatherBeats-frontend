@@ -1,4 +1,7 @@
 /* eslint-disable max-len */
+import React from 'react';
+const gitHubUrl = 'https://github.com/WeatherBeats';
+
 export const faqData = [
   {
     question: 'What is WeatherBeats?',
@@ -39,5 +42,5 @@ export const faqData = [
   {
     question: 'I love this app!',
     response: 'We’re so glad you’re enjoying WeatherBeats!'
-  },
+  }
 ];

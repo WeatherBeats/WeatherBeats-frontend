@@ -25,7 +25,7 @@ const Player = ({ match }) => {
   const history = useHistory();
 
   useEffect(() => {
-    if(refreshToken === undefined || refreshToken === 'tunes') {
+    if (refreshToken === undefined || refreshToken === 'tunes') {
       setRefreshToken(localStorage.getItem('savedToken', refreshToken));
     } else {
       (localStorage.setItem('savedToken', refreshToken));
@@ -41,7 +41,7 @@ const Player = ({ match }) => {
     latitude: '',
     longitude: ''
   };
-  
+
   const onTrackingClick = () => {
     setLoading(true);
 
@@ -55,7 +55,7 @@ const Player = ({ match }) => {
       postLocation(coordinates)
         .then(genre => {
           const searchTerms = `${genre}${chosenGenre}`;
-          document.body.style.background = `url(${backgroundTranslator(genre)})`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
           getPlaylist(searchTerms, token)
             .then(res => {
               setPlaylists(res);
@@ -99,16 +99,17 @@ const Player = ({ match }) => {
 
     postZipCode(zipAndCountry)
       .then(genre => {
-        document.body.style.background = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(genre, token)
+        const searchTerms = `${genre}${chosenGenre}`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+        getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
             const id = newUserPlaylist(res);
             setUserPlaylist(id);
+            localStorage.setItem('currentPlaylist', id);
           });
         setLoading(false);
       });
-    history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
   const onChosenWeatherSubmit = (e) => {
@@ -117,8 +118,9 @@ const Player = ({ match }) => {
 
     postChosenWeather(chosenWeather)
       .then(genre => {
-        document.body.style.background = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(genre, token)
+        const searchTerms = `${genre}${chosenGenre}`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+        getPlaylist(searchTerms, token)
           .then(res => {
             setPlaylists(res);
             const id = newUserPlaylist(res);
@@ -131,10 +133,32 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    onTrackingClick();
+    if (zipCode) {
+      setLoading(true);
+
+      const zipAndCountry = {
+        zipCode,
+        country
+      };
+
+      postZipCode(zipAndCountry)
+        .then(genre => {
+          const searchTerms = `${genre}${chosenGenre}`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+          getPlaylist(searchTerms, token)
+            .then(res => {
+              setPlaylists(res);
+              const id = newUserPlaylist(res);
+              setUserPlaylist(id);
+              localStorage.setItem('currentPlaylist', id);
+            });
+          setLoading(false);
+        });
+    }
+    else onTrackingClick();
   };
 
-  if(loading) return <Loading />;
+  if (loading) return <Loading />;
   return (
     <>
       <Header />

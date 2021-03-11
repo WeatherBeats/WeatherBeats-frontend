@@ -12,7 +12,7 @@ export const aboutData = [
     photo: '/profilePics/Donny.png',
     gitHub: 'https://github.com/DonnyLVu/',
     linkedIn: 'https://www.linkedin.com/in/donnylvu/',
-    bio: 'Donny bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
+    bio: 'Hello there I\'m Donny, working on code to further expand what an application can be. Other than code, you can catch me looking for some cool shows and movies to watch.'
   },
   {
     name: 'Franco Ortega',
@@ -23,10 +23,10 @@ export const aboutData = [
   },
   {
     name: 'Perry Sittser',
-    photo: '/profilePics/Perry.jpg',
+    photo: '/profilePics/Perry.png',
     gitHub: 'https://github.com/sittserp/',
     linkedIn: 'https://www.linkedin.com/in/sittserp/',
-    bio: 'Perry bio here. Placeholder words words words words words words words words words words words words words words words words words words words words.'
+    bio: 'Foraging information from across the web and bringing it together for people to use or listen to gives Perry a great sense of accomplishment. He enjoys spending time with his family outdoors, learning new skills, and discovering new things.'
   },
   {
     name: 'Shane Upchurch',

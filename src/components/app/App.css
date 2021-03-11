@@ -17,6 +17,7 @@ body, html {
 
   background-image: url('../../../public/backgroundImages/landing-page.jpg');
   background-position: center;
+  /* background-position: center center; */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -24,7 +25,9 @@ body, html {
 @media (max-width: 480px) {
   body {
     height: 100%;
-    background-size: cover;
+    /* background-size: cover; */
+     /* can try this below */
+    background-size: auto 100%;
     overflow: hidden;
   }
 }

@@ -28,6 +28,6 @@ body, html {
      /* can try this below */
      /* background-size: auto 100%; */
     background-attachment: fixed;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 }

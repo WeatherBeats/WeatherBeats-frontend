@@ -195,8 +195,8 @@ const Player = ({ match }) => {
           }
 
           {playlists.length > 1
-            ? <button onClick={onNextClick}>Next Playlist</button>
-            : <div></div>
+            ? <button onClick={onNextClick} className={styles.NextButton}>Next Playlist</button>
+            : ''
           }
 
           <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>

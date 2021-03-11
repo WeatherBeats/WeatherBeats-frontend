@@ -125,6 +125,27 @@
     background-color: #26f16d;
 }
 
+.NextButton {
+    background-color: #1DB954;
+    color: #191414;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    padding: 10px 30px 10px;
+    transition-duration: .3s;
+    border-width: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: normal;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.NextButton:hover {
+    background-color: #26f16d;
+}
+
+
  /* need an additional range for tablets */
 @media (max-width: 667px) {
     

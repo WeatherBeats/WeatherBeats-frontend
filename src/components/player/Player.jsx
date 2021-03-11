@@ -194,6 +194,11 @@ const Player = ({ match }) => {
               <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
           }
 
+          {playlists.length > 1
+            ? <button onClick={onNextClick}>Next Playlist</button>
+            : <div></div>
+          }
+
           <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>
             <label htmlFor="zip-code-input">
               <input
@@ -224,7 +229,6 @@ const Player = ({ match }) => {
             <button>Submit</button>
           </form>
         </div>
-
         {/* COLUMN TWO ------------------------- */}
 
         {
@@ -241,10 +245,10 @@ const Player = ({ match }) => {
                 allowtransparency="true"
                 allow="encrypted-media">
               </iframe>
-              {playlists.length > 1
+              {/* {playlists.length > 1
                 ? <button onClick={onNextClick}>Next Playlist</button>
                 : <div></div>
-              }
+              } */}
             </div>
         }
 

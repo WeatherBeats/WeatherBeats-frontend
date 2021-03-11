@@ -1,8 +1,16 @@
+.HeaderUnit {
+    width: 60vw;
+    position: relative;
+    right: 10vw;
+}
+
 .Home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* should be off centered */
+    position: relative;
+    right: 14vw;
+    top: 10vh;
     height: 60vh;
     width: 60vw;
     text-align: center;
@@ -16,7 +24,6 @@
         display: flex;
         flex-direction: column;
         text-decoration: none;
-
     }
 
     img {
@@ -55,35 +62,9 @@
 @media (max-width: 1024px) {
     .Home {
         margin-top: 12vh;
-    }
-    
-    .line {
-        height: 23vh;
-    }
-
-    p {
-        font-size: 11vw;
-    }
-}
-
-@media (max-width: 992px) {
-    .Home {
-        margin-top: 12vh;
-    }
-    
-    .line {
-        height: 23vh;
-    }
-
-    p {
-        font-size: 11vw;
-    }
-}
-
-@media (max-width: 600px) {
-    .Home {
-        margin-top: 10vh;
-        margin-left: 8vw;
+        position: relative;
+        right: 7vw;
+        top: 0vh;
     }
     
     .line {
@@ -95,8 +76,36 @@
     }
 }
 
-.HeaderUnit {
-    width: 60vw;
-    position: relative;
-    right: 10vw;
+@media (max-width: 992px) {
+    .Home {
+        margin-top: 12vh;
+        position: relative;
+        right: 10vw;
+    }
+    
+    .line {
+        height: 20vh;
+    }
+
+    p {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .Home {
+        margin-top: 10vh;
+        margin-left: 8vw;
+
+        position: relative;
+        right: 10vw;
+    }
+    
+    .line {
+        height: 17vh;
+    }
+
+    p {
+        font-size: 10vw;
+    }
 }

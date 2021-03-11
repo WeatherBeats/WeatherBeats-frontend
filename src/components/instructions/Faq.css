@@ -1,3 +1,14 @@
+.Group {
+    background-image: url('../../../public/backgroundImages/landing-page.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    width: 100vw;
+    height: 100%;
+}
+
 .FaqList {
     list-style-type: none;
     width: 80%;
@@ -36,3 +47,4 @@
         font-size: medium;
     }
 }
+

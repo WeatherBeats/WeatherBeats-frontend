@@ -1,3 +1,14 @@
+.Group {
+    background-image: url('../../../public/backgroundImages/landing-page.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    width: 100vw;
+    height: 100%;
+}
+
 .About {
     display: flex;
     flex-direction: column;
@@ -17,3 +28,4 @@
         padding-top: 1%;
     }
 }
+

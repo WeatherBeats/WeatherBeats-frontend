@@ -3,14 +3,14 @@
 exports[`App component renders App 1`] = `
 <DocumentFragment>
   <div
-    class="Header"
+    class="HeaderUnit"
   >
     <div
       class="DropDown false"
     >
       <img
         alt="menu"
-        src="/images/menu.png"
+        src="/images/menu-white.png"
       />
       <div
         class="DropContent"
@@ -45,29 +45,34 @@ exports[`App component renders App 1`] = `
         </span>
       </div>
     </div>
-    <h1>
-      WeatherBeats
-    </h1>
   </div>
   <div
     class="Home"
   >
-    <p>
-      <i>
-        weather-inspired playlists based on the weather in your area
-      </i>
-    </p>
-    <a
-      href="https://weatherbeats-staging.herokuapp.com/login"
+    <div
+      class="line"
     >
-      <p>
-        Log in with
+      <p
+        class="p1"
+      >
+        WeatherBeats
       </p>
-      <img
-        alt="Spotify logo"
-        src="/path/image"
-      />
-    </a>
+      <div>
+        <p
+          class="p2"
+        >
+          Log in with
+        </p>
+        <a
+          href="https://weatherbeats-staging.herokuapp.com/login"
+        >
+          <img
+            alt="Spotify logo"
+            src="/path/image"
+          />
+        </a>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

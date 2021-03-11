@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './Home.css';
 import spotify from '../../assets/Spotify_Logo_RGB_Green.png';
 import HomeHeader from '../../components/header/HomeHeader';
-import Header from '../../components/header/Header';
 
 const Home = () => {
 
@@ -12,7 +11,7 @@ const Home = () => {
       <div className={styles.HeaderUnit}>
         <HomeHeader />
       </div>
-      {/* <Header /> */}
+      
       <div className={styles.Home}>
         <div className={styles.line}>
           <p className={styles.p1}>WeatherBeats</p>

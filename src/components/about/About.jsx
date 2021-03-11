@@ -13,12 +13,12 @@ const About = () => {
   ));
 
   return (
-    <>
+    <div className={styles.Group}>
       <Header />
       <ul className={styles.About}>
         {aboutElements}
       </ul>
-    </>
+    </div>
   );
 };
 

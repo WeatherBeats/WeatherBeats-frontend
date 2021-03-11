@@ -1,5 +1,6 @@
 export const selectGenreData = [
   { genre: 'Pick Genre', value: '' },
+  { genre: 'Random', value: '' },
   { genre: 'Blues', value: 'blues' },
   { genre: 'Electronic', value: 'electronic' },
   { genre: 'Hip-hop', value: 'hip-hop' },

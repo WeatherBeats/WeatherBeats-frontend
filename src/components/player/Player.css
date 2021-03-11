@@ -167,9 +167,18 @@
     
     }
 
-    .columnOne, .columnThree {
+    .columnOne {
+        width: 90vw;
+        height: 25vh;
+        border: solid 2px yellow;
+    }
+
+    .columnThree {
         width: 90vw;
         height: 15vh;
+
+        border: solid 2px orange;
+
     }
 
     .playlist {

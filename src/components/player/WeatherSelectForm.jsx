@@ -50,7 +50,7 @@ const WeatherSelectForm = ({
 WeatherSelectForm.propTypes = {
   onChosenWeatherSubmit: PropTypes.func.isRequired,
   setChosenWeather: PropTypes.func.isRequired,
-  chosenWeather: PropTypes.func.isRequired
+  chosenWeather: PropTypes.string.isRequired
 };
 
 export default WeatherSelectForm;

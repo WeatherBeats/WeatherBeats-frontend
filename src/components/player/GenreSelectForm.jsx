@@ -49,7 +49,7 @@ const GenreSelectForm = ({ onGenreSubmit, setChosenGenre, chosenGenre }) => {
 GenreSelectForm.propTypes = {
   onGenreSubmit: PropTypes.func.isRequired,
   setChosenGenre: PropTypes.func.isRequired,
-  chosenGenre: PropTypes.func.isRequired
+  chosenGenre: PropTypes.string.isRequired
 };
 
 export default GenreSelectForm;

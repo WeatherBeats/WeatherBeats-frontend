@@ -9,6 +9,8 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
+import GenreSelectForm from './GenreSelectForm';
+import WeatherSelectForm from './WeatherSelectForm';
 
 const Player = ({ match }) => {
 
@@ -45,6 +47,9 @@ const Player = ({ match }) => {
 
   const onTrackingClick = () => {
     setLoading(true);
+
+    // Resets chosenWeather to an emtpy string when 'Check Weather Again' is clicked
+    setChosenWeather('');
 
     const success = (position) => {
       const lat = position.coords.latitude;
@@ -247,7 +252,8 @@ const Player = ({ match }) => {
 
         <div className={styles.columnThree}>
           <p>Advanced Search</p>
-          <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
+
+          {/* <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-weather-input">
               <select
                 name="chosen-weather"
@@ -286,7 +292,20 @@ const Player = ({ match }) => {
               </select>
             </label>
             <button>Submit</button>
-          </form>
+          </form> */}
+
+          <WeatherSelectForm
+            onChosenWeatherSubmit={onChosenWeatherSubmit}
+            setChosenWeather={setChosenWeather}
+            chosenWeather={chosenWeather}
+          />
+
+          <GenreSelectForm
+            onGenreSubmit={onGenreSubmit}
+            setChosenGenre={setChosenGenre}
+            chosenGenre={chosenGenre}
+          />
+
         </div>
       </div >
     </>

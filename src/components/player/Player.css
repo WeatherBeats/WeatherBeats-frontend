@@ -179,10 +179,6 @@
 }
   
 @media (max-width: 992px) {
-    .Player {
-        background-color: orange;
-    }
-
     .MainButton {
        display: none;
     }
@@ -235,7 +231,6 @@
         width: 90vw;
         height: 25vh;
         margin: 0;
-        border: solid 2px yellow;
     }
 
     .columnThree {

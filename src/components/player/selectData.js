@@ -1,19 +1,20 @@
 export const selectGenreData = [
-  { genre: 'Pick Genre', value: '' },
-  { genre: 'blues', value: 'blues' },
-  { genre: 'electronic', value: 'electronic' },
-  { genre: 'hip-hop', value: 'hip-hop' },
-  { genre: 'jazz', value: 'jazz' },
-  { genre: 'rap', value: 'rap' },
-  { genre: 'rock', value: 'rock' }
+  { genre: 'Pick Genre Alt', value: '' },
+  { genre: 'Blues', value: 'blues' },
+  { genre: 'Electronic', value: 'electronic' },
+  { genre: 'Hip-hop', value: 'hip-hop' },
+  { genre: 'Jazz', value: 'jazz' },
+  { genre: 'Rap', value: 'rap' },
+  { genre: 'Rock', value: 'rock' }
 ];
   
 export const selectWeatherData = [
-  { weather: 'Pick weather', value: '' },
-  { weather: 'blues', value: 'blues' },
-  { weather: 'electronic', value: 'electronic' },
-  { weather: 'hip-hop', value: 'hip-hop' },
-  { weather: 'jazz', value: 'jazz' },
-  { weather: 'rap', value: 'rap' },
-  { weather: 'rock', value: 'rock' }
+  { weather: 'Pick Weather Alt', value: '' },
+  { weather: 'Sunny', value: 'sunny' },
+  { weather: 'Cloudy', value: 'cloudy' },
+  { weather: 'Thunder', value: 'thunder' },
+  { weather: 'Rain', value: 'rain' },
+  { weather: 'Freezing Rain', value: 'freezing-rain' },
+  { weather: 'Snow', value: 'snow' },
+  { weather: 'Hazy', value: 'hazy' }
 ];

@@ -9,7 +9,7 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
-import { selectGenreData } from './selectGenreData.js';
+import { selectGenreData, selectWeatherData } from './selectData.js';
 
 const Player = ({ match }) => {
 
@@ -177,7 +177,33 @@ const Player = ({ match }) => {
 
 
 
-  const selectElements = selectGenreData.map(item => (
+  // Create the options for the Pick Weather dropdown menu
+  const selectWeatherElements = selectWeatherData.map(item => (
+    (item.value === chosenWeather)
+      ?
+      <option
+        key={item.weather}
+        value={`+${item.value}`}
+        selected
+      >
+        {item.weather}
+        {console.log('selected')}
+      </option>
+      :
+      <option
+        key={item.weather}
+        value={`${item.value}`}
+      >
+        {item.weather}
+        {console.log('not selected')}
+      </option>
+  ));
+console.log(chosenWeather);
+
+
+
+  // Create the options for the Pick Genre dropdown menu
+  const selectGenreElements = selectGenreData.map(item => (
     (item.genre === chosenGenre)
       ?
       <option
@@ -196,8 +222,11 @@ const Player = ({ match }) => {
       </option>
   ));
 
+console.log(chosenGenre);
 
-  console.log(chosenGenre);
+
+
+
 
   if(loading) return <Loading />;
   return (
@@ -292,6 +321,19 @@ const Player = ({ match }) => {
             <button>Submit</button>
           </form>
 
+          <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
+            <label htmlFor="chosen-weather-input">
+              <select
+                name="chosen-weather"
+                id="chosen-weather-input"
+                onChange={({ target }) => setChosenWeather(target.value)}
+              >
+                {selectWeatherElements}
+              </select>
+            </label>
+            <button>Submit</button>
+          </form>
+
           <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-genre-input">
               <select
@@ -313,8 +355,6 @@ const Player = ({ match }) => {
             <button>Submit</button>
           </form>
 
-          {/* <SelectGenre /> */}
-
 
           <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-genre-input">
@@ -323,7 +363,7 @@ const Player = ({ match }) => {
                 id="chosen-genre-input"
                 onChange={({ target }) => setChosenGenre(target.value)}
               >
-                {selectElements}
+                {selectGenreElements}
               </select>
             </label>
             <button>Submit</button>

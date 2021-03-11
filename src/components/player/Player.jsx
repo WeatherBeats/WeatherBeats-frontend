@@ -9,6 +9,7 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
+import SelectGenre from './SelectGenre';
 
 const Player = ({ match }) => {
 
@@ -287,6 +288,27 @@ const Player = ({ match }) => {
             </label>
             <button>Submit</button>
           </form>
+
+
+
+
+          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
+            <label htmlFor="chosen-genre-input">
+              <select
+                name="chosen-genre"
+                id="chosen-genre-input"
+                onChange={({ target }) => setChosenGenre(target.value)}
+              >
+                <option value="">Pick Test</option>
+                <SelectGenre />
+                
+              </select>
+            </label>
+            <button>Submit</button>
+          </form>
+
+
+
         </div>
       </div >
     </>

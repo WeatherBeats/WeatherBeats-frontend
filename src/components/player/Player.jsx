@@ -36,6 +36,21 @@ const Player = ({ match }) => {
     }
   }, []);
 
+
+  const generatePlaylist = (searchTerms, token) => {
+    getPlaylist(searchTerms, token)
+      .then(res => {
+        setPlaylists(res);
+        const id = newUserPlaylist(res);
+        setUserPlaylist(id);
+        localStorage.setItem('currentPlaylist', id);
+      });
+    setLoading(false);
+  };
+
+
+
+
   const newUserPlaylist = (playlistIds) => {
     const id = playlistIds[Math.floor(Math.random() * playlistIds.length)];
     return id;
@@ -63,14 +78,7 @@ const Player = ({ match }) => {
         .then(genre => {
           const searchTerms = `${genre}${chosenGenre}`;
           document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-          getPlaylist(searchTerms, token)
-            .then(res => {
-              setPlaylists(res);
-              const id = newUserPlaylist(res);
-              setUserPlaylist(id);
-              localStorage.setItem('currentPlaylist', id);
-            });
-          setLoading(false);
+          generatePlaylist(searchTerms, token);
         });
     };
 
@@ -108,14 +116,7 @@ const Player = ({ match }) => {
       .then(genre => {
         const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(searchTerms, token)
-          .then(res => {
-            setPlaylists(res);
-            const id = newUserPlaylist(res);
-            setUserPlaylist(id);
-            localStorage.setItem('currentPlaylist', id);
-          });
-        setLoading(false);
+        generatePlaylist(searchTerms, token);
       });
   };
 
@@ -128,13 +129,7 @@ const Player = ({ match }) => {
         setChosenWeatherResponse(`+${genre}`);
         const searchTerms = `${genre}${chosenGenre}`;
         document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-        getPlaylist(searchTerms, token)
-          .then(res => {
-            setPlaylists(res);
-            const id = newUserPlaylist(res);
-            setUserPlaylist(id);
-          });
-        setLoading(false);
+        generatePlaylist(searchTerms, token);
       });
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
@@ -154,14 +149,7 @@ const Player = ({ match }) => {
         .then(genre => {
           const searchTerms = `${genre}${chosenGenre}${chosenWeatherResponse}`;
           document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-          getPlaylist(searchTerms, token)
-            .then(res => {
-              setPlaylists(res);
-              const id = newUserPlaylist(res);
-              setUserPlaylist(id);
-              localStorage.setItem('currentPlaylist', id);
-            });
-          setLoading(false);
+          generatePlaylist(searchTerms, token);
         });
     }
     else {
@@ -169,14 +157,7 @@ const Player = ({ match }) => {
 
       const weatherSearch = chosenWeatherResponse.substring(1);
       const searchTerms = `${weatherSearch}${chosenGenre}`;
-      getPlaylist(searchTerms, token)
-        .then(res => {
-          setPlaylists(res);
-          const id = newUserPlaylist(res);
-          setUserPlaylist(id);
-          localStorage.setItem('currentPlaylist', id);
-        });
-      setLoading(false);
+      generatePlaylist(searchTerms, token);
     }
   };
 

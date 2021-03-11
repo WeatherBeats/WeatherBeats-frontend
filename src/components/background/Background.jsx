@@ -38,8 +38,8 @@ function backgroundTranslator(genre) {
     'intense+night': heavyRain,
 
 
-    'peril': freezingRain,
-    'peril+night': freezingRain,
+    'quiet': freezingRain,
+    'quiet+night': freezingRain,
 
     'soothing': rain,
     'soothing+night': rain,

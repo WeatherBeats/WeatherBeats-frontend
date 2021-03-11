@@ -9,6 +9,7 @@ const WeatherSelectForm = ({
   chosenWeather
 }) => {
 
+  // Creates the options for the Pick Weather dropdown menu
   const selectWeatherElements = selectWeatherData.map(item => (
     (item.value === chosenWeather)
       ?
@@ -27,7 +28,6 @@ const WeatherSelectForm = ({
         {item.weather}
       </option>
   ));
-    
 
   return (
     <>
@@ -45,7 +45,7 @@ const WeatherSelectForm = ({
       </form>
     </>
   );
-}
+};
 
 WeatherSelectForm.propTypes = {
   onChosenWeatherSubmit: PropTypes.func.isRequired,

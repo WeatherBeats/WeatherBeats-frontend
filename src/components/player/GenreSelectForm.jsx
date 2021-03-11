@@ -44,7 +44,7 @@ const GenreSelectForm = ({ onGenreSubmit, setChosenGenre, chosenGenre }) => {
       </form>
     </>
   );
-}
+};
 
 GenreSelectForm.propTypes = {
   onGenreSubmit: PropTypes.func.isRequired,

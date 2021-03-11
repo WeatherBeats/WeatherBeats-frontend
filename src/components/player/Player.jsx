@@ -9,7 +9,6 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
-import { selectWeatherData } from './selectData.js';
 import GenreSelectForm from './GenreSelectForm';
 import WeatherSelectForm from './WeatherSelectForm';
 
@@ -180,27 +179,6 @@ const Player = ({ match }) => {
     }
   };
 
-  // Creates the options for the Pick Weather dropdown menu
-  // const selectWeatherElements = selectWeatherData.map(item => (
-  //   (item.value === chosenWeather)
-  //     ?
-  //     <option
-  //       key={item.weather}
-  //       value={`+${item.value}`}
-  //       selected
-  //     >
-  //       {item.weather}
-  //     </option>
-  //     :
-  //     <option
-  //       key={item.weather}
-  //       value={`${item.value}`}
-  //     >
-  //       {item.weather}
-  //     </option>
-  // ));
-
-
   if(loading) return <Loading />;
   return (
     <>
@@ -274,6 +252,7 @@ const Player = ({ match }) => {
 
         <div className={styles.columnThree}>
           <p>Advanced Search</p>
+
           {/* <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-weather-input">
               <select
@@ -292,22 +271,9 @@ const Player = ({ match }) => {
               </select>
             </label>
             <button>Submit</button>
-          </form> */}
+          </form>
 
-          {/* <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
-            <label htmlFor="chosen-weather-input">
-              <select
-                name="chosen-weather"
-                id="chosen-weather-input"
-                onChange={({ target }) => setChosenWeather(target.value)}
-              >
-                {selectWeatherElements}
-              </select>
-            </label>
-            <button>Submit</button>
-          </form> */}
-
-          {/* <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
+          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-genre-input">
               <select
                 name="chosen-genre"

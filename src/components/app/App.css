@@ -20,3 +20,11 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media (max-width: 480px) {
+  body {
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+  }
+}

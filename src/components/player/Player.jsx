@@ -8,6 +8,7 @@ import { getNewAccessToken } from '../../services/spotifyRefreshToken';
 import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
+import Header from '../header/Header';
 
 const Player = ({ match }) => {
 
@@ -135,138 +136,141 @@ const Player = ({ match }) => {
 
   if(loading) return <Loading />;
   return (
-    <div className={styles.Player}>
-      {/* COLUMN ONE ------------------------- */}
-      <div className={styles.columnOne}>
+    <>
+      <Header />
+      <div className={styles.Player}>
+        {/* COLUMN ONE ------------------------- */}
+        <div className={styles.columnOne}>
+          {
+            !userPlaylist
+              ? 
+              <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
+              : 
+              <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+          }
+
+          <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>
+            <label htmlFor="zip-code-input">
+              <input
+                placeholder="Zip Code"
+                type="text"
+                id="zip-code-input"
+                onChange={({ target }) => setZipCode(target.value)}
+              />
+            </label>
+            <label htmlFor="country-select">
+              <select
+                name="country"
+                id="country-select"
+                onChange={({ target }) => setCountry(target.value)}
+              >
+                <option value="">Country</option>
+                <option value="AU">Australia</option>
+                <option value="BR">Brazil</option>
+                <option value="CA">Canada</option>
+                <option value="CN">China</option>
+                <option value="IN">India</option>
+                <option value="MX">Mexico</option>
+                <option value="NG">Nigeria</option>
+                <option value="UK">United Kingdom</option>
+                <option value="US">United States</option>
+              </select>
+            </label>
+            <button>Submit</button>
+          </form>
+
+          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
+            <label htmlFor="chosen-genre-input">
+              <select
+                name="chosen-genre"
+                id="chosen-genre-input"
+                onChange={({ target }) => setChosenGenre(target.value)}
+              >
+                <option value="">Pick Genre</option>
+                <option value="">Random</option>
+                <option value="+country">Country</option>
+                <option value="+rap">Rap</option>
+                <option value="+rock">Rock</option>
+                <option value="+hip-hop">Hip-Hop</option>
+                <option value="+blues">Blues</option>
+                <option value="+jazz">Jazz</option>
+                <option value="+electronic">Electronic</option>
+              </select>
+            </label>
+            <button>Submit</button>
+          </form>
+        </div>
+
+        {/* COLUMN TWO ------------------------- */}
+
+
         {
           !userPlaylist
-            ? 
-            <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
-            : 
-            <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+            ? <div>
+              <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p>
+              <p>You may also enter a Zip Code to generate a playlist based off of the weather in another location.</p>
+            </div>
+            :
+            <div className={styles.playlist}>
+              <iframe
+                src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
+                frameBorder="0"
+                allowtransparency="true"
+                allow="encrypted-media">
+              </iframe>
+              {playlists.length > 1
+                ? <button onClick={onNextClick}>Next Playlist</button>
+                : <div></div>
+              }
+            </div>
         }
 
-        <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>
-          <label htmlFor="zip-code-input">
-            <input
-              placeholder="Zip Code"
-              type="text"
-              id="zip-code-input"
-              onChange={({ target }) => setZipCode(target.value)}
-            />
-          </label>
-          <label htmlFor="country-select">
-            <select
-              name="country"
-              id="country-select"
-              onChange={({ target }) => setCountry(target.value)}
-            >
-              <option value="">Country</option>
-              <option value="AU">Australia</option>
-              <option value="BR">Brazil</option>
-              <option value="CA">Canada</option>
-              <option value="CN">China</option>
-              <option value="IN">India</option>
-              <option value="MX">Mexico</option>
-              <option value="NG">Nigeria</option>
-              <option value="UK">United Kingdom</option>
-              <option value="US">United States</option>
-            </select>
-          </label>
-          <button>Submit</button>
-        </form>
+        {/* COLUMN THREE ------------------------- */}
 
-        <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
-          <label htmlFor="chosen-genre-input">
-            <select
-              name="chosen-genre"
-              id="chosen-genre-input"
-              onChange={({ target }) => setChosenGenre(target.value)}
-            >
-              <option value="">Pick Genre</option>
-              <option value="">Random</option>
-              <option value="+country">Country</option>
-              <option value="+rap">Rap</option>
-              <option value="+rock">Rock</option>
-              <option value="+hip-hop">Hip-Hop</option>
-              <option value="+blues">Blues</option>
-              <option value="+jazz">Jazz</option>
-              <option value="+electronic">Electronic</option>
-            </select>
-          </label>
-          <button>Submit</button>
-        </form>
-      </div>
+        <div className={styles.columnThree}>
+          <p>Advanced Search</p>
+          <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
+            <label htmlFor="chosen-weather-input">
+              <select
+                name="chosen-weather"
+                id="chosen-weather-input"
+                onChange={({ target }) => setChosenWeather(target.value)}
+              >
+                <option>Pick Weather</option>
+                <option value="sunny">Sunny</option>
+                <option value="cloudy">Cloudy</option>
+                <option value="thunder">Thunder</option>
+                <option value="rain">Rain</option>
+                <option value="freezing-rain">Freezing Rain</option>
+                <option value="snow">Snow</option>
+                <option value="hazy">Hazy</option>
+              </select>
+            </label>
+            <button>Submit</button>
+          </form>
 
-      {/* COLUMN TWO ------------------------- */}
-
-
-      {
-        !userPlaylist
-          ? <div>
-            <p>Please click &apos;Generate Playlist&apos; to find a weather-appropriate playlist based on your current location!</p>
-            <p>You may also enter a Zip Code to generate a playlist based off of the weather in another location.</p>
-          </div>
-          :
-          <div className={styles.playlist}>
-            <iframe
-              src={`https://open.spotify.com/embed/playlist/${userPlaylist}`}
-              frameBorder="0"
-              allowtransparency="true"
-              allow="encrypted-media">
-            </iframe>
-            {playlists.length > 1
-              ? <button onClick={onNextClick}>Next Playlist</button>
-              : <div></div>
-            }
-          </div>
-      }
-
-      {/* COLUMN THREE ------------------------- */}
-
-      <div className={styles.columnThree}>
-        <p>Advanced Search</p>
-        <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
-          <label htmlFor="chosen-weather-input">
-            <select
-              name="chosen-weather"
-              id="chosen-weather-input"
-              onChange={({ target }) => setChosenWeather(target.value)}
-            >
-              <option>Pick Weather</option>
-              <option value="sunny">Sunny</option>
-              <option value="cloudy">Cloudy</option>
-              <option value="thunder">Thunder</option>
-              <option value="rain">Rain</option>
-              <option value="freezing-rain">Freezing Rain</option>
-              <option value="snow">Snow</option>
-              <option value="hazy">Hazy</option>
-            </select>
-          </label>
-          <button>Submit</button>
-        </form>
-
-        <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
-          <label htmlFor="chosen-genre-input">
-            <select
-              name="chosen-genre"
-              id="chosen-genre-input"
-              onChange={({ target }) => setChosenGenre(target.value)}
-            >
-              <option>Pick Genre</option>
-              <option value="country">Country</option>
-              <option value="rap">Rap</option>
-              <option value="rock">Rock</option>
-              <option value="hip-hop">Hip-Hop</option>
-              <option value="blues">Blues</option>
-              <option value="jazz">Jazz</option>
-              <option value="electronic">Electronic</option>
-            </select>
-          </label>
-          <button>Submit</button>
-        </form>
-      </div>
-    </div >
+          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
+            <label htmlFor="chosen-genre-input">
+              <select
+                name="chosen-genre"
+                id="chosen-genre-input"
+                onChange={({ target }) => setChosenGenre(target.value)}
+              >
+                <option>Pick Genre</option>
+                <option value="country">Country</option>
+                <option value="rap">Rap</option>
+                <option value="rock">Rock</option>
+                <option value="hip-hop">Hip-Hop</option>
+                <option value="blues">Blues</option>
+                <option value="jazz">Jazz</option>
+                <option value="electronic">Electronic</option>
+              </select>
+            </label>
+            <button>Submit</button>
+          </form>
+        </div>
+      </div >
+    </>
   );
 };
 

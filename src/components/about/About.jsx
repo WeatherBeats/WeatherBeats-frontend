@@ -1,26 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AboutSingle from './AboutSingle';
 import styles from './About.css';
 import { aboutData } from './aboutData.js';
+import Header from '../header/Header';
 
-const About = props => {
+const About = () => {
 
   const aboutElements = aboutData.map(person => (
     <li key={person.name}>
       <AboutSingle {...person} />
     </li>
   ));
+
   return (
-
-    <ul className={styles.About}>
-      {aboutElements}
-    </ul>
+    <>
+      <Header />
+      <ul className={styles.About}>
+        {aboutElements}
+      </ul>
+    </>
   );
-};
-
-About.propTypes = {
-
 };
 
 export default About;

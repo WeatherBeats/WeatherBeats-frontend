@@ -95,3 +95,8 @@
     }
 }
 
+.HeaderUnit {
+    width: 60vw;
+    position: relative;
+    right: 10vw;
+}

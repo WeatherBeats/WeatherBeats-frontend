@@ -26,6 +26,8 @@
 
     p {
         text-align: center;
+        font-size: 14px;
+
     }
 
     @media (min-width: 700px) {

@@ -191,7 +191,15 @@ const Player = ({ match }) => {
               ? 
               <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
               : 
-              <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+              <>
+                <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+                <button onClick={onTrackingClick} className={styles.MainShort}>Check Weather</button>
+              </>
+          }
+
+          {playlists.length > 1
+            ? <button onClick={onNextClick} className={styles.NextButton}>Next Playlist</button>
+            : ''
           }
 
           <form onSubmit={onZipCodeSubmit} className={styles.FormOne}>
@@ -224,7 +232,6 @@ const Player = ({ match }) => {
             <button>Submit</button>
           </form>
         </div>
-
         {/* COLUMN TWO ------------------------- */}
 
         {
@@ -241,10 +248,10 @@ const Player = ({ match }) => {
                 allowtransparency="true"
                 allow="encrypted-media">
               </iframe>
-              {playlists.length > 1
+              {/* {playlists.length > 1
                 ? <button onClick={onNextClick}>Next Playlist</button>
                 : <div></div>
-              }
+              } */}
             </div>
         }
 

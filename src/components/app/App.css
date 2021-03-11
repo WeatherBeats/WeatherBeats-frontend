@@ -15,6 +15,7 @@ body, html {
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
 
+  background-image: url('../../../public/backgroundImages/landing-page.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

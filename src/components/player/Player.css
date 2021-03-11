@@ -36,8 +36,7 @@
     margin: 5px;
     border-radius: 50px;
 
-    input,
-    select {
+    input, select {
       background-color: #191414;
       color: gray;
       font-size: 14px;
@@ -51,6 +50,9 @@
       white-space: normal;
       margin-top: 2px;
       outline: none;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
     }
 
     select {

@@ -12,7 +12,7 @@
 .Faq {
     margin: 5px;
     padding: 10px;
-    background-color: rgba(128, 128, 128, 0.37);
+    background-color: rgba(128, 128, 128, 0.60);
     border-radius: 7px;
 
     summary {
@@ -22,7 +22,7 @@
        list-style-image: url("/public/images/light.png");
        background-repeat: no-repeat;
        background-size: cover;
-       outline: none;
+       outline: none;       
     }
 
     summary::-webkit-details-marker {
@@ -30,5 +30,9 @@
         background-repeat: no-repeat;
         background-size: cover;
         color: transparent;
+    }
+
+    p {
+        font-size: medium;
     }
 }

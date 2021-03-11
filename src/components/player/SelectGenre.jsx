@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { selectGenreData } from './selectGenreData.js';
+import SelectGenreDetails from './SelectGenreDetails.jsx';
 
-export default function SelectGenre() {
+const SelectGenre = () => {
+
+  const [chosenGenre, setChosenGenre] = useState('');
+
+  const selectElements = selectGenreData.map(item => (
+    <option key={item.genre}>
+      <SelectGenreDetails {...item} />
+    </option>
+  ));
+
+  console.log(selectElements);
   return (
-    <>
-      <option value="">Random</option>
-      <option value="+country">Country</option>
-      <option value="+rap">Rap</option>
-      <option value="+rock">Rock</option>
-      <option value="+hip-hop">Hip-Hop</option>
-      <option value="+blues">Blues</option>
-      <option value="+jazz">Jazz</option>
-      <option value="+electronic">Electronic</option>
-            
-    </>
+    <select
+      name="chosen-genre"
+      id="chosen-genre-input"
+      onChange={({ target }) => setChosenGenre(target.value)}>
+      {selectElements}
+    </select>
   );
 }
 
+export default SelectGenre;

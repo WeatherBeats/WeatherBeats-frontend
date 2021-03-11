@@ -9,7 +9,9 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
-import SelectGenre from './SelectGenre';
+// import SelectGenre from './SelectGenre';
+
+import { selectGenreData, selectGenreData2 } from './selectGenreData.js';
 
 const Player = ({ match }) => {
 
@@ -175,6 +177,35 @@ const Player = ({ match }) => {
     }
   };
 
+
+  // console.log(chosenGenre);
+  // if(chosenGenre === '+rap') {
+  //   console.log('It works!!!');
+  //   console.log(chosenGenre);
+  // }
+
+  const selectElements = selectGenreData.map(item => (
+    (item.genre === chosenGenre)
+      ?
+      <option
+        key={item.genre}
+        value={`+${item.value}`}
+        selected
+      >
+        {item.genre}
+      </option>
+      :
+      <option
+        key={item.genre}
+        value={`+${item.value}`}
+      >
+        {item.genre}
+      </option>
+  ));
+
+
+  console.log(chosenGenre);
+
   if(loading) return <Loading />;
   return (
     <>
@@ -289,7 +320,7 @@ const Player = ({ match }) => {
             <button>Submit</button>
           </form>
 
-
+          {/* <SelectGenre /> */}
 
 
           <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
@@ -299,9 +330,7 @@ const Player = ({ match }) => {
                 id="chosen-genre-input"
                 onChange={({ target }) => setChosenGenre(target.value)}
               >
-                <option value="">Pick Test</option>
-                <SelectGenre />
-                
+                {selectElements}
               </select>
             </label>
             <button>Submit</button>

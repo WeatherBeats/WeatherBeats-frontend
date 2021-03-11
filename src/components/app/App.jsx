@@ -15,7 +15,6 @@ export default function App() {
   return (
     <>
       <Router>
-        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/faq" component={FaqList}/>

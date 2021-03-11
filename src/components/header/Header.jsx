@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from '../menu/Menu';
 import styles from './Header.css';
 
-const header = () => {
+const Header = () => {
   return (
     <>
       <div className={styles.Header}>
@@ -13,4 +13,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;

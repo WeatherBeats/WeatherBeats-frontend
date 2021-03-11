@@ -22,7 +22,6 @@ export const postZipCode = (zipAndCountry) => {
 };
 
 export const postChosenWeather = (weather) => {
-  console.log(weather);
   return fetch(`${process.env.API_URL}/api/v1/weather/chosen`, {
     method: 'POST',
     headers: {

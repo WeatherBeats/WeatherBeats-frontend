@@ -12,12 +12,12 @@ const FaqList = () => {
   ));
   
   return (
-    <>
+    <div className={styles.Group}>
       <Header />
       <ul className={ styles.FaqList }>
         {faqElements}
       </ul>
-    </>
+    </div>
   );
 };
 

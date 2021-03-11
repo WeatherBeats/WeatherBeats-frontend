@@ -135,7 +135,7 @@ const Player = ({ match }) => {
 
   const onGenreSubmit = (e) => {
     e.preventDefault();
-    console.log(zipCode);
+
     if(zipCode) {
       setLoading(true);
 
@@ -161,33 +161,16 @@ const Player = ({ match }) => {
     else {
       setLoading(true);
 
-      const success = (position) => {
-        const lat = position.coords.latitude;
-        const long = position.coords.longitude;
-
-        coordinates.latitude = lat;
-        coordinates.longitude = long;
-        console.log(coordinates);
-        postLocation(coordinates)
-          .then(genre => {
-            const searchTerms = `${genre}${chosenGenre}${chosenWeatherResponse}`;
-            document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-            getPlaylist(searchTerms, token)
-              .then(res => {
-                setPlaylists(res);
-                const id = newUserPlaylist(res);
-                setUserPlaylist(id);
-                localStorage.setItem('currentPlaylist', id);
-              });
-            setLoading(false);
-          });
-        const error = (err) => {
-          console.warn(`Error(${err.code}): ${err.message}`);
-          setLoading(false);
-        };
-    
-        navigator.geolocation.getCurrentPosition(success, error);
-      };
+      const weatherSearch = chosenWeatherResponse.substring(1);
+      const searchTerms = `${weatherSearch}${chosenGenre}`;
+      getPlaylist(searchTerms, token)
+        .then(res => {
+          setPlaylists(res);
+          const id = newUserPlaylist(res);
+          setUserPlaylist(id);
+          localStorage.setItem('currentPlaylist', id);
+        });
+      setLoading(false);
     }
   };
 
@@ -235,31 +218,9 @@ const Player = ({ match }) => {
             </label>
             <button>Submit</button>
           </form>
-
-          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
-            <label htmlFor="chosen-genre-input">
-              <select
-                name="chosen-genre"
-                id="chosen-genre-input"
-                onChange={({ target }) => setChosenGenre(target.value)}
-              >
-                <option value="">Pick Genre</option>
-                <option value="">Random</option>
-                <option value="+country">Country</option>
-                <option value="+rap">Rap</option>
-                <option value="+rock">Rock</option>
-                <option value="+hip-hop">Hip-Hop</option>
-                <option value="+blues">Blues</option>
-                <option value="+jazz">Jazz</option>
-                <option value="+electronic">Electronic</option>
-              </select>
-            </label>
-            <button>Submit</button>
-          </form>
         </div>
 
         {/* COLUMN TWO ------------------------- */}
-
 
         {
           !userPlaylist
@@ -313,14 +274,15 @@ const Player = ({ match }) => {
                 id="chosen-genre-input"
                 onChange={({ target }) => setChosenGenre(target.value)}
               >
-                <option>Pick Genre</option>
-                <option value="country">Country</option>
-                <option value="rap">Rap</option>
-                <option value="rock">Rock</option>
-                <option value="hip-hop">Hip-Hop</option>
-                <option value="blues">Blues</option>
-                <option value="jazz">Jazz</option>
-                <option value="electronic">Electronic</option>
+                <option value="">Pick Genre</option>
+                <option value="">Random</option>
+                <option value="+country">Country</option>
+                <option value="+rap">Rap</option>
+                <option value="+rock">Rock</option>
+                <option value="+hip-hop">Hip-Hop</option>
+                <option value="+blues">Blues</option>
+                <option value="+jazz">Jazz</option>
+                <option value="+electronic">Electronic</option>
               </select>
             </label>
             <button>Submit</button>

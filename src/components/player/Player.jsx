@@ -9,7 +9,9 @@ import styles from './Player.css';
 import { useHistory } from 'react-router-dom';
 import backgroundTranslator from '../background/Background';
 import Header from '../header/Header';
-import { selectGenreData, selectWeatherData } from './selectData.js';
+import { selectWeatherData } from './selectData.js';
+import GenreSelectForm from './GenreSelectForm';
+import WeatherSelectForm from './WeatherSelectForm';
 
 const Player = ({ match }) => {
 
@@ -179,47 +181,25 @@ const Player = ({ match }) => {
   };
 
   // Creates the options for the Pick Weather dropdown menu
-  const selectWeatherElements = selectWeatherData.map(item => (
-    (item.value === chosenWeather)
-      ?
-      <option
-        key={item.weather}
-        value={`+${item.value}`}
-        selected
-      >
-        {item.weather}
-      </option>
-      :
-      <option
-        key={item.weather}
-        value={`${item.value}`}
-      >
-        {item.weather}
-      </option>
-  ));
+  // const selectWeatherElements = selectWeatherData.map(item => (
+  //   (item.value === chosenWeather)
+  //     ?
+  //     <option
+  //       key={item.weather}
+  //       value={`+${item.value}`}
+  //       selected
+  //     >
+  //       {item.weather}
+  //     </option>
+  //     :
+  //     <option
+  //       key={item.weather}
+  //       value={`${item.value}`}
+  //     >
+  //       {item.weather}
+  //     </option>
+  // ));
 
-  // Removes the plus sign from chosenGenre
-  const savedGenre = chosenGenre.replace('+', '');
-
-  // Creates the options for the Pick Genre dropdown menu
-  const selectGenreElements = selectGenreData.map(item => (
-    (item.value === savedGenre || item.value === chosenGenre)
-      ?
-      <option
-        key={item.genre}
-        value={`+${item.value}`}
-        selected
-      >
-        {item.genre}
-      </option>
-      :
-      <option
-        key={item.genre}
-        value={`+${item.value}`}
-      >
-        {item.genre}
-      </option>
-  ));
 
   if(loading) return <Loading />;
   return (
@@ -294,7 +274,7 @@ const Player = ({ match }) => {
 
         <div className={styles.columnThree}>
           <p>Advanced Search</p>
-          <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
+          {/* <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-weather-input">
               <select
                 name="chosen-weather"
@@ -312,9 +292,9 @@ const Player = ({ match }) => {
               </select>
             </label>
             <button>Submit</button>
-          </form>
+          </form> */}
 
-          <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
+          {/* <form onSubmit={onChosenWeatherSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-weather-input">
               <select
                 name="chosen-weather"
@@ -325,9 +305,9 @@ const Player = ({ match }) => {
               </select>
             </label>
             <button>Submit</button>
-          </form>
+          </form> */}
 
-          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
+          {/* <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
             <label htmlFor="chosen-genre-input">
               <select
                 name="chosen-genre"
@@ -346,23 +326,19 @@ const Player = ({ match }) => {
               </select>
             </label>
             <button>Submit</button>
-          </form>
+          </form> */}
 
+          <WeatherSelectForm
+            onChosenWeatherSubmit={onChosenWeatherSubmit}
+            setChosenWeather={setChosenWeather}
+            chosenWeather={chosenWeather}
+          />
 
-          <form onSubmit={onGenreSubmit} className={styles.FormTwo}>
-            <label htmlFor="chosen-genre-input">
-              <select
-                name="chosen-genre"
-                id="chosen-genre-input"
-                onChange={({ target }) => setChosenGenre(target.value)}
-              >
-                {selectGenreElements}
-              </select>
-            </label>
-            <button>Submit</button>
-          </form>
-
-
+          <GenreSelectForm
+            onGenreSubmit={onGenreSubmit}
+            setChosenGenre={setChosenGenre}
+            chosenGenre={chosenGenre}
+          />
 
         </div>
       </div >

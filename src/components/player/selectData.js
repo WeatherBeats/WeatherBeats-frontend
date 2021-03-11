@@ -1,5 +1,5 @@
 export const selectGenreData = [
-  { genre: 'Pick Genre Alt', value: '' },
+  { genre: 'Pick Genre', value: '' },
   { genre: 'Blues', value: 'blues' },
   { genre: 'Electronic', value: 'electronic' },
   { genre: 'Hip-hop', value: 'hip-hop' },
@@ -9,7 +9,7 @@ export const selectGenreData = [
 ];
   
 export const selectWeatherData = [
-  { weather: 'Pick Weather Alt', value: '' },
+  { weather: 'Pick Weather', value: '' },
   { weather: 'Sunny', value: 'sunny' },
   { weather: 'Cloudy', value: 'cloudy' },
   { weather: 'Thunder', value: 'thunder' },

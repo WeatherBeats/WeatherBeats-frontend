@@ -104,7 +104,7 @@
     }
 }
 
-.MainButton {
+.MainButton, .MainShort {
     background-color: #1DB954;
     color: #191414;
     font-size: 14px;
@@ -124,8 +124,12 @@
     cursor: pointer;
 }
 
-.MainButton:hover {
+.MainButton:hover, .MainShort:hover {
     background-color: #26f16d;
+}
+
+.MainShort {
+    display: none;
 }
 
 .NextButton {
@@ -149,10 +153,52 @@
 }
 
 
- /* need an additional range for tablets */
+@media (max-width: 1024px) {
+    .Player {
+        border: solid 2px yellow;
+    }
+
+    .MainButton {
+        display: inline-block;
+     }
+ 
+     .MainShort {
+         display: none;
+     }
+ 
+
+    .playlist {
+        iframe {
+            height: 50vh;
+        }
+    }
+
+    .columnOne, .columnThree {
+        height: 40vh;
+    }
+}
+  
+@media (max-width: 992px) {
+    .Player {
+        border: solid 2px orange;
+    }
+
+    .MainButton {
+       display: none;
+    }
+
+    .MainShort {
+        display: inline-block;
+    }
+}
+
+
 @media (max-width: 667px) {
     
     .Player {
+        border: solid 2px red;
+
+
         flex-direction: column;
         height: 80vh;
 
@@ -164,21 +210,32 @@
         button {
             margin-top: 0px;
         }
-    
     }
+
+    .MainButton {
+        display: inline-block;
+        padding: 4% 7%;
+        margin: 15px 0px 5px;
+
+     }
+
+     .MainShort {
+        display: none;
+        padding: 4% 7%;
+        margin: 15px 0px 5px;
+     }
 
     .columnOne {
         width: 90vw;
         height: 25vh;
-        border: solid 2px yellow;
+        /* border: solid 2px yellow; */
     }
 
     .columnThree {
         width: 90vw;
         height: 15vh;
 
-        border: solid 2px orange;
-
+        /* border: solid 2px orange; */
     }
 
     .playlist {
@@ -207,9 +264,5 @@
         }
     }
 
-    .MainButton {
-        padding: 4% 7%;
-        margin: 15px 0px 5px;
-    }
 }
 

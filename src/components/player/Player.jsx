@@ -191,7 +191,10 @@ const Player = ({ match }) => {
               ? 
               <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
               : 
-              <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+              <>
+                <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
+                <button onClick={onTrackingClick} className={styles.MainShort}>Check Weather</button>
+              </>
           }
 
           {playlists.length > 1

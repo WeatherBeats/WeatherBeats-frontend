@@ -18,3 +18,16 @@ export const selectWeatherData = [
   { weather: 'Snow', value: 'snow' },
   { weather: 'Hazy', value: 'hazy' }
 ];
+
+export const selectCountryData = [
+  { country: 'Pick Country', value: '' },
+  { country: 'Australia', value: 'AU' },
+  { country: 'Brazil', value: 'BR' },
+  { country: 'Canada', value: 'CA' },
+  { country: 'China', value: 'CN' },
+  { country: 'India', value: 'IN' },
+  { country: 'Mexico', value: 'MX' },
+  { country: 'Nigeria', value: 'NG' },
+  { country: 'United Kingdom', value: 'UK' },
+  { country: 'United States', value: 'US' }
+];

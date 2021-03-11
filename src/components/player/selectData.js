@@ -1,13 +1,14 @@
 export const selectGenreData = [
   { genre: 'Pick Genre', value: '' },
   { genre: 'Random', value: '' },
-  { genre: 'Blues', value: 'blues' },
-  { genre: 'Electronic', value: 'electronic' },
   { genre: 'Hip-hop', value: 'hip-hop' },
-  { genre: 'Jazz', value: 'jazz' },
-  { genre: 'Rap', value: 'rap' },
   { genre: 'Rock', value: 'rock' },
   { genre: 'Country', value: 'country' }
+  { genre: 'Blues', value: 'blues' },
+  { genre: 'Jazz', value: 'jazz' },
+  { genre: 'R&B', value: 'r%26b' }
+  { genre: 'Rap', value: 'rap' },
+  { genre: 'Electronic', value: 'electronic' },
 ];
   
 export const selectWeatherData = [

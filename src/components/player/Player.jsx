@@ -84,7 +84,6 @@ const Player = ({ match }) => {
         history.replace('/player/awesome/tunes', { from: 'Player' });
       });
 
-
     const error = (err) => {
       console.warn(`Error(${err.code}): ${err.message}`);
       setLoading(false);
@@ -136,12 +135,10 @@ const Player = ({ match }) => {
     setLoading(true);
 
     if(chosenWeather) {
-      
       const searchTerms = `${chosenWeatherResponse.substring(1)}${chosenGenre}`;
       document.body.style.backgroundImage = `url(${backgroundTranslator(chosenWeatherResponse.substring(1))})`;
       generatePlaylist(searchTerms, token);
     }
-
     else if(zipCode) {
 
       const zipAndCountry = {
@@ -157,7 +154,6 @@ const Player = ({ match }) => {
         });
     }
     else {
-
       const weatherSearch = chosenWeatherResponse.substring(1);
       const searchTerms = `${weatherSearch}${chosenGenre}`;
       generatePlaylist(searchTerms, token);
@@ -169,22 +165,20 @@ const Player = ({ match }) => {
     <>
       <Header />
       <div className={styles.Player}>
-        {/* COLUMN ONE ------------------------- */}
         <div className={styles.columnOne}>
           {
             !userPlaylist
-              ? 
-              <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
+              ? <button onClick={onTrackingClick} className={styles.MainButton}>Generate Playlist</button>
               : 
               <>
                 <button onClick={onTrackingClick} className={styles.MainButton}>Check Weather Again</button>
                 <button onClick={onTrackingClick} className={styles.MainShort}>Check Weather</button>
               </>
           }
-
-          {playlists.length > 1
-            ? <button onClick={onNextClick} className={styles.NextButton}>Next Playlist</button>
-            : ''
+          {
+            playlists.length > 1
+              ? <button onClick={onNextClick} className={styles.NextButton}>Next Playlist</button>
+              : ''
           }
           <ZipCodeSelectForm
             onZipCodeSubmit={onZipCodeSubmit}
@@ -193,7 +187,6 @@ const Player = ({ match }) => {
             country={country}
           />
         </div>
-        {/* COLUMN TWO ------------------------- */}
 
         {
           !userPlaylist
@@ -212,8 +205,6 @@ const Player = ({ match }) => {
             </div>
         }
 
-        {/* COLUMN THREE ------------------------- */}
-
         <div className={styles.columnThree}>
           <p>Advanced Search</p>
 
@@ -228,7 +219,6 @@ const Player = ({ match }) => {
             setChosenGenre={setChosenGenre}
             chosenGenre={chosenGenre}
           />
-
         </div>
       </div >
     </>

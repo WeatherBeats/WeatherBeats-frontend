@@ -134,6 +134,8 @@ const Player = ({ match }) => {
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
+  const savedGenre = chosenGenre.replace('+', '');
+
   const onGenreSubmit = (e) => {
     e.preventDefault();
 
@@ -173,6 +175,9 @@ const Player = ({ match }) => {
         });
       setLoading(false);
     }
+
+
+    localStorage.setItem('savedGenre', savedGenre);
   };
 
 
@@ -198,13 +203,16 @@ const Player = ({ match }) => {
         {console.log('not selected')}
       </option>
   ));
-console.log(chosenWeather);
+  console.log(chosenWeather);
 
 
+  // if(chosenGenre === '') {
+  //   setChosenGenre(localStorage.getItem('savedGenre'));
+  // }
 
   // Create the options for the Pick Genre dropdown menu
   const selectGenreElements = selectGenreData.map(item => (
-    (item.genre === chosenGenre)
+    (item.value === savedGenre || item.value === chosenGenre)
       ?
       <option
         key={item.genre}
@@ -222,7 +230,7 @@ console.log(chosenWeather);
       </option>
   ));
 
-console.log(chosenGenre);
+  console.log(chosenGenre);
 
 
 

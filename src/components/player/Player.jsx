@@ -46,8 +46,9 @@ const Player = ({ match }) => {
 
   const onTrackingClick = () => {
     setLoading(true);
+
+    // Resets chosenWeather to an emtpy string when 'Check Weather Again' is clicked
     setChosenWeather('');
-    console.log(chosenWeather);
 
     const success = (position) => {
       const lat = position.coords.latitude;
@@ -136,8 +137,6 @@ const Player = ({ match }) => {
     history.replace('/player/awesome/tunes', { from: 'Player' });
   };
 
-  const savedGenre = chosenGenre.replace('+', '');
-
   const onGenreSubmit = (e) => {
     e.preventDefault();
 
@@ -177,14 +176,9 @@ const Player = ({ match }) => {
         });
       setLoading(false);
     }
-
-
-    localStorage.setItem('savedGenre', savedGenre);
   };
 
-
-
-  // Create the options for the Pick Weather dropdown menu
+  // Creates the options for the Pick Weather dropdown menu
   const selectWeatherElements = selectWeatherData.map(item => (
     (item.value === chosenWeather)
       ?
@@ -194,7 +188,6 @@ const Player = ({ match }) => {
         selected
       >
         {item.weather}
-        {console.log('selected')}
       </option>
       :
       <option
@@ -202,17 +195,13 @@ const Player = ({ match }) => {
         value={`${item.value}`}
       >
         {item.weather}
-        {console.log('not selected')}
       </option>
   ));
-  console.log(chosenWeather);
 
+  // Removes the plus sign from chosenGenre
+  const savedGenre = chosenGenre.replace('+', '');
 
-  // if(chosenGenre === '') {
-  //   setChosenGenre(localStorage.getItem('savedGenre'));
-  // }
-
-  // Create the options for the Pick Genre dropdown menu
+  // Creates the options for the Pick Genre dropdown menu
   const selectGenreElements = selectGenreData.map(item => (
     (item.value === savedGenre || item.value === chosenGenre)
       ?
@@ -231,12 +220,6 @@ const Player = ({ match }) => {
         {item.genre}
       </option>
   ));
-
-  console.log(chosenGenre);
-
-
-
-
 
   if(loading) return <Loading />;
   return (

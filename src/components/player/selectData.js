@@ -8,7 +8,7 @@ export const selectGenreData = [
   { genre: 'Jazz', value: 'jazz' },
   { genre: 'R&B', value: 'r%26b' },
   { genre: 'Rap', value: 'rap' },
-  { genre: 'Electronic', value: 'electronic' }
+  { genre: 'EDM', value: 'edm' }
 ];
   
 export const selectWeatherData = [

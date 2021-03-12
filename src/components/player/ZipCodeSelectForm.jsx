@@ -13,18 +13,11 @@ const ZipCodeSelectForm = ({
   const selectCountryElements = selectCountryData.map(item => (
     (item.value === country)
       ?
-      <option
-        key={item.country}
-        value={item.value}
-        selected
-      >
+      <option key={item.country} value={item.value} selected>
         {item.country}
       </option>
       :
-      <option
-        key={item.country}
-        value={item.value}
-      >
+      <option key={item.country} value={item.value}>
         {item.country}
       </option>
   ));

@@ -13,18 +13,11 @@ const WeatherSelectForm = ({
   const selectWeatherElements = selectWeatherData.map(item => (
     (item.value === chosenWeather)
       ?
-      <option
-        key={item.weather}
-        value={`+${item.value}`}
-        selected
-      >
+      <option key={item.weather} value={`+${item.value}`} selected>
         {item.weather}
       </option>
       :
-      <option
-        key={item.weather}
-        value={`${item.value}`}
-      >
+      <option key={item.weather} value={`${item.value}`}>
         {item.weather}
       </option>
   ));

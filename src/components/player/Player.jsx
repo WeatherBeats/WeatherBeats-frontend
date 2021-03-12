@@ -1,17 +1,17 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Loading from '../loading/Loading';
 import { postLocation, postZipCode, postChosenWeather } from '../../services/weatherBeatsApi';
 import { getPlaylist } from '../../services/spotifyApi';
 import { getNewAccessToken } from '../../services/spotifyRefreshToken';
-import styles from './Player.css';
-import { useHistory } from 'react-router-dom';
-import backgroundTranslator from '../background/Background';
+import backgroundTranslator from '../../utils/background';
+import Loading from '../loading/Loading';
 import Header from '../header/Header';
 import GenreSelectForm from './GenreSelectForm';
 import WeatherSelectForm from './WeatherSelectForm';
 import ZipCodeSelectForm from './ZipCodeSelectForm';
+import styles from './Player.css';
 
 const Player = ({ match }) => {
 
@@ -143,8 +143,7 @@ const Player = ({ match }) => {
       const searchTerms = `${chosenWeatherResponse.substring(1)}${chosenGenre}`;
       document.body.style.backgroundImage = `url(${backgroundTranslator(chosenWeatherResponse.substring(1))})`;
       generatePlaylist(searchTerms, token);
-    }
-    else {
+    } else {
       const searchTerms = `${currentMood}${chosenGenre}`;
       generatePlaylist(searchTerms, token);
     }

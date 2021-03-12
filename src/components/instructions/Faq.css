@@ -4,9 +4,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    
     width: 100vw;
     height: 100%;
+    color: black;
 }
 
 .FaqList {
@@ -27,17 +27,17 @@
     border-radius: 7px;
 
     summary {
-       cursor: pointer;
-       margin-bottom: 5px;
-       font-weight: bold;
-       list-style-image: url("/public/images/lightning-med.png");
-       background-repeat: no-repeat;
-       background-size: cover;
-       outline: none;       
+        cursor: pointer;
+        margin-bottom: 5px;
+        font-weight: bold;
+        list-style-image: url("/public/images/lightning.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        outline: none;       
     }
 
     summary::-webkit-details-marker {
-        background: url("/public/images/lightning-med.png");
+        background: url("/public/images/lightning.png");
         background-repeat: no-repeat;
         background-size: cover;
         color: transparent;
@@ -45,6 +45,6 @@
 
     p {
         font-size: medium;
+        white-space: pre-wrap;
     }
 }
-

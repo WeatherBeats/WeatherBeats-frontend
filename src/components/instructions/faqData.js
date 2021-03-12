@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import React from 'react';
 const gitHubUrl = 'https://github.com/WeatherBeats';
 
 export const faqData = [
@@ -13,7 +12,7 @@ export const faqData = [
   },
   {
     question: '‘Generate Playlist’ isn\'t working?',
-    response: 'It may be that the location setting on your browser has been turned off. To reset this setting in Chrome, follow these steps: 1) Go to the Settings page. 2) Scroll down to Privacy and Security. 3) Go to Site Settings. 4) Scroll down to the Permissions section and click on Location. 5) Click on the https://weatherbeats.netlify.app link. 6) Set the Location to Allow. To reset this setting in Firefox, follow these steps: 1) Click on the lock icon to the left of the URL bar. 2) Scroll down the Permissions and under Permissions, click the ‘X’ next to ‘Blocked Temporarily’.'
+    response: 'It may be that the location setting on your browser has been turned off. \n\nTo reset this setting in Chrome, follow these steps: \n1) Go to the Settings page. \n2) Scroll down to Privacy and Security. \n3) Go to Site Settings. \n4) Scroll down to the Permissions section and click on Location. \n5) Click on the https://weatherbeats.netlify.app link. \n6) Set the Location to Allow. \n\nTo reset this setting in Firefox, follow these steps: \n1) Click on the lock icon to the left of the URL bar. \n2) Scroll down the Permissions and under Permissions, click the ‘X’ next to ‘Blocked Temporarily’.'
   },
   {
     question: 'What if I don’t want to give you my current location?',
@@ -21,7 +20,7 @@ export const faqData = [
   },
   {
     question: 'I told the browser to block access to my location, but now I want to allow access.',
-    response: 'The Location setting needs to be reset in the brower. If you are using Chrome, follow these steps: 1) Go to the Settings page. 2) Scroll down to Privacy and Security. 3) Go to Site Settings. 4) Scroll down to the Permissions section and click on Location. 5) Click on the https://weatherbeats.netlify.app link. 6) Set the Location to Allow. To reset this setting in Firefox, follow these steps: 1) Click on the lock icon to the left of the URL bar. 2) Scroll down the Permissions and under Permissions, click the ‘X’ next to ‘Blocked Temporarily’.'
+    response: 'The Location setting needs to be reset in the browser. \n\nIf you are using Chrome, follow these steps: \n1) Go to the Settings page. \n2) Scroll down to Privacy and Security. \n3) Go to Site Settings. \n4) Scroll down to the Permissions section and click on Location. \n5) Click on the https://weatherbeats.netlify.app link. \n6) Set the Location to Allow. \n\nTo reset this setting in Firefox, follow these steps: \n1) Click on the lock icon to the left of the URL bar. \n2) Scroll down the Permissions and under Permissions, click the ‘X’ next to ‘Blocked Temporarily’.'
   },
   {
     question: 'My weather has changed!',
@@ -29,7 +28,7 @@ export const faqData = [
   },
   {
     question: 'I don’t like this playlist.',
-    response: 'We understand your taste in music is unique, so we created some options for you.\nOne option is to click ‘Next Playlist’ to grab another playlist for the same weather.\nAnother option is to use our genre filter to find playlists that match the genre of your choosing.'
+    response: 'We understand your taste in music is unique, so we created some options for you.\n\nOne option is to click ‘Next Playlist’ to grab another playlist for the same weather.\n\nAnother option is to use our genre filter to find playlists that match the genre of your choosing.'
   },
   {
     question: 'What if I want to listen to ‘sunny weather’ music on a gloomy day?',
@@ -37,7 +36,7 @@ export const faqData = [
   },
   {
     question: 'The ‘Next Playlist button is not showing up.',
-    response: 'This could mean one of two things. If you navigated away from the page and came back, we ask that you Check Weather Again to get the freshest weather results for your area. Or this could simply mean that the selected weather and/or genre is very specific and there are currently very few playlists on Spotify.'
+    response: 'This could mean one of two things. \n\nIf you navigated away from the page and came back, we ask that you Check Weather Again to get the freshest weather results for your area. \n\nOr this could simply mean that the selected weather and/or genre is very specific and there are currently very few playlists on Spotify.'
   },
   {
     question: 'I love this app!',

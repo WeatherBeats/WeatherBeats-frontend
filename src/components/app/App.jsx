@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import Home from '../../containers/home/Home';
 import About from '../about/About';
-import Header from '../header/Header';
 import FaqList from '../instructions/FaqList';
 import Player from '../player/Player';
 import './App.css';

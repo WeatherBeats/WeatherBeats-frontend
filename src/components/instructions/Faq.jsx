@@ -4,7 +4,7 @@ import styles from './Faq.css';
 
 const Faq = ({ question, response }) => {
   return (
-    <details className={ styles.Faq }>
+    <details className={styles.Faq}>
       <summary>{question}</summary>
       <p>{response}</p>
     </details>

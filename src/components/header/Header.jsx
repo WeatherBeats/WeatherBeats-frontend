@@ -4,12 +4,10 @@ import styles from './Header.css';
 
 const Header = () => {
   return (
-    <>
-      <div className={styles.Header}>
-        <Menu />
-        <h1>WeatherBeats</h1>
-      </div>
-    </>
+    <div className={styles.Header}>
+      <Menu />
+      <h1>WeatherBeats</h1>
+    </div>
   );
 };
 

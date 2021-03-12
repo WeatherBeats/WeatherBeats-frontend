@@ -12,22 +12,15 @@ const GenreSelectForm = ({ onGenreSubmit, setChosenGenre, chosenGenre }) => {
   const selectGenreElements = selectGenreData.map(item => (
     (item.value === savedGenre || item.value === chosenGenre)
       ?
-      <option
-        key={item.genre}
-        value={`+${item.value}`}
-        selected
-      >
+      <option key={item.genre} value={`+${item.value}`} selected>
         {item.genre}
       </option>
       :
-      <option
-        key={item.genre}
-        value={`+${item.value}`}
-      >
+      <option key={item.genre} value={`+${item.value}`}>
         {item.genre}
       </option>
   ));
-
+  
   return (
     <>
       <form onSubmit={onGenreSubmit} className={styles.FormTwo}>

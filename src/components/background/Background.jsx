@@ -14,7 +14,7 @@ import heavyShowerRain from '../../../public/backgroundImages/heavyShowerRain.jp
 import smoke from '../../../public/backgroundImages/smoke.jpg';
 import freezingRain from '../../../public/backgroundImages/freezingRain.jpg';
 
-function backgroundTranslator(genre) {
+function backgroundTranslator(mood) {
 
   const dict = {
     'gloomy': thunderstorm,
@@ -90,7 +90,7 @@ function backgroundTranslator(genre) {
     'rainy+tacos': rain,
     'rainy+tacos+night': rain,
   };
-  const backgroundImage = dict[genre];
+  const backgroundImage = dict[mood];
 
   return backgroundImage;
 }

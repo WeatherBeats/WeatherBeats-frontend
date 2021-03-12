@@ -40,7 +40,6 @@ const Player = ({ match }) => {
   const generatePlaylist = (searchTerms, token) => {
     getPlaylist(searchTerms, token)
       .then(res => {
-        setCurrentMood(res);
         setPlaylists(res);
         const id = newUserPlaylist(res);
         setUserPlaylist(id);
@@ -74,9 +73,10 @@ const Player = ({ match }) => {
       coordinates.longitude = long;
 
       postLocation(coordinates)
-        .then(genre => {
-          const searchTerms = `${genre}${chosenGenre}`;
-          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+        .then(mood => {
+          setCurrentMood(mood);
+          const searchTerms = `${mood}${chosenGenre}`;
+          document.body.style.backgroundImage = `url(${backgroundTranslator(mood)})`;
           generatePlaylist(searchTerms, token);
         });
     };
@@ -111,9 +111,10 @@ const Player = ({ match }) => {
     };
 
     postZipCode(zipAndCountry)
-      .then(genre => {
-        const searchTerms = `${genre}${chosenGenre}`;
-        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+      .then(mood => {
+        setCurrentMood(mood);
+        const searchTerms = `${mood}${chosenGenre}`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(mood)})`;
         generatePlaylist(searchTerms, token);
         setChosenWeather('');
       });
@@ -124,10 +125,11 @@ const Player = ({ match }) => {
     setLoading(true);
 
     postChosenWeather(chosenWeather)
-      .then(genre => {
-        setChosenWeatherResponse(`+${genre}`);
-        const searchTerms = `${genre}${chosenGenre}`;
-        document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
+      .then(mood => {
+        setCurrentMood(mood);
+        setChosenWeatherResponse(`+${mood}`);
+        const searchTerms = `${mood}${chosenGenre}`;
+        document.body.style.backgroundImage = `url(${backgroundTranslator(mood)})`;
         generatePlaylist(searchTerms, token);
       });
     history.replace('/player/awesome/tunes', { from: 'Player' });
@@ -141,20 +143,6 @@ const Player = ({ match }) => {
       const searchTerms = `${chosenWeatherResponse.substring(1)}${chosenGenre}`;
       document.body.style.backgroundImage = `url(${backgroundTranslator(chosenWeatherResponse.substring(1))})`;
       generatePlaylist(searchTerms, token);
-    }
-    else if(zipCode) {
-
-      const zipAndCountry = {
-        zipCode,
-        country
-      };
-
-      postZipCode(zipAndCountry)
-        .then(genre => {
-          const searchTerms = `${genre}${chosenGenre}`;
-          document.body.style.backgroundImage = `url(${backgroundTranslator(genre)})`;
-          generatePlaylist(searchTerms, token);
-        });
     }
     else {
       const searchTerms = `${currentMood}${chosenGenre}`;

@@ -12,6 +12,10 @@ Our live site is hosted on [Netlify](https://weatherbeats.netlify.app/).
 
 For assistance on questions about location access, playlist results, and more, please visit our [FAQ](https://weatherbeats.netlify.app/faq) page.
 
+## Server
+
+The repository for our server can be found [here](https://github.com/WeatherBeats/WeatherBeats-server).
+
 ## Find us on LinkedIn
 - [Bryana](https://www.linkedin.com/in/bryanakitchen)
 - [Donny](https://www.linkedin.com/in/donnylvu/)

@@ -45,5 +45,6 @@
 
     p {
         font-size: medium;
+        white-space: pre-wrap;
     }
 }

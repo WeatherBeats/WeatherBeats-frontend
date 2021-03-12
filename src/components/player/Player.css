@@ -8,6 +8,7 @@
 
   p {
     font-size: 14px;
+    color: black;
   }
 }
 
@@ -50,7 +51,6 @@
       white-space: normal;
       margin-top: 2px;
       outline: none;
-
       -webkit-appearance: none;
       -moz-appearance: none;
     }
@@ -75,6 +75,7 @@
     white-space: normal;
     margin-top: 10px;
     cursor: pointer;
+    outline: none;
   }
 
   button:hover {
@@ -107,8 +108,7 @@
   }
 }
 
-.MainButton,
-.MainShort {
+.MainButton, .MainShort {
   background-color: #1db954;
   color: #191414;
   font-size: 14px;
@@ -122,10 +122,10 @@
   white-space: nowrap;
   filter: drop-shadow(0 0 0.5rem #191414);
   cursor: pointer;
+  outline: none;
 }
 
-.MainButton:hover,
-.MainShort:hover {
+.MainButton:hover, .MainShort:hover {
   background-color: #26f16d;
 }
 
@@ -148,6 +148,7 @@
   cursor: pointer;
   position: relative;
   bottom: 2vh;
+  outline: none;
 }
 
 .NextButton:hover {
@@ -155,10 +156,6 @@
 }
 
 @media (max-width: 1024px) {
-  .Player {
-    /* border: solid 2px yellow; */
-  }
-
   .MainButton {
     display: inline-block;
   }
@@ -178,8 +175,7 @@
     }
   }
 
-  .columnOne,
-  .columnThree {
+  .columnOne, .columnThree {
     height: 40vh;
   }
 }
@@ -259,8 +255,7 @@
     padding: 3px 0px;
     align-items: center;
 
-    input,
-    select {
+    input, select {
       width: 25vw;
     }
   }
@@ -270,8 +265,7 @@
     justify-content: center;
     padding: 3px 0px;
 
-    input,
-    select {
+    input, select {
       width: 45vw;
     }
   }
@@ -333,8 +327,7 @@
     padding: 3px 0px;
     align-items: center;
 
-    input,
-    select {
+    input, select {
       width: 25vw;
     }
   }
@@ -344,8 +337,7 @@
     justify-content: center;
     padding: 0;
 
-    input,
-    select {
+    input, select {
       width: 45vw;
     }
   }

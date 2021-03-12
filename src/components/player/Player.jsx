@@ -25,6 +25,7 @@ const Player = ({ match }) => {
   const [chosenWeather, setChosenWeather] = useState('');
   const [chosenGenre, setChosenGenre] = useState('');
   const [chosenWeatherResponse, setChosenWeatherResponse] = useState('');
+  const [currentMood, setCurrentMood] = useState('');
 
   const history = useHistory();
 
@@ -39,6 +40,7 @@ const Player = ({ match }) => {
   const generatePlaylist = (searchTerms, token) => {
     getPlaylist(searchTerms, token)
       .then(res => {
+        setCurrentMood(res);
         setPlaylists(res);
         const id = newUserPlaylist(res);
         setUserPlaylist(id);
@@ -62,6 +64,7 @@ const Player = ({ match }) => {
 
     // Resets chosenWeather to an emtpy string when 'Check Weather Again' is clicked
     setChosenWeather('');
+    setChosenWeatherResponse('');
 
     const success = (position) => {
       const lat = position.coords.latitude;
@@ -154,8 +157,7 @@ const Player = ({ match }) => {
         });
     }
     else {
-      const weatherSearch = chosenWeatherResponse.substring(1);
-      const searchTerms = `${weatherSearch}${chosenGenre}`;
+      const searchTerms = `${currentMood}${chosenGenre}`;
       generatePlaylist(searchTerms, token);
     }
   };
